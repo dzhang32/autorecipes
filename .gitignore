@@ -4,3 +4,4 @@
 .Rdata
 .httr-oauth
 .DS_Store
+data-raw/recipes_example.txt
