@@ -1,2 +1,2 @@
-#' @importFrom methods setClass setGeneric setMethod
+#' @importFrom methods setClass setGeneric setMethod new
 NULL

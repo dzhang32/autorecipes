@@ -16,20 +16,16 @@ NULL
     ), sep = "")
 }
 
-#' @describeIn Ingredients Print set of ingredients
-#' @export
+#' @importMethodsFrom methods show
 setMethod("show", "Ingredients", .show_Ingredients)
 
 ##### getters #####
 
-#' @describeIn Ingredients obtain the names of ingredients
-#' @export
+#' @describeIn Ingredients-class obtain names of ingredients
 setMethod("names", "Ingredients", function(x) stringr::str_to_title(x@names))
 
-#' @describeIn Ingredients obtain the amount of ingredients
-#' @export
+#' @describeIn Ingredients-class obtain amounts of ingredients
 setMethod("amounts", "Ingredients", function(x) x@amounts)
 
-#' @describeIn Ingredients obtain the units of the amount
-#' @export
+#' @describeIn Ingredients-class obtain units of amounts for each ingredient
 setMethod("units", "Ingredients", function(x) x@units)

@@ -3,13 +3,13 @@
 \docType{class}
 \name{Ingredients-class}
 \alias{Ingredients-class}
-\alias{show,Ingredients-method}
+\alias{Ingredients}
 \alias{names,Ingredients-method}
 \alias{amounts,Ingredients-method}
 \alias{units,Ingredients-method}
 \title{An S4 class representing a set of ingredients.}
 \usage{
-\S4method{show}{Ingredients}(object)
+Ingredients(names, amounts = 1, units = rep(NA_character_, length(names)))
 
 \S4method{names}{Ingredients}(x)
 
@@ -17,18 +17,26 @@
 
 \S4method{units}{Ingredients}(x)
 }
-\description{
-An S4 class representing a set of ingredients.
+\arguments{
+\item{names}{\code{character()} name of each ingredient.}
+
+\item{amounts}{\code{numeric()} amount of each ingredient.}
+
+\item{units}{\code{character()} units for the amount of each ingredient.}
+
+\item{x}{An object of \code{Ingredients-class}}
 }
-\section{Methods (by generic)}{
+\description{
+Contains information regarding the name, the quantity and the
+units for each ingredient.
+}
+\section{Functions}{
 \itemize{
-\item \code{show}: Print set of ingredients
+\item \code{names,Ingredients-method}: obtain names of ingredients
 
-\item \code{names}: obtain the names of ingredients
+\item \code{amounts,Ingredients-method}: obtain amounts of ingredients
 
-\item \code{amounts}: obtain the amount of ingredients
-
-\item \code{units}: obtain the units of the amount
+\item \code{units,Ingredients-method}: obtain units of amounts for each ingredient
 }}
 
 \section{Slots}{

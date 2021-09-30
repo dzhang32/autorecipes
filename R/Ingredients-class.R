@@ -1,10 +1,19 @@
-#' An S4 class representing a set of ingredients.
+#' @title An S4 class representing a set of ingredients.
+#'
+#' @description Contains information regarding the name, the quantity and the
+#' units for each ingredient.
+#'
+#' @param x An object of `Ingredients-class`
+#' @param names `character()` name of each ingredient.
+#' @param amounts `numeric()` amount of each ingredient.
+#' @param units `character()` units for the amount of each ingredient.
 #'
 #' @slot names name of each ingredient.
 #' @slot amounts amount of each ingredient.
 #' @slot units units for the amount of each ingredient.
 #'
 #' @export Ingredients
+#' @rdname Ingredients-class
 setClass("Ingredients",
     slots = c(
         names = "character",
@@ -20,6 +29,7 @@ setClass("Ingredients",
 
 ##### constructor #####
 
+#' @rdname Ingredients-class
 Ingredients <- function(names,
     amounts = 1,
     units = rep(NA_character_, length(names))) {
@@ -29,6 +39,7 @@ Ingredients <- function(names,
 }
 
 ##### validator #####
+
 validIngredients <- function(object) {
     valid_units <- c(NA_character_, "g")
 
