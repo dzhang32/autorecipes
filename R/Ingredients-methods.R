@@ -22,14 +22,14 @@ setMethod("show", "Ingredients", .show_Ingredients)
 
 ##### getters #####
 
-#' @describeIn Ingredients Getter for the names of ingredients
+#' @describeIn Ingredients obtain the names of ingredients
 #' @export
 setMethod("names", "Ingredients", function(x) stringr::str_to_title(x@names))
 
-#' @describeIn Ingredients Getter for the amount of ingredients
+#' @describeIn Ingredients obtain the amount of ingredients
 #' @export
 setMethod("amounts", "Ingredients", function(x) x@amounts)
 
-#' @describeIn Ingredients Getter for the units of the amount
+#' @describeIn Ingredients obtain the units of the amount
 #' @export
 setMethod("units", "Ingredients", function(x) x@units)

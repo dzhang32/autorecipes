@@ -24,11 +24,11 @@ An S4 class representing a set of ingredients.
 \itemize{
 \item \code{show}: Print set of ingredients
 
-\item \code{names}: Getter for the names of ingredients
+\item \code{names}: obtain the names of ingredients
 
-\item \code{amounts}: Getter for the amount of ingredients
+\item \code{amounts}: obtain the amount of ingredients
 
-\item \code{units}: Getter for the units of the amount
+\item \code{units}: obtain the units of the amount
 }}
 
 \section{Slots}{
