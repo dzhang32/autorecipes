@@ -24,7 +24,7 @@ Ingredients(names, amounts = 1, units = rep(NA_character_, length(names)))
 
 \item{units}{\code{character()} units for the amount of each ingredient.}
 
-\item{object}{of class \code{Ingredients-class}}
+\item{x}{of class \code{Ingredients-class}}
 }
 \description{
 Contains information regarding the name, the quantity and the

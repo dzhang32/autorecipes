@@ -24,6 +24,7 @@ Config/testthat/edition: 3
 Depends: 
     R (>= 2.10)
 Imports:
+    magrittr,
     methods,
     stringr
 Collate: 
@@ -31,5 +32,6 @@ Collate:
     'allGenerics.R'
     'Ingredients-methods.R'
     'RecipeBook-class.R'
+    'RecipeBook-methods.R'
     'autorecipes-package.R'
     'data.R'

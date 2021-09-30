@@ -2,6 +2,12 @@
 #'
 #' @description Name, ingredients of recipes.
 #'
+#' @param names `character()` name of each recipe.
+#' @param ingredients `list()` set of ingredients required for each recipe.
+#'
+#' @slot names name of each recipe.
+#' @slot ingredients set of ingredients required for each recipe.
+#'
 #' @export RecipeBook
 #' @rdname RecipeBook-class
 setClass("RecipeBook",
@@ -53,9 +59,10 @@ setValidity("RecipeBook", validRecipeBook)
     if (length(object@ingredients) != 0) {
         all_ingredients <- lapply(
             object@ingredients,
-            FUN = function(x) all(methods::is(x, "Ingredients"))
+            FUN = function(x) methods::is(x, "Ingredients")
         ) %>%
-            unlist()
+            unlist() %>%
+            all()
 
         if (!all_ingredients) {
             check_ingredients <- TRUE

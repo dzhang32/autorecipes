@@ -3,7 +3,7 @@
 #' @description Contains information regarding the name, the quantity and the
 #' units for each ingredient.
 #'
-#' @param object of class `Ingredients-class`
+#' @param x of class `Ingredients-class`
 #' @param names `character()` name of each ingredient.
 #' @param amounts `numeric()` amount of each ingredient.
 #' @param units `character()` units for the amount of each ingredient.
