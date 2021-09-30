@@ -5,19 +5,21 @@
 \alias{RecipeBook-class}
 \alias{RecipeBook}
 \alias{names,RecipeBook-method}
-\alias{ingredients,RecipeBook-method}
+\alias{ingredients}
 \title{An S4 class representing a set of recipes}
 \usage{
 RecipeBook(names, ingredients)
 
 \S4method{names}{RecipeBook}(x)
 
-\S4method{ingredients}{RecipeBook}(x)
+ingredients(x)
 }
 \arguments{
 \item{names}{\code{character()} name of each recipe.}
 
 \item{ingredients}{\code{list()} set of ingredients required for each recipe.}
+
+\item{x}{of class \code{RecipeBook-class}}
 }
 \description{
 Name, ingredients of recipes.
@@ -26,7 +28,7 @@ Name, ingredients of recipes.
 \itemize{
 \item \code{names,RecipeBook-method}: obtain names of ingredients
 
-\item \code{ingredients,RecipeBook-method}: obtain ingredients for each recipe
+\item \code{ingredients}: obtain ingredients for each recipe
 }}
 
 \section{Slots}{

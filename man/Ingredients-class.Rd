@@ -5,17 +5,17 @@
 \alias{Ingredients-class}
 \alias{Ingredients}
 \alias{names,Ingredients-method}
-\alias{amounts,Ingredients-method}
-\alias{units,Ingredients-method}
+\alias{amounts}
+\alias{units}
 \title{An S4 class representing a set of ingredients.}
 \usage{
 Ingredients(names, amounts = 1, units = rep(NA_character_, length(names)))
 
 \S4method{names}{Ingredients}(x)
 
-\S4method{amounts}{Ingredients}(x)
+amounts(x)
 
-\S4method{units}{Ingredients}(x)
+units(x)
 }
 \arguments{
 \item{names}{\code{character()} name of each ingredient.}
@@ -34,9 +34,9 @@ units for each ingredient.
 \itemize{
 \item \code{names,Ingredients-method}: obtain names of ingredients
 
-\item \code{amounts,Ingredients-method}: obtain amounts of ingredients
+\item \code{amounts}: obtain amounts of ingredients
 
-\item \code{units,Ingredients-method}: obtain units of amounts for each ingredient
+\item \code{units}: obtain units of amounts for each ingredient
 }}
 
 \section{Slots}{

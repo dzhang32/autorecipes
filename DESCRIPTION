@@ -29,7 +29,6 @@ Imports:
     stringr
 Collate: 
     'Ingredients-class.R'
-    'allGenerics.R'
     'Ingredients-methods.R'
     'RecipeBook-class.R'
     'RecipeBook-methods.R'

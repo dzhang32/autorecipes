@@ -1,4 +1,4 @@
-#' @include allGenerics.R Ingredients-class.R
+#' @include Ingredients-class.R
 NULL
 
 ##### show #####
@@ -25,7 +25,11 @@ setMethod("show", "Ingredients", .show_Ingredients)
 setMethod("names", "Ingredients", function(x) stringr::str_to_title(x@names))
 
 #' @describeIn Ingredients-class obtain amounts of ingredients
-setMethod("amounts", "Ingredients", function(x) x@amounts)
+amounts <- function(x) {
+    x@amounts
+}
 
 #' @describeIn Ingredients-class obtain units of amounts for each ingredient
-setMethod("units", "Ingredients", function(x) x@units)
+units <- function(x) {
+    x@units
+}

@@ -2,6 +2,7 @@
 #'
 #' @description Name, ingredients of recipes.
 #'
+#' @param x of class `RecipeBook-class`
 #' @param names `character()` name of each recipe.
 #' @param ingredients `list()` set of ingredients required for each recipe.
 #'
