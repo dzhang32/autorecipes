@@ -82,7 +82,7 @@ recipes_tidy[["instructions"]] <- recipes_tidy[["instructions"]] %>%
     unlist()
 
 recipes_example <- recipes_tidy %>%
-    dplyr::select(-instructions)
+    dplyr::select(title, title_tidy, ingredients)
 
 # Save data ---------------------------------------------------------------
 
