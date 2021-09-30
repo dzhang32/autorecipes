@@ -1,4 +1,4 @@
 library(testthat)
-library(autocipies)
+library(autorecipes)
 
-test_check("autocipies")
+test_check("autorecipes")

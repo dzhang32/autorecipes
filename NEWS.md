@@ -1,4 +1,4 @@
-# autocipies 0.1.0
+# autorecipes 0.1.0
 
 NEW FEATURES
 

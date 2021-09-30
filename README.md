@@ -1,30 +1,30 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# autocipies
+# autorecipes
 
 <!-- badges: start -->
 
 [![GitHub
-issues](https://img.shields.io/github/issues/dzhang32/autocipies)](https://github.com/dzhang32/autocipies/issues)
+issues](https://img.shields.io/github/issues/dzhang32/autorecipes)](https://github.com/dzhang32/autorecipes/issues)
 [![GitHub
-pulls](https://img.shields.io/github/issues-pr/dzhang32/autocipies)](https://github.com/dzhang32/autocipies/pulls)
+pulls](https://img.shields.io/github/issues-pr/dzhang32/autorecipes)](https://github.com/dzhang32/autorecipes/pulls)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![R-CMD-check](https://github.com/dzhang32/autocipies/workflows/R-CMD-check/badge.svg)](https://github.com/dzhang32/autocipies/actions)
+[![R-CMD-check](https://github.com/dzhang32/autorecipes/workflows/R-CMD-check/badge.svg)](https://github.com/dzhang32/autorecipes/actions)
 [![Codecov test
-coverage](https://codecov.io/gh/dzhang32/autocipies/branch/master/graph/badge.svg)](https://codecov.io/gh/dzhang32/autocipies?branch=master)
+coverage](https://codecov.io/gh/dzhang32/autorecipes/branch/master/graph/badge.svg)](https://codecov.io/gh/dzhang32/autorecipes?branch=master)
 <!-- badges: end -->
 
-The goal of `autocipies` is to …
+The goal of `autorecipes` is to …
 
 ## Installation instructions
 
 And the development version from
-[GitHub](https://github.com/dzhang32/autocipies) with:
+[GitHub](https://github.com/dzhang32/autorecipes) with:
 
 ``` r
-devtools::install_github("dzhang32/autocipies")
+devtools::install_github("dzhang32/autorecipes")
 ```
 
 ## Usage
@@ -32,12 +32,12 @@ devtools::install_github("dzhang32/autocipies")
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
-library("autocipies")
+library("autorecipes")
 ```
 
 ## Code of Conduct
 
-Please note that the `autocipies` project is released with a
+Please note that the `autorecipes` project is released with a
 [Contributor Code of
 Conduct](http://bioconductor.org/about/code-of-conduct/). By
 contributing to this project, you agree to abide by its terms.
@@ -55,8 +55,8 @@ contributing to this project, you agree to abide by its terms.
 -   Code coverage assessment is possible thanks to
     [codecov](https://codecov.io/gh) and
     *[covr](https://CRAN.R-project.org/package=covr)*.
--   The [documentation website](http://dzhang32.github.io/autocipies) is
-    automatically updated thanks to
+-   The [documentation website](http://dzhang32.github.io/autorecipes)
+    is automatically updated thanks to
     *[pkgdown](https://CRAN.R-project.org/package=pkgdown)*.
 -   The code is styled automatically thanks to
     *[styler](https://CRAN.R-project.org/package=styler)*.

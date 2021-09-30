@@ -81,8 +81,9 @@ recipes_tidy[["instructions"]] <- recipes_tidy[["instructions"]] %>%
     lapply(tidy_instructions) %>%
     unlist()
 
-recipes_example <- recipes_tidy
+recipes_example <- recipes_tidy %>%
+    dplyr::select(-instructions)
 
 # Save data ---------------------------------------------------------------
 
-usethis::use_data(recipes_example)
+usethis::use_data(recipes_example, overwrite = TRUE)
