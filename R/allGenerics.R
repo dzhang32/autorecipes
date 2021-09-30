@@ -1,4 +1,3 @@
 ##### for class-Ingredients #####
-setGeneric("name", function(x) standardGeneric("name"))
-setGeneric("amount", function(x) standardGeneric("amount"))
+setGeneric("amounts", function(x) standardGeneric("amounts"))
 setGeneric("units", function(x) standardGeneric("units"))

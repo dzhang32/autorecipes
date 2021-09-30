@@ -1,34 +1,37 @@
 setClass("Ingredients",
     slots = c(
-        name = "character",
-        amount = "numeric",
+        names = "character",
+        amounts = "numeric",
         units = "character"
     ),
     prototype = list(
-        name = NA_character_,
-        amount = NA_real_,
+        names = NA_character_,
+        amounts = NA_real_,
         units = NA_character_
     )
 )
 
 ##### constructor #####
-Ingredients <- function(name, amount = 1, units = NA_character_) {
-    name <- stringr::str_to_lower(name)
-    new("Ingredients", name = name, amount = amount, units = units)
+Ingredients <- function(names,
+    amounts = 1,
+    units = rep(NA_character_, length(names))) {
+    names <- stringr::str_to_lower(names)
+    amounts <- ifelse(is.na(amounts), 1, amounts)
+    new("Ingredients", names = names, amounts = amounts, units = units)
 }
 
 ##### validator #####
 validIngredients <- function(object) {
     valid_units <- c(NA_character_, "g")
 
-    if (.check_Ingredient_name_amount_length(object)) {
-        "object@name and object@amount must have equal lengths"
-    } else if (.check_Ingredient_name(object)) {
-        "All object@name values must be lower case"
+    if (.check_Ingredient_names_amounts_length(object)) {
+        "object@names and object@amounts must have equal lengths"
+    } else if (.check_Ingredient_names(object)) {
+        "All object@names values must be lower case"
     } else if (.check_Ingredient_units(object, valid_units)) {
         paste(
             "object@units must be the same length as",
-            "object@name and object@amount and be one of;",
+            "object@names and object@amounts and be one of;",
             paste(valid_units, collapse = ", ")
         )
     } else {
@@ -38,15 +41,15 @@ validIngredients <- function(object) {
 
 #' @keywords internal
 #' @noRd
-.check_Ingredient_name_amount_length <- function(object) {
-    return(length(object@name) != length(object@amount))
+.check_Ingredient_names_amounts_length <- function(object) {
+    return(length(object@names) != length(object@amounts))
 }
 
 #' @keywords internal
 #' @noRd
-.check_Ingredient_name <- function(object) {
+.check_Ingredient_names <- function(object) {
     # check all ingredient names are lowercase
-    return(any(stringr::str_detect(object@name, "[[:upper:]]")))
+    return(any(stringr::str_detect(object@names, "[[:upper:]]")))
 }
 
 #' @keywords internal
@@ -54,7 +57,7 @@ validIngredients <- function(object) {
 .check_Ingredient_units <- function(object, valid_units) {
     check_units <- FALSE
 
-    if (length(object@name) != length(object@units)) {
+    if (length(object@names) != length(object@units)) {
         check_units <- TRUE
     }
 
@@ -72,12 +75,21 @@ setValidity("Ingredients", validIngredients)
 #' @keywords internal
 #' @noRd
 .show_Ingredients <- function(object) {
-    cat("")
+    units_no_NA <- units(object)
+    units_no_NA[is.na(units_no_NA)] <- ""
+
+    cat(stringr::str_c(
+        amounts(object),
+        units_no_NA, " ",
+        names(object), "\n"
+    ), sep = "")
 }
+
+setMethod("show", "Ingredients", .show_Ingredients)
 
 ##### methods #####
 
 # getters
-setMethod("name", "Ingredients", function(x) stringr::str_to_title(x@name))
-setMethod("amount", "Ingredients", function(x) x@amount)
+setMethod("names", "Ingredients", function(x) stringr::str_to_title(x@names))
+setMethod("amounts", "Ingredients", function(x) x@amounts)
 setMethod("units", "Ingredients", function(x) x@units)
