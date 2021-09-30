@@ -23,6 +23,13 @@ Suggests:
 Config/testthat/edition: 3
 Depends: 
     R (>= 2.10)
-Imports: 
+Imports:
     methods,
     stringr
+Collate: 
+    'Ingredients-class.R'
+    'allGenerics.R'
+    'Ingredients-methods.R'
+    'autorecipes-package.R'
+    'class-Recipe.R'
+    'data.R'

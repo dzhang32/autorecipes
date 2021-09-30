@@ -1,3 +1,10 @@
+#' An S4 class representing a set of ingredients.
+#'
+#' @slot names name of each ingredient.
+#' @slot amounts amount of each ingredient.
+#' @slot units units for the amount of each ingredient.
+#'
+#' @export Ingredients
 setClass("Ingredients",
     slots = c(
         names = "character",
@@ -12,6 +19,7 @@ setClass("Ingredients",
 )
 
 ##### constructor #####
+
 Ingredients <- function(names,
     amounts = 1,
     units = rep(NA_character_, length(names))) {
@@ -69,27 +77,3 @@ validIngredients <- function(object) {
 }
 
 setValidity("Ingredients", validIngredients)
-
-##### show #####
-
-#' @keywords internal
-#' @noRd
-.show_Ingredients <- function(object) {
-    units_no_NA <- units(object)
-    units_no_NA[is.na(units_no_NA)] <- ""
-
-    cat(stringr::str_c(
-        amounts(object),
-        units_no_NA, " ",
-        names(object), "\n"
-    ), sep = "")
-}
-
-setMethod("show", "Ingredients", .show_Ingredients)
-
-##### methods #####
-
-# getters
-setMethod("names", "Ingredients", function(x) stringr::str_to_title(x@names))
-setMethod("amounts", "Ingredients", function(x) x@amounts)
-setMethod("units", "Ingredients", function(x) x@units)
