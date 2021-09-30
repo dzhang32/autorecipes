@@ -3,7 +3,7 @@
 #' @description Contains information regarding the name, the quantity and the
 #' units for each ingredient.
 #'
-#' @param x An object of `Ingredients-class`
+#' @param object of class `Ingredients-class`
 #' @param names `character()` name of each ingredient.
 #' @param amounts `numeric()` amount of each ingredient.
 #' @param units `character()` units for the amount of each ingredient.
@@ -58,6 +58,8 @@ validIngredients <- function(object) {
     }
 }
 
+setValidity("Ingredients", validIngredients)
+
 #' @keywords internal
 #' @noRd
 .check_Ingredient_names_amounts_length <- function(object) {
@@ -86,5 +88,3 @@ validIngredients <- function(object) {
 
     return(check_units)
 }
-
-setValidity("Ingredients", validIngredients)

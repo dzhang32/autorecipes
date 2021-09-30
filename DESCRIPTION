@@ -30,6 +30,6 @@ Collate:
     'Ingredients-class.R'
     'allGenerics.R'
     'Ingredients-methods.R'
+    'RecipeBook-class.R'
     'autorecipes-package.R'
-    'class-Recipe.R'
     'data.R'
