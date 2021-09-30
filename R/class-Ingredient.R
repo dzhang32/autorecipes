@@ -11,21 +11,21 @@ setClass("Ingredients",
     )
 )
 
-# constructor
+##### constructor #####
 Ingredients <- function(name, amount = 1, units = NA_character_) {
-  name <- stringr::str_to_lower(name)
+    name <- stringr::str_to_lower(name)
     new("Ingredients", name = name, amount = amount, units = units)
 }
 
-# validator
+##### validator #####
 validIngredients <- function(object) {
     valid_units <- c(NA_character_, "g")
 
-    if (.check_ingredient_name_amount_length(object)) {
+    if (.check_Ingredient_name_amount_length(object)) {
         "object@name and object@amount must have equal lengths"
-    } else if (.check_ingredient_name(object)) {
+    } else if (.check_Ingredient_name(object)) {
         "All object@name values must be lower case"
-    } else if (.check_ingredient_units(object, valid_units)) {
+    } else if (.check_Ingredient_units(object, valid_units)) {
         paste(
             "object@units must be the same length as",
             "object@name and object@amount and be one of;",
@@ -36,17 +36,22 @@ validIngredients <- function(object) {
     }
 }
 
-.check_ingredient_name_amount_length <- function(object) {
+#' @keywords internal
+#' @noRd
+.check_Ingredient_name_amount_length <- function(object) {
     return(length(object@name) != length(object@amount))
 }
 
-
-.check_ingredient_name <- function(object) {
+#' @keywords internal
+#' @noRd
+.check_Ingredient_name <- function(object) {
     # check all ingredient names are lowercase
     return(any(stringr::str_detect(object@name, "[[:upper:]]")))
 }
 
-.check_ingredient_units <- function(object, valid_units) {
+#' @keywords internal
+#' @noRd
+.check_Ingredient_units <- function(object, valid_units) {
     check_units <- FALSE
 
     if (length(object@name) != length(object@units)) {
@@ -61,3 +66,18 @@ validIngredients <- function(object) {
 }
 
 setValidity("Ingredients", validIngredients)
+
+##### show #####
+
+#' @keywords internal
+#' @noRd
+.show_Ingredients <- function(object) {
+    cat("")
+}
+
+##### methods #####
+
+# getters
+setMethod("name", "Ingredients", function(x) stringr::str_to_title(x@name))
+setMethod("amount", "Ingredients", function(x) x@amount)
+setMethod("units", "Ingredients", function(x) x@units)
