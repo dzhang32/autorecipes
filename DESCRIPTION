@@ -9,7 +9,7 @@ Authors@R:
            email = "dyzhang32r@gmail.com",
            comment = c(ORCID = "0000-0003-2382-8460"))
 Description: What the package does (one paragraph).
-License: Artistic-2.0
+License: MIT + file LICENSE
 URL: https://github.com/dzhang32/autorecipes
 BugReports: https://github.com/dzhang32/autorecipes/issues
 biocViews: Software
