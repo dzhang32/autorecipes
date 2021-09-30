@@ -13,6 +13,7 @@ setClass("Ingredients",
 
 # constructor
 Ingredients <- function(name, amount = 1, units = NA_character_) {
+  name <- stringr::str_to_lower(name)
     new("Ingredients", name = name, amount = amount, units = units)
 }
 
@@ -42,7 +43,7 @@ validIngredients <- function(object) {
 
 .check_ingredient_name <- function(object) {
     # check all ingredient names are lowercase
-    return(any(grepl("[[:upper:]]", object@name)))
+    return(any(stringr::str_detect(object@name, "[[:upper:]]")))
 }
 
 .check_ingredient_units <- function(object, valid_units) {
@@ -58,7 +59,5 @@ validIngredients <- function(object) {
 
     return(check_units)
 }
-
-
 
 setValidity("Ingredients", validIngredients)
