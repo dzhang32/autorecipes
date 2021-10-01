@@ -24,6 +24,7 @@ Config/testthat/edition: 3
 Depends: 
     R (>= 2.10)
 Imports:
+    dplyr,
     magrittr,
     methods,
     stringr
@@ -32,3 +33,4 @@ Collate:
     'Ingredients-methods.R'
     'autorecipes-package.R'
     'data.R'
+    'recipebook.R'
