@@ -5,7 +5,7 @@
 \alias{recipes_example}
 \title{Set of example example recipes}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 26 rows and 3 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 26 rows and 4 columns.
 }
 \source{
 generated using data-raw/recipes_examples.R
@@ -14,16 +14,19 @@ generated using data-raw/recipes_examples.R
 recipes_example
 }
 \description{
-A data set containing 25 example recipes originating from my (recipe-box
+A data set containing 26 example recipes originating from my (recipe-box
 inspired) cupboard.
 }
 \details{
-#' @format A \code{tibble} with 53940 rows and 10 variables:
+#' @format A \code{tibble::tibble()} with 26 rows and 4 variables:
 \describe{
 \item{title}{\code{character()} recipe name.}
-\item{title_tidy}{\code{character()} recipe name in computer-friendly format. }
+\item{title_tidy}{\code{character()} recipe name in computer-friendly format.}
 \item{ingredients}{
 \code{character()} quantity and type of ingredient, separated by a ";"
+}
+\item{instructions}{
+\code{character()} instructions for cooking for each recipe.
 }
 }
 }
