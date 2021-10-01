@@ -40,7 +40,7 @@ Ingredients <- function(names,
 
 ##### validator #####
 
-validIngredients <- function(object) {
+valid_Ingredients <- function(object) {
     valid_units <- c(NA_character_, "g")
 
     if (.check_Ingredient_names_amounts_length(object)) {
@@ -58,7 +58,7 @@ validIngredients <- function(object) {
     }
 }
 
-setValidity("Ingredients", validIngredients)
+setValidity("Ingredients", valid_Ingredients)
 
 #' @keywords internal
 #' @noRd
