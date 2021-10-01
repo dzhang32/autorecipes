@@ -39,3 +39,4 @@ Name, ingredients of recipes.
 \item{\code{ingredients}}{set of ingredients required for each recipe.}
 }}
 
+\keyword{internal}
