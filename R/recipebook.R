@@ -1,7 +1,7 @@
 #' Create a recipebook - a tibble storing recipes
 #'
-#' @param names
-#' @param ingredients
+#' @param names `character()` names of each recipe
+#' @param ingredients `list()` of elements of `Ingredients-class`
 #'
 #' @return A `tibble::tibble()` containing recipe details.
 #' @export
@@ -19,9 +19,12 @@
 #' )
 #'
 #' create_recipebook(c("Roast Chicken"), list(test_ingred))
-create_recipebook <- function(names = character(), ingredients = list()) {
+create_recipebook <- function(names, ingredients) {
     if (!identical(length(names), length(ingredients))) {
         stop("All arguments must of equal length")
+    }
+    if (length(names) == 0 || length(ingredient) == 0) {
+        stop("All arguments must have length > 0")
     }
 
     recipebook <- dplyr::tibble(

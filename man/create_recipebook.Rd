@@ -4,10 +4,12 @@
 \alias{create_recipebook}
 \title{Create a recipebook - a tibble storing recipes}
 \usage{
-create_recipebook(names = character(), ingredients = list())
+create_recipebook(names, ingredients)
 }
 \arguments{
-\item{ingredients}{}
+\item{names}{\code{character()} names of each recipe}
+
+\item{ingredients}{\code{list()} of elements of \code{Ingredients-class}}
 }
 \value{
 A \code{tibble::tibble()} containing recipe details.
