@@ -23,7 +23,7 @@ create_recipebook <- function(names, ingredients) {
     if (!identical(length(names), length(ingredients))) {
         stop("All arguments must of equal length")
     }
-    if (length(names) == 0 || length(ingredient) == 0) {
+    if (length(names) == 0 || length(ingredients) == 0) {
         stop("All arguments must have length > 0")
     }
 
