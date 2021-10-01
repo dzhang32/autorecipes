@@ -9,16 +9,9 @@ test_ingred <- Ingredients(
 )
 
 test_that("recipebook can be created correctly", {
-    empty_recipebook <- create_recipebook()
     test_recipebook <- create_recipebook(
         c("Roast Chicken", "Another Roast"), list(test_ingred, test_ingred)
     )
-
-    expect_true(nrow(empty_recipebook) == 0)
-    expect_true(identical(
-        colnames(empty_recipebook),
-        c("names", "ingredients")
-    ))
     expect_true(nrow(test_recipebook) == 2)
     expect_true(identical(
         test_recipebook[["names"]],
@@ -27,6 +20,8 @@ test_that("recipebook can be created correctly", {
 })
 
 test_that("recipebook catches user input errors", {
+    expect_error(create_recipebook())
+    expect_error(create_recipebook(names = character(), ingredients = list()))
     expect_error(
         create_recipebook(
             c("Roast Chicken", "Another Roast"), list(test_ingred)

@@ -27,10 +27,12 @@ Imports:
     dplyr,
     magrittr,
     methods,
-    stringr
+    stringr, 
+    tidyr
 Collate: 
     'Ingredients-class.R'
     'Ingredients-methods.R'
     'autorecipes-package.R'
     'data.R'
+    'meal_plan.R'
     'recipebook.R'
