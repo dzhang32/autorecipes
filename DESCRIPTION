@@ -20,6 +20,7 @@ RoxygenNote: 7.1.2
 Suggests: 
     covr,
     knitr,
+    readr,
     rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
@@ -36,6 +37,7 @@ Collate:
     'Ingredients-methods.R'
     'autorecipes-package.R'
     'data.R'
+    'globals.R'
     'meal_plan.R'
     'read_ingredients.R'
     'recipebook.R'
