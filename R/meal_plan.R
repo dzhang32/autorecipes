@@ -6,6 +6,11 @@
 #'
 #' @return A meal plan
 #' @export
+#'
+#' @examples
+#' meal_plan <- create_meal_plan(recipebook_example)
+#'
+#' meal_plan
 create_meal_plan <- function(recipebook,
     method = c("auto", "random")) {
     calendar <- .create_calendar()
