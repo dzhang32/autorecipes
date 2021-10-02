@@ -35,4 +35,5 @@ Collate:
     'autorecipes-package.R'
     'data.R'
     'meal_plan.R'
+    'read_ingredients.R'
     'recipebook.R'
