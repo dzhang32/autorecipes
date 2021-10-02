@@ -36,12 +36,17 @@ Ingredients <- function(names,
     names <- stringr::str_to_lower(names)
 
     # convert fractions to decimals, also character to numeric
-    amounts <- sapply(amounts, function(x) eval(parse(text = x)))
+    amounts <- .convert_fractions(amounts)
 
     # if no amount value, assume we want 1
     amounts <- ifelse(is.na(amounts), 1, amounts)
 
     new("Ingredients", names = names, amounts = amounts, units = units)
+}
+
+.convert_fractions <- function(x) {
+    sapply(x, function(y) eval(parse(text = y))) %>%
+        unname()
 }
 
 ##### validator #####
@@ -98,6 +103,9 @@ setValidity("Ingredients", valid_Ingredients)
 #' @keywords internal
 #' @noRd
 .all_valid_units <- function(no_na = FALSE, regex = FALSE) {
+    stopifnot(length(no_na) == 1 && length(regex) == 1)
+    if (regex & !no_na) stop("when regex is TRUE, no_na should be FALSE")
+
     valid_units <- c(
         "g", "kg",
         "tsp", "tbsp", "teaspoon", "teaspoon",
