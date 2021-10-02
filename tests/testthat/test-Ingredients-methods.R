@@ -38,6 +38,6 @@ test_that("Test converting Ingredients-class to data.frame", {
             names = test_ingred@names,
             amounts = test_ingred@amounts,
             units = test_ingred@units
-            )
+        )
     ))
 })

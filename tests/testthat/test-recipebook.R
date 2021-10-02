@@ -1,3 +1,5 @@
+##### create_recipebook #####
+
 test_ingred <- Ingredients(
     names = c(
         "chicken",
@@ -8,7 +10,7 @@ test_ingred <- Ingredients(
     units = c(NA_character_, "g", "g")
 )
 
-test_that("recipebook can be created correctly", {
+test_that("create_recipebook can be created correctly", {
     test_recipebook <- create_recipebook(
         c("Roast Chicken", "Another Roast"), list(test_ingred, test_ingred)
     )
@@ -19,9 +21,15 @@ test_that("recipebook can be created correctly", {
     ))
 })
 
-test_that("recipebook catches user input errors", {
+test_that("create_recipebook catches user input errors", {
     expect_error(create_recipebook())
     expect_error(create_recipebook(names = character(), ingredients = list()))
+
+    expect_error(
+        valid_recipebook(dplyr::tibble()),
+        "recipebook must contain 'names' and 'ingredients' columns"
+    )
+
     expect_error(
         create_recipebook(
             c("Roast Chicken", "Another Roast"), list(test_ingred)
