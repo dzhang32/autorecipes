@@ -8,27 +8,30 @@
 #' @export
 create_meal_plan <- function(recipebook,
     method = c("auto", "random")) {
-    calender <- .create_calender()
+    calendar <- .create_calendar()
     method <- match.arg(method)
 
     meal_plan_func <- .dispatch_meal_plan(method)
 
-    chosen_recipe_indexes <- meal_plan_func(recipebook, nrow(calender))
+    chosen_recipe_indexes <- meal_plan_func(recipebook, nrow(calendar))
 
-    meal_plan <- dplyr::bind_rows(calender, recipebook[, chosen_recipe_indexes])
+    meal_plan <- dplyr::bind_cols(calendar, recipebook[chosen_recipe_indexes, ])
 
     return(meal_plan)
 }
 
 #' @keywords internal
 #' @noRd
-.create_calender <- function() {
-    calender <- tidyr::expand_grid(
-        day = c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"),
-        meal = c("Lunch", "Dinner")
+.create_calendar <- function() {
+    days <- c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun")
+    meals <- c("Lunch", "Dinner")
+
+    calendar <- tidyr::expand_grid(
+        day = factor(days, levels = days),
+        meal = factor(meals, levels = meals)
     )
 
-    return(calender)
+    return(calendar)
 }
 
 #' @keywords internal
