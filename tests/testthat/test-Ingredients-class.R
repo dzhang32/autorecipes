@@ -58,3 +58,4 @@ test_that("Ingredients print as expected", {
 
     expect_output(print(test_ingred), "1 Chicken")
 })
+

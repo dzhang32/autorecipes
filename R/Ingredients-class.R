@@ -34,14 +34,20 @@ Ingredients <- function(names,
     amounts = 1,
     units = rep(NA_character_, length(names))) {
     names <- stringr::str_to_lower(names)
+
+    # convert fractions to decimals, also character to numeric
+    amounts <- sapply(amounts, function(x) eval(parse(text = x)))
+
+    # if no amount value, assume we want 1
     amounts <- ifelse(is.na(amounts), 1, amounts)
+
     new("Ingredients", names = names, amounts = amounts, units = units)
 }
 
 ##### validator #####
 
 valid_Ingredients <- function(object) {
-    valid_units <- c(NA_character_, "g")
+    valid_units <- .all_valid_units()
 
     if (.check_Ingredient_names_amounts_length(object)) {
         "object@names and object@amounts must have equal lengths"
@@ -87,4 +93,32 @@ setValidity("Ingredients", valid_Ingredients)
     }
 
     return(check_units)
+}
+
+#' @keywords internal
+#' @noRd
+.all_valid_units <- function(no_na = FALSE, regex = FALSE) {
+    valid_units <- c(
+        "g", "kg",
+        "tsp", "tbsp", "teaspoon", "teaspoon",
+        "ml",
+        "cm",
+        "punnet",
+        "bag", "pack", "carton", "piece", "pot", "tin"
+    )
+
+    # required for Ingredients-class constructor as some food has no units
+    if (!no_na) {
+        valid_units <- c(NA_character_, valid_units)
+    }
+
+    # if units used for regex, add a space to the end and collapse with an "|"
+    # This avoids matching e.g. the unit "g" in the word "ginger"
+    if (regex) {
+        valid_units <- valid_units %>%
+            stringr::str_c(., " ") %>%
+            stringr::str_c(collapse = "|")
+    }
+
+    return(valid_units)
 }
