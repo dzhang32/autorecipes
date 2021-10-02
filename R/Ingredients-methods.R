@@ -10,8 +10,9 @@ NULL
     units_no_NA[is.na(units_no_NA)] <- ""
 
     cat(stringr::str_c(
-        amounts(object),
-        units_no_NA, " ",
+        amounts(object), " ",
+        units_no_NA,
+        ifelse(units_no_NA == "", "", " "),
         names(object), "\n"
     ), sep = "")
 }
