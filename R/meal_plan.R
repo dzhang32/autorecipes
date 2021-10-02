@@ -2,16 +2,16 @@
 #'
 #' @param recipebook `tibble::tibble()` containing the recipes from which meal
 #'   plan will be created.
-#' @param type `character()` the type of meal plan to create.
+#' @param method `character()` the method to use when creating a meal plan.
 #'
 #' @return A meal plan
 #' @export
 create_meal_plan <- function(recipebook,
-    type = c("auto", "random")) {
+    method = c("auto", "random")) {
     calender <- .create_calender()
-    type <- match.arg(type)
+    method <- match.arg(method)
 
-    meal_plan_func <- .dispatch_meal_plan(type)
+    meal_plan_func <- .dispatch_meal_plan(method)
 
     chosen_recipe_indexes <- meal_plan_func(recipebook, nrow(calender))
 
@@ -33,13 +33,11 @@ create_meal_plan <- function(recipebook,
 
 #' @keywords internal
 #' @noRd
-.dispatch_meal_plan <- function(type) {
-    meal_plan_func <- switch(type,
+.dispatch_meal_plan <- function(method) {
+    switch(method,
         "auto" = .create_meal_plan_random,
         "random" = .create_meal_plan_random
     )
-
-    return(meal_plan_func)
 }
 
 #' @keywords internal

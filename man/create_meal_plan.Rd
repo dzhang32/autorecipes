@@ -4,13 +4,13 @@
 \alias{create_meal_plan}
 \title{Create a meal plan}
 \usage{
-create_meal_plan(recipebook, type = c("auto", "random"))
+create_meal_plan(recipebook, method = c("auto", "random"))
 }
 \arguments{
 \item{recipebook}{\code{tibble::tibble()} containing the recipes from which meal
 plan will be created.}
 
-\item{type}{\code{character()} the type of meal plan to create.}
+\item{method}{\code{character()} the method to use when creating a meal plan.}
 }
 \value{
 A meal plan

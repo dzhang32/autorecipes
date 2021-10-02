@@ -19,8 +19,10 @@
 #'     ),
 #'     delim = ";"
 #' )
-read_ingredients <- function(ingredients, delim = NULL, method = "auto") {
-    method <- match.args(method)
+read_ingredients <- function(ingredients,
+    delim = NULL,
+    method = "auto") {
+    method <- match.arg(method)
 
     parse_ingredient_func <- .dipatch_ingredient_parser(method)
 
@@ -31,7 +33,7 @@ read_ingredients <- function(ingredients, delim = NULL, method = "auto") {
 
 #' @keywords internal
 #' @noRd
-.parse_ingredient <- function(ingredient, method) {
+.dipatch_ingredient_parser <- function(method) {
     switch(method,
         "auto" = .parse_ingredient_auto
     )
@@ -53,7 +55,7 @@ read_ingredients <- function(ingredients, delim = NULL, method = "auto") {
         unlist()
 
     ingredients_tibble <-
-        tibble::tibble(
+        dplyr::tibble(
             recipe_index = rep(seq_along(ingredients_parsed), n_ingred_per_recipe),
             ingredients = unlist(ingredients_parsed)
         )
