@@ -35,7 +35,8 @@ create_shopping_list <- function(recipebook) {
     ingredients_collapsed <- ingredients_df %>%
         dplyr::group_by(names) %>%
         dplyr::count() %>%
-        dplyr::ungroup()
+        dplyr::ungroup() %>%
+        dplyr::arrange(dplyr::desc(n))
 
     return(ingredients_collapsed)
 }
