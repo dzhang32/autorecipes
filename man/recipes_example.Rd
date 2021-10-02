@@ -3,31 +3,30 @@
 \docType{data}
 \name{recipes_example}
 \alias{recipes_example}
-\title{Set of example example recipes}
+\title{Set of example recipes}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 26 rows and 4 columns.
-}
-\source{
-generated using data-raw/recipes_examples.R
-}
-\usage{
-recipes_example
-}
-\description{
-A data set containing 26 example recipes originating from my (recipe-box
-inspired) cupboard.
-}
-\details{
-#' @format A \code{tibble::tibble()} with 26 rows and 4 variables:
+A \code{tibble::tibble()} with 26 rows and 4 columns:
 \describe{
 \item{title}{\code{character()} recipe name.}
 \item{title_tidy}{\code{character()} recipe name in computer-friendly format.}
 \item{ingredients}{
-\code{character()} quantity and type of ingredient, separated by a ";"
+\code{character()} quantity and type of ingredient, separated by a ";".
 }
 \item{instructions}{
 \code{character()} instructions for cooking for each recipe.
 }
 }
+}
+\source{
+generated using data-raw/recipes_example.R
+}
+\usage{
+recipes_example
+}
+\description{
+A data set containing 26 example recipes originating from recipe boxes that
+I've ordered from \href{https://www.riverford.co.uk}{Riverford}. Riverford are a
+wonderful UK company producing sustainable, delicious, locally-sourced food -
+check them out!
 }
 \keyword{datasets}
