@@ -1,0 +1,64 @@
+---
+title: "autorecipes"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{autorecipes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(autorecipes)
+library(magrittr)
+```
+
+# Usage
+
+## Set of example recipes
+
+```{r recipebook-example}
+
+recipebook_example %>% head()
+
+```
+
+## Set your favourite recipes
+
+```{r set-favourite}
+
+recipebook <- set_favourites(recipebook_example, c(12, 11, 20, 14, 16, 7, 5))
+
+```
+
+## Create a meal plan
+
+```{r create-meal-plan}
+
+meal_plan <- create_meal_plan(
+  recipebook, 
+  days = c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"),
+  meals = "Dinner",
+  fav_only = TRUE
+)
+
+meal_plan
+
+```
+
+## Create shopping list
+
+```{r create-shopping-list}
+
+shopping_list <- create_shopping_list(meal_plan)
+
+shopping_list
+
+```
+

@@ -19,6 +19,8 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 Suggests: 
     covr,
+    knitr,
+    rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Depends: 
@@ -39,3 +41,4 @@ Collate:
     'recipebook.R'
     'set_favourites.R'
     'shopping_list.R'
+VignetteBuilder: knitr
