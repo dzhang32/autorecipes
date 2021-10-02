@@ -7,13 +7,13 @@
 create_meal_plan(recipebook, method = c("auto", "random"))
 }
 \arguments{
-\item{recipebook}{\code{tibble::tibble()} containing the recipes from which meal
-plan will be created.}
+\item{recipebook}{\code{tibble::tibble()} containing the recipe information,
+possibly created using \code{create_recipebook()}.}
 
 \item{method}{\code{character()} the method to use when creating a meal plan.}
 }
 \value{
-A meal plan
+\code{tibble::tibble()} containing a meal plan.
 }
 \description{
 Create a meal plan

@@ -1,18 +1,17 @@
 #' Create a shopping list
 #'
-#' @param recipebook `tibble::tibble()` containing recipe information.
+#' @inheritParams create_meal_plan
 #'
-#' @return `tibble()` containing the shopping list.
+#' @return `tibble::tibble()` containing a shopping list.
 #' @export
 #'
 #' @examples
-#'
 #' meal_plan <- create_meal_plan(recipebook_example)
 #' shopping_list <- create_shopping_list(meal_plan)
 #'
 #' shopping_list
 create_shopping_list <- function(recipebook) {
-    valid_recipebook(recipebook)
+    .valid_recipebook(recipebook)
 
     ingredients_df <- .extract_ingredients(recipebook)
     ingredients_collapsed <- .collapse_ingredients(ingredients_df)

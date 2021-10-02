@@ -7,16 +7,16 @@
 create_shopping_list(recipebook)
 }
 \arguments{
-\item{recipebook}{\code{dplyr::tibble()} containing recipe information.}
+\item{recipebook}{\code{tibble::tibble()} containing the recipe information,
+possibly created using \code{create_recipebook()}.}
 }
 \value{
-\code{tibble()} containing the shopping list.
+\code{tibble::tibble()} containing a shopping list.
 }
 \description{
 Create a shopping list
 }
 \examples{
-
 meal_plan <- create_meal_plan(recipebook_example)
 shopping_list <- create_shopping_list(meal_plan)
 
