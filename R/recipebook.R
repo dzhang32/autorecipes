@@ -40,11 +40,19 @@ create_recipebook <- function(names, ingredients) {
 #' @keywords internal
 #' @noRd
 valid_recipebook <- function(recipebook) {
-    if (.check_recipebook_names(recipebook[["names"]])) {
+    if (.check_recipebook_colnames(recipebook)) {
+        stop("recipebook must contain 'names' and 'ingredients' columns")
+    } else if (.check_recipebook_names(recipebook[["names"]])) {
         stop("names must be a character")
     } else if (.check_recipebook_ingredients(recipebook[["ingredients"]])) {
         stop("ingredients must be a list containing Ingredients-class objects")
     }
+}
+
+#' @keywords internal
+#' @noRd
+.check_recipebook_colnames <- function(recipebook) {
+    return(!all(c("names", "ingredients") %in% colnames(recipebook)))
 }
 
 #' @keywords internal
