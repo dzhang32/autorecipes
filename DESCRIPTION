@@ -37,4 +37,5 @@ Collate:
     'meal_plan.R'
     'read_ingredients.R'
     'recipebook.R'
+    'set_favourites.R'
     'shopping_list.R'
