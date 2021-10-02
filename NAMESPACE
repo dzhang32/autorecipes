@@ -3,6 +3,7 @@
 export(Ingredients)
 export(create_meal_plan)
 export(create_recipebook)
+export(create_shopping_list)
 export(read_ingredients)
 importFrom(magrittr,"%>%")
 importFrom(methods,new)
