@@ -2,6 +2,9 @@
 #'
 #' @param recipebook `tibble::tibble()` containing the recipe information,
 #'   possibly created using `create_recipebook()`.
+#' @param days `character()` which days of the week to plan for.
+#' @param meals `character()` which meals to plan for, out of "Lunch" and
+#'   "Dinner".
 #' @param method `character()` the method to use when creating a meal plan.
 #' @param fav_only `logical()` whether to create a meal plan only using
 #'   favourite recipes.
@@ -14,10 +17,12 @@
 #'
 #' meal_plan
 create_meal_plan <- function(recipebook,
+    days = c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"),
+    meals = c("Lunch", "Dinner"),
     method = c("auto", "random"),
     fav_only = FALSE) {
-    calendar <- .create_calendar()
     method <- match.arg(method)
+    calendar <- .create_calendar(days, meals)
 
     recipebook <- .filter_recipebook(recipebook, fav_only)
     .valid_recipebook(recipebook)
@@ -33,13 +38,34 @@ create_meal_plan <- function(recipebook,
 
 #' @keywords internal
 #' @noRd
-.create_calendar <- function() {
-    days <- c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun")
-    meals <- c("Lunch", "Dinner")
+.create_calendar <- function(days = c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"),
+    meals = c("Lunch", "Dinner")) {
+    valid_days <- c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun")
+    valid_meals <- c("Lunch", "Dinner")
+
+    if (any(duplicated(days)) | any(duplicated(meals))) {
+        warning("days or meals must not contain duplicated values, coercing")
+        days <- unique(days)
+        meals <- unique(meals)
+    }
+
+    if (any(!(days %in% valid_days))) {
+        stop(
+            "days must be one of: ",
+            stringr::str_c(valid_days, collapse = ", ")
+        )
+    }
+
+    if (any(!(meals %in% valid_meals))) {
+        stop(
+            "meals must be one of: ",
+            stringr::str_c(valid_meals, collapse = ", ")
+        )
+    }
 
     calendar <- tidyr::expand_grid(
-        day = factor(days, levels = days),
-        meal = factor(meals, levels = meals)
+        day = factor(days, levels = valid_days),
+        meal = factor(meals, levels = valid_meals)
     )
 
     return(calendar)
