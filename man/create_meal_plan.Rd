@@ -18,3 +18,8 @@ A meal plan
 \description{
 Create a meal plan
 }
+\examples{
+meal_plan <- create_meal_plan(recipebook_example)
+
+meal_plan
+}
