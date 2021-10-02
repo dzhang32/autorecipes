@@ -26,3 +26,18 @@ test_that("Ingredients getters work as expected", {
     expect_true(identical(amounts(test_ingred), test_ingred@amounts))
     expect_true(identical(units(test_ingred), test_ingred@units))
 })
+
+##### as.data.frame #####
+
+test_that("Test converting Ingredients-class to data.frame", {
+    test_ingred_df <- as.data.frame(test_ingred)
+    expect_true(is.data.frame(test_ingred_df))
+    expect_true(identical(
+        test_ingred_df,
+        data.frame(
+            names = test_ingred@names,
+            amounts = test_ingred@amounts,
+            units = test_ingred@units
+            )
+    ))
+})

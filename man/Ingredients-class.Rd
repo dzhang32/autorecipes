@@ -7,6 +7,7 @@
 \alias{names,Ingredients-method}
 \alias{amounts}
 \alias{units}
+\alias{as.data.frame,Ingredients-method}
 \title{An S4 class representing a set of ingredients.}
 \usage{
 Ingredients(names, amounts = 1, units = rep(NA_character_, length(names)))
@@ -16,6 +17,8 @@ Ingredients(names, amounts = 1, units = rep(NA_character_, length(names)))
 amounts(x)
 
 units(x)
+
+\S4method{as.data.frame}{Ingredients}(x)
 }
 \arguments{
 \item{names}{\code{character()} name of each ingredient.}
@@ -37,6 +40,8 @@ units for each ingredient.
 \item \code{amounts}: obtain amounts of ingredients
 
 \item \code{units}: obtain units of amounts for each ingredient
+
+\item \code{as.data.frame,Ingredients-method}: Convert Ingredients-class object to data.frame
 }}
 
 \section{Slots}{

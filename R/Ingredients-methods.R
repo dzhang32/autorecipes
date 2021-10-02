@@ -34,3 +34,16 @@ amounts <- function(x) {
 units <- function(x) {
     x@units
 }
+
+#' @keywords internal
+#' @noRd
+.as_data_frame_Ingredients <- function(x) {
+    data.frame(
+        names = x@names,
+        amounts = x@amounts,
+        units = x@units
+    )
+}
+
+#' @describeIn Ingredients-class Convert Ingredients-class object to data.frame
+setMethod("as.data.frame", "Ingredients", .as_data_frame_Ingredients)
