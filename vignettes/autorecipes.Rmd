@@ -60,5 +60,7 @@ shopping_list <- create_shopping_list(meal_plan)
 
 shopping_list
 
+readr::write_delim(shopping_list, "~/Downloads/shopping_list_dz.txt", delim = ",")
+
 ```
 
