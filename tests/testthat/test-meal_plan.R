@@ -29,6 +29,45 @@ test_that(".create_calendar output looks correct", {
     ))
 })
 
+test_that(".create_calendar works with when filtering by days/meals", {
+    test_calendar <- .create_calendar(
+        days = c("Mon", "Sun"),
+        meals = c("Lunch")
+    )
+
+    expect_true(nrow(test_calendar) == 2)
+    expect_true(identical(
+        test_calendar[["day"]] %>% as.character(),
+        c("Mon", "Sun")
+    ))
+    expect_true(identical(
+        test_calendar[["meal"]] %>% as.character(),
+        c("Lunch", "Lunch")
+    ))
+})
+
+test_that(".create_calendar works catches input errors", {
+    expect_error(
+        .create_calendar(days = c("mon")),
+        "days must be one of: Mon, Tues, Wed, Thurs, Fri, Sat, Sun"
+    )
+
+    expect_error(
+        .create_calendar(meals = c("lunch")),
+        "meals must be one of: Lunch, Dinner"
+    )
+
+    expect_warning(
+        .create_calendar(days = c("Mon", "Mon")),
+        "days or meals must not contain duplicated values, coercing"
+    )
+
+    expect_warning(
+        .create_calendar(meals = c("Lunch", "Lunch")),
+        "days or meals must not contain duplicated values, coercing"
+    )
+})
+
 ##### .filter_recipebook #####
 
 test_that(".filter_recipebook output looks correct", {

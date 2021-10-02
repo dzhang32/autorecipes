@@ -4,11 +4,22 @@
 \alias{create_meal_plan}
 \title{Create a meal plan}
 \usage{
-create_meal_plan(recipebook, method = c("auto", "random"), fav_only = FALSE)
+create_meal_plan(
+  recipebook,
+  days = c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"),
+  meals = c("Lunch", "Dinner"),
+  method = c("auto", "random"),
+  fav_only = FALSE
+)
 }
 \arguments{
 \item{recipebook}{\code{tibble::tibble()} containing the recipe information,
 possibly created using \code{create_recipebook()}.}
+
+\item{days}{\code{character()} which days of the week to plan for.}
+
+\item{meals}{\code{character()} which meals to plan for, out of "Lunch" and
+"Dinner".}
 
 \item{method}{\code{character()} the method to use when creating a meal plan.}
 
