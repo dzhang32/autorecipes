@@ -3,6 +3,8 @@
 #' @param recipebook `tibble::tibble()` containing the recipe information,
 #'   possibly created using `create_recipebook()`.
 #' @param method `character()` the method to use when creating a meal plan.
+#' @param fav_only `logical()` whether to create a meal plan only using
+#'   favourite recipes.
 #'
 #' @return `tibble::tibble()` containing a meal plan.
 #' @export
@@ -12,9 +14,13 @@
 #'
 #' meal_plan
 create_meal_plan <- function(recipebook,
-    method = c("auto", "random")) {
+    method = c("auto", "random"),
+    fav_only = FALSE) {
     calendar <- .create_calendar()
     method <- match.arg(method)
+
+    recipebook <- .filter_recipebook(recipebook, fav_only)
+    .valid_recipebook(recipebook)
 
     meal_plan_func <- .dispatch_meal_planner(method)
 
@@ -59,4 +65,17 @@ create_meal_plan <- function(recipebook,
     )
 
     return(chosen_recipe_indexes)
+}
+
+#' @keywords internal
+#' @noRd
+.filter_recipebook <- function(recipebook, fav_only) {
+    if (fav_only) {
+        if (!("fav" %in% colnames(recipebook))) {
+            stop("To filter by favourites, recipebook must have the column 'fav'")
+        }
+        recipebook <- recipebook %>% dplyr::filter(fav)
+    }
+
+    return(recipebook)
 }

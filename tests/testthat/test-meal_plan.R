@@ -28,3 +28,27 @@ test_that(".create_calendar output looks correct", {
         c("Lunch", "Dinner")
     ))
 })
+
+##### .filter_recipebook #####
+
+test_that(".filter_recipebook output looks correct", {
+    test_recipebook <- recipebook_example
+    test_recipebook[["fav"]] <- FALSE
+    test_recipebook[["fav"]][1:3] <- TRUE
+
+    expect_true(identical(
+        .filter_recipebook(test_recipebook, fav_only = TRUE),
+        test_recipebook %>% dplyr::filter(fav)
+    ))
+    expect_true(identical(
+        .filter_recipebook(recipebook_example, fav_only = FALSE),
+        recipebook_example
+    ))
+})
+
+test_that(".filter_recipebook catches user input errors", {
+    expect_error(
+        .filter_recipebook(recipebook_example, fav_only = TRUE),
+        "To filter by favourites, recipebook must have the column 'fav'"
+    )
+})

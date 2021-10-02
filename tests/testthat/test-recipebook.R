@@ -27,6 +27,11 @@ test_that("create_recipebook catches user input errors", {
 
     expect_error(
         .valid_recipebook(dplyr::tibble()),
+        "recipebook must have >0 rows"
+    )
+
+    expect_error(
+        .valid_recipebook(dplyr::tibble(hello = 1)),
         "recipebook must contain 'names' and 'ingredients' columns"
     )
 

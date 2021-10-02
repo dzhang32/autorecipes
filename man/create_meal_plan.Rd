@@ -4,13 +4,16 @@
 \alias{create_meal_plan}
 \title{Create a meal plan}
 \usage{
-create_meal_plan(recipebook, method = c("auto", "random"))
+create_meal_plan(recipebook, method = c("auto", "random"), fav_only = FALSE)
 }
 \arguments{
 \item{recipebook}{\code{tibble::tibble()} containing the recipe information,
 possibly created using \code{create_recipebook()}.}
 
 \item{method}{\code{character()} the method to use when creating a meal plan.}
+
+\item{fav_only}{\code{logical()} whether to create a meal plan only using
+favourite recipes.}
 }
 \value{
 \code{tibble::tibble()} containing a meal plan.
