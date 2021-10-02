@@ -1,3 +1,5 @@
+##### Ingredients-class #####
+
 test_that("default ingredients look correct", {
     test_ingred <- new("Ingredients", names = "chicken")
     expect_true(test_ingred@names == "chicken")
@@ -34,28 +36,41 @@ test_that("Ingredients validator catches user-input errors", {
     )
 })
 
-test_that("Ingredients getters work as expected", {
-    # also tests that attributes are vectors, not scalars
-    test_ingred <- Ingredients(
-        names = c(
-            "chicken",
-            "salt",
-            "pepper"
-        ),
-        amounts = c(1, 2, 3),
-        units = c(NA_character_, "g", "g")
-    )
+##### .convert_fractions #####
 
-    expect_true(
-        identical(names(test_ingred), stringr::str_to_title(test_ingred@names))
+test_that(".convert_fractions output looks correct", {
+    test_fractions <- .convert_fractions(c("1/100", "1/4", 1, 1.3, NA))
+
+    expect_true(is.double(test_fractions))
+    expect_equal(
+        test_fractions,
+        c(0.01, 0.25, 1.00, 1.30, NA)
     )
-    expect_true(identical(amounts(test_ingred), test_ingred@amounts))
-    expect_true(identical(units(test_ingred), test_ingred@units))
 })
 
-test_that("Ingredients print as expected", {
-    test_ingred <- Ingredients(names = "chicken")
+##### .all_valid_units #####
 
-    expect_output(print(test_ingred), "1 Chicken")
+test_that(".all_valid_units output looks correct", {
+    valid_units <- .all_valid_units()
+    valid_units_no_na <- .all_valid_units(no_na = TRUE)
+    valid_units_regex <- .all_valid_units(no_na = TRUE, regex = TRUE)
+
+    expect_true(sum(is.na(valid_units)) == 1)
+    expect_true(is.character(valid_units))
+
+    expect_true(sum(is.na(valid_units_no_na)) == 0)
+
+    expect_true(identical(
+        valid_units_regex,
+        valid_units_no_na %>%
+            stringr::str_c(., " ") %>%
+            stringr::str_c(collapse = "|")
+    ))
 })
 
+test_that(".all_valid_units catches user_input errors", {
+    expect_error(
+        .all_valid_units(regex = TRUE),
+        "when regex is TRUE, no_na should be FALSE"
+    )
+})
