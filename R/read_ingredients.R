@@ -24,7 +24,7 @@ read_ingredients <- function(ingredients,
     method = "auto") {
     method <- match.arg(method)
 
-    parse_ingredient_func <- .dipatch_ingredient_parser(method)
+    parse_ingredient_func <- .dispatch_ingredient_reader(method)
 
     ingredients_tidy <- parse_ingredient_func(ingredients, delim)
 
@@ -33,19 +33,18 @@ read_ingredients <- function(ingredients,
 
 #' @keywords internal
 #' @noRd
-.dipatch_ingredient_parser <- function(method) {
+.dispatch_ingredient_reader <- function(method) {
     switch(method,
-        "auto" = .parse_ingredient_auto
+        "auto" = .read_ingredients_auto
     )
 }
 
 #' @keywords internal
 #' @noRd
-.parse_ingredient_auto <- function(ingredients, delim) {
+.read_ingredients_auto <- function(ingredients, delim) {
     if (!is.null(delim)) {
         ingredients_parsed <- ingredients %>%
             stringr::str_split(delim)
-        # preserve info on which recipe each ingredient comes from
     } else {
         stop("Currently, delim must be entered")
     }

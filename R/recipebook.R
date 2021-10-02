@@ -32,14 +32,14 @@ create_recipebook <- function(names, ingredients) {
         ingredients = ingredients
     )
 
-    valid_recipebook(recipebook)
+    .valid_recipebook(recipebook)
 
     return(recipebook)
 }
 
 #' @keywords internal
 #' @noRd
-valid_recipebook <- function(recipebook) {
+.valid_recipebook <- function(recipebook) {
     if (.check_recipebook_colnames(recipebook)) {
         stop("recipebook must contain 'names' and 'ingredients' columns")
     } else if (.check_recipebook_names(recipebook[["names"]])) {
