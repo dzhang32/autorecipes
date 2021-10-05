@@ -36,6 +36,7 @@ Collate:
     'Ingredients-class.R'
     'Ingredients-methods.R'
     'RecipeBook-class.R'
+    'RecipeBook-methods.R'
     'autorecipes-package.R'
     'data.R'
     'globals.R'

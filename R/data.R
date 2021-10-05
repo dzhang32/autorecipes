@@ -33,9 +33,9 @@
 #'   \item{names}{`character()` recipe name.}
 #'   \item{ingredients}{
 #'     `character()` name, quantity and type of ingredient, stored as a `list()`
-#'         of `Ingredients-class`.
+#'         of `Ingredients-class` objects.
 #'     }
 #' }
 #'
 #' @source generated using data-raw/recipebook_example.R
-"recipebook_example"
+"RecipeBook_example"
