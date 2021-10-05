@@ -35,12 +35,11 @@ Imports:
 Collate: 
     'Ingredients-class.R'
     'Ingredients-methods.R'
+    'RecipeBook-class.R'
     'autorecipes-package.R'
     'data.R'
     'globals.R'
     'meal_plan.R'
-    'read_ingredients.R'
-    'recipebook.R'
     'set_favourites.R'
     'shopping_list.R'
 VignetteBuilder: knitr

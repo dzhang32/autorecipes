@@ -2,10 +2,10 @@
 
 export(Ingredients)
 export(create_meal_plan)
-export(create_recipebook)
 export(create_shopping_list)
 export(read_ingredients)
 export(set_favourites)
+exportClasses(RecipeBook)
 importFrom(magrittr,"%>%")
 importFrom(methods,new)
 importFrom(methods,setClass)

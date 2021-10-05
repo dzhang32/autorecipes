@@ -1,3 +1,40 @@
+#' Title
+#'
+#' @slot recipes DFrame.
+#' @slot meal_plan DFrame.
+#'
+#' @return
+#' @export
+#'
+setClass("RecipeBook",
+    slots = c(
+        recipes = "tbl_df",
+        meal_plan = "tbl_df"
+    ),
+    prototype = list(
+        recipes = dplyr::tibble(),
+        meal_plan = dplyr::tibble()
+    )
+)
+
+##### constructor #####
+
+RecipeBook <- function(names, ingredients) {
+    names <- as.character(names)
+
+    # allow users to put in a character for ingredients
+    if (is.character(ingredients)) {
+        ingredients <- read_ingredients(ingredients)
+    }
+
+    recipes <- dplyr::tibble(
+        names = names,
+        ingredients = ingredients
+    )
+
+    new("RecipeBook", recipes = recipes)
+}
+
 #' Read in a list of ingredients
 #'
 #' @param ingredients `character()` containing ingredient info separated by
@@ -20,7 +57,7 @@
 #'     delim = ";"
 #' )
 read_ingredients <- function(ingredients,
-    delim = NULL,
+    delim = ";",
     method = "auto") {
     method <- match.arg(method)
 
@@ -86,4 +123,65 @@ read_ingredients <- function(ingredients,
     }
 
     return(ingredients_tidy)
+}
+
+##### validator #####
+
+#' @keywords internal
+#' @noRd
+valid_RecipeBook <- function(object) {
+    if (.check_recipes_nrow(object)) {
+        "recipebook must have > 0 rows"
+    } else if (.check_recipes_colnames(object)) {
+        "recipebook must contain 'names' and 'ingredients' columns"
+    } else if (.check_recipes_names(object)) {
+        "names must be a character"
+    } else if (.check_recipes_ingredients(object)) {
+        "ingredients must be a list containing Ingredients-class objects"
+    } else {
+        TRUE
+    }
+}
+
+setValidity("RecipeBook", valid_RecipeBook)
+
+#' @keywords internal
+#' @noRd
+.check_recipes_nrow <- function(object) {
+    return(nrow(object@recipes) == 0)
+}
+
+#' @keywords internal
+#' @noRd
+.check_recipes_colnames <- function(object) {
+    return(!all(c("names", "ingredients") %in% colnames(object@recipes)))
+}
+
+#' @keywords internal
+#' @noRd
+.check_recipes_names <- function(object) {
+    return(!is.character(object@recipes[["names"]]))
+}
+
+#' @keywords internal
+#' @noRd
+.check_recipes_ingredients <- function(object) {
+    check_ingredients <- FALSE
+
+    if (!is.list(object@recipes[["ingredients"]])) {
+        check_ingredients <- TRUE
+    } else {
+        all_ingredients <- object@recipes[["ingredients"]] %>%
+            lapply(
+                FUN = function(x) methods::is(x, "Ingredients")
+            ) %>%
+            unlist() %>%
+            all()
+
+        if (!all_ingredients) {
+            check_ingredients <- TRUE
+        }
+    }
+
+    return(check_ingredients)
 }
