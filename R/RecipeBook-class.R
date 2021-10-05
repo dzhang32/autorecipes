@@ -1,21 +1,43 @@
-#' Title
+#' RecipeBook containing recipes and ingredients
 #'
-#' @slot recipes DFrame.
-#' @slot meal_plan DFrame.
+#' @description
 #'
-#' @return
-#' @export
+#' A book of recipes from which meal plans can be generated.
 #'
+#' @param x a `RecipeBook` object.
+#'
+#' @name RecipeBook-class
+#' @aliases RecipeBook
+#' @exportClass RecipeBook
 setClass("RecipeBook",
     slots = c(
         recipes = "tbl_df",
         meal_plan = "tbl_df"
-    ),
-    prototype = list(
-        recipes = dplyr::tibble(),
-        meal_plan = dplyr::tibble()
     )
 )
+
+setOldClass(class(dplyr::tibble()))
+
+##### constructor #####
+
+#' @keywords internal
+#' @noRd
+initialize_RecipeBook <- function(.Object, names, ingredients, ...) {
+    .Object <- callNextMethod(.Object, ...)
+    recipes <- dplyr::tibble(
+        names = names,
+        ingredients = ingredients,
+        fav = FALSE
+    )
+    meal_plan <- dplyr::tibble()
+
+    .Object@recipes <- recipes
+    .Object@meal_plan <- meal_plan
+    validObject(.Object)
+    .Object
+}
+
+setMethod("initialize", "RecipeBook", initialize_RecipeBook)
 
 ##### constructor #####
 
@@ -27,12 +49,13 @@ RecipeBook <- function(names, ingredients) {
         ingredients <- read_ingredients(ingredients)
     }
 
-    recipes <- dplyr::tibble(
-        names = names,
-        ingredients = ingredients
-    )
+    # recipes <- dplyr::tibble(
+    #     names = names,
+    #     ingredients = ingredients,
+    #     fav = FALSE
+    # )
 
-    new("RecipeBook", recipes = recipes)
+    new("RecipeBook", names = names, ingredients = ingredients)
 }
 
 #' Read in a list of ingredients
@@ -131,13 +154,16 @@ read_ingredients <- function(ingredients,
 #' @noRd
 valid_RecipeBook <- function(object) {
     if (.check_recipes_nrow(object)) {
-        "recipebook must have > 0 rows"
+        "object@recipes must have > 0 rows"
     } else if (.check_recipes_colnames(object)) {
-        "recipebook must contain 'names' and 'ingredients' columns"
+        "object@recipes must contain 'names' and 'ingredients' columns"
     } else if (.check_recipes_names(object)) {
-        "names must be a character"
+        "object@recipes[['names']] must be a character"
     } else if (.check_recipes_ingredients(object)) {
-        "ingredients must be a list containing Ingredients-class objects"
+        paste(
+            "object@recipes[['ingredients']] must be a list",
+            "containing Ingredients-class objects"
+        )
     } else {
         TRUE
     }

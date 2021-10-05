@@ -1,6 +1,6 @@
 #' Create a meal plan
 #'
-#' @param recipebook `tibble::tibble()` containing the recipe information,
+#' @param recipebook `RecipeBook` object containing the recipe information,
 #'   possibly created using `create_recipebook()`.
 #' @param days `character()` which days of the week to plan for.
 #' @param meals `character()` which meals to plan for, out of "Lunch" and
@@ -25,7 +25,7 @@ create_meal_plan <- function(recipebook,
     calendar <- .create_calendar(days, meals)
 
     recipebook <- .filter_recipebook(recipebook, fav_only)
-    .valid_recipebook(recipebook)
+    valid_RecipeBook(recipebook)
 
     meal_plan_func <- .dispatch_meal_planner(method)
 

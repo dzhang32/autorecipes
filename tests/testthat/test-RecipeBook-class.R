@@ -56,26 +56,26 @@ test_that("RecipeBook can be constructed using character as ingredients", {
 
 test_that("RecipeBook validator catches user-input errors", {
     expect_error(
-        new("RecipeBook", recipes = dplyr::tibble()),
-        "recipebook must have > 0 rows"
+        new("RecipeBook", names = character(), ingredients = integer()),
+        "object@recipes must have > 0 rows"
     )
 
     expect_error(
-        new("RecipeBook", recipes = dplyr::tibble(names = "Roast Chicken")),
-        "recipebook must contain 'names' and 'ingredients' columns"
+        new("RecipeBook", names = "Roast Chicken", ingredients = NULL),
+        "object@recipes must contain 'names' and 'ingredients' columns"
     )
 
     expect_error(
-        new("RecipeBook", recipes = dplyr::tibble(names = 1, ingredients = 1)),
-        "names must be a character"
+        new("RecipeBook", names = 1, ingredients = "chr"),
+        "must be a character"
     )
 
     expect_error(
         new(
             "RecipeBook",
-            recipes = dplyr::tibble(names = "1", ingredients = 1)
+            names = "Roast Chicken", ingredients = "chr"
         ),
-        "ingredients must be a list containing Ingredients-class objects"
+        "must be a list containing Ingredients-class objects"
     )
 })
 

@@ -7,7 +7,7 @@
 create_shopping_list(recipebook)
 }
 \arguments{
-\item{recipebook}{\code{tibble::tibble()} containing the recipe information,
+\item{recipebook}{\code{RecipeBook} object containing the recipe information,
 possibly created using \code{create_recipebook()}.}
 }
 \value{

@@ -13,7 +13,7 @@ create_meal_plan(
 )
 }
 \arguments{
-\item{recipebook}{\code{tibble::tibble()} containing the recipe information,
+\item{recipebook}{\code{RecipeBook} object containing the recipe information,
 possibly created using \code{create_recipebook()}.}
 
 \item{days}{\code{character()} which days of the week to plan for.}

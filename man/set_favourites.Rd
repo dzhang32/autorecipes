@@ -7,7 +7,7 @@
 set_favourites(recipebook, fav_indexes = NULL)
 }
 \arguments{
-\item{recipebook}{\code{tibble::tibble()} containing the recipe information,
+\item{recipebook}{\code{RecipeBook} object containing the recipe information,
 possibly created using \code{create_recipebook()}.}
 
 \item{fav_indexes}{\code{integer()} set of indexes that correspond to the recipes
