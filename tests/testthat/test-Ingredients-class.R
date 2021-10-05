@@ -1,4 +1,4 @@
-##### Ingredients-class #####
+##### contructor #####
 
 test_that("default ingredients look correct", {
     test_ingred <- new("Ingredients", names = "chicken")
@@ -15,6 +15,8 @@ test_that("Ingredients constructer helps users", {
     expect_true(identical(test_ingred@names, c("chicken", "salt")))
     expect_true(identical(test_ingred@amounts, c(1, 1)))
 })
+
+##### validator #####
 
 test_that("Ingredients validator catches user-input errors", {
     expect_error(new("Ingredients", amounts = c(1, 2)))
