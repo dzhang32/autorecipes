@@ -39,8 +39,8 @@ Collate:
     'RecipeBook-methods.R'
     'autorecipes-package.R'
     'data.R'
+    'favourites.R'
     'globals.R'
     'meal_plan.R'
-    'set_favourites.R'
     'shopping_list.R'
 VignetteBuilder: knitr

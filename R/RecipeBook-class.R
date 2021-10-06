@@ -160,7 +160,7 @@ valid_RecipeBook <- function(object) {
         )
     } else if (.check_recipes_fav(object)) {
         "object@recipes[['fav']] must be logical"
-    }else {
+    } else {
         TRUE
     }
 }
