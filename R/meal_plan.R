@@ -21,7 +21,7 @@ create_meal_plan <- function(recipebook,
     method = c("auto", "random"),
     fav_only = FALSE) {
     if (!is(recipebook, "RecipeBook")) {
-        stop("object must be instance of RecipeBook-class")
+        stop("recipebook must be instance of RecipeBook-class")
     }
     validObject(recipebook)
 

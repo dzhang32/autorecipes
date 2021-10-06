@@ -11,7 +11,10 @@
 #'
 #' shopping_list
 create_shopping_list <- function(recipebook) {
-    .valid_recipebook(recipebook)
+    if (!is(recipebook, "RecipeBook")) {
+        stop("recipebook must be instance of RecipeBook-class")
+    }
+    validObject(recipebook)
 
     ingredients_df <- .extract_ingredients(recipebook)
     ingredients_collapsed <- .collapse_ingredients(ingredients_df)
