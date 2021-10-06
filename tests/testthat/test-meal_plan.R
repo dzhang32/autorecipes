@@ -1,5 +1,5 @@
 test_RecipeBook <- RecipeBook_example
-test_RecipeBook <- create_meal_plan(test_RecipeBook)
+meal_plan(test_RecipeBook) <- create_meal_plan(test_RecipeBook)
 meal_plan(test_RecipeBook)
 
 ##### create_meal_plan #####
@@ -11,18 +11,22 @@ test_that("create_meal_plan output looks broadly correct", {
 
 test_that("create_meal_plan works for a single recipe", {
     test_RecipeBook@recipes <- test_RecipeBook@recipes[1, ]
-    test_RecipeBook <- create_meal_plan(test_RecipeBook)
+    meal_plan(test_RecipeBook) <- create_meal_plan(test_RecipeBook)
     expect_true(
         length(unique(meal_plan(test_RecipeBook)[["recipe_index"]])) == 1
     )
 })
 
 test_that("create_meal_plan works for favourite recipes", {
-    favourites(test_RecipeBook) <- 1:3
-    test_RecipeBook <- create_meal_plan(test_RecipeBook, fav_only = TRUE)
+    favourites(test_RecipeBook) <- 6:10
+    meal_plan(test_RecipeBook) <- create_meal_plan(
+        test_RecipeBook,
+        fav_only = TRUE
+    )
+
     expect_true(identical(
         sort(unique(meal_plan(test_RecipeBook)[["recipe_index"]])),
-        1:3
+        6:10
     ))
 })
 

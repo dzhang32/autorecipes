@@ -12,9 +12,9 @@
 #' @export
 #'
 #' @examples
-#' RecipeBook <- create_meal_plan(RecipeBook_example)
+#' meal_plan(RecipeBook_example) <- create_meal_plan(RecipeBook_example)
 #'
-#' meal_plan(RecipeBook)
+#' meal_plan(RecipeBook_example)
 create_meal_plan <- function(recipebook,
     days = c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"),
     meals = c("Lunch", "Dinner"),
@@ -36,21 +36,13 @@ create_meal_plan <- function(recipebook,
             nrow(calendar)
         )
     } else {
-        chosen_recipe_indexes <- meal_plan_func(recipebook, nrow(calendar))
+        chosen_recipe_indexes <- meal_plan_func(recipes(recipebook), nrow(calendar))
     }
 
-    # copies recipebook upon modification in function execution env
-    # importantly does not affect original recipebook in e.g. global env
-    # avoiding breaking the modify + return rule
-    meal_plan(recipebook) <- calendar %>%
+    meal_plan <- calendar %>%
         dplyr::mutate(recipe_index = chosen_recipe_indexes)
 
-    message(
-        "Meal plan has been saved in the recipebook - ",
-        "you can access it via meal_plan(recipebook)"
-    )
-
-    return(recipebook)
+    return(meal_plan)
 }
 
 #' @keywords internal
@@ -99,11 +91,11 @@ create_meal_plan <- function(recipebook,
 
 #' @keywords internal
 #' @noRd
-.create_meal_plan_random <- function(recipebook, num_required) {
-    replace <- if (length(recipebook) < num_required) TRUE else FALSE
+.create_meal_plan_random <- function(recipes, num_required) {
+    replace <- if (nrow(recipes) < num_required) TRUE else FALSE
 
     chosen_recipe_indexes <- sample(
-        seq_len(length(recipebook)), num_required,
+        recipes[["index"]], num_required,
         replace = replace
     )
 

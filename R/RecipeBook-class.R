@@ -29,6 +29,7 @@ setClass("RecipeBook",
 initialize_RecipeBook <- function(.Object, names, ingredients, ...) {
     .Object <- callNextMethod(.Object, ...)
     recipes <- dplyr::tibble(
+        index = seq_along(names),
         names = names,
         ingredients = ingredients,
         fav = FALSE
@@ -164,6 +165,11 @@ read_ingredients <- function(ingredients,
         "object@recipes must have > 0 rows"
     } else if (.check_recipes_colnames(object)) {
         "object@recipes must contain 'names' and 'ingredients' columns"
+    } else if (.check_recipes_index(object)) {
+        paste(
+            "sort(object@recipes[['index']]) should be",
+            "equivalent to seq_along(object@recipes[['index']])"
+        )
     } else if (.check_recipes_names(object)) {
         "object@recipes[['names']] must be a character"
     } else if (.check_recipes_ingredients(object)) {
@@ -180,7 +186,6 @@ read_ingredients <- function(ingredients,
     }
 }
 
-
 setValidity("RecipeBook", .valid_RecipeBook)
 
 #' @keywords internal
@@ -193,6 +198,17 @@ setValidity("RecipeBook", .valid_RecipeBook)
 #' @noRd
 .check_recipes_colnames <- function(object) {
     return(!all(c("names", "ingredients") %in% colnames(object@recipes)))
+}
+
+#' @keywords internal
+#' @noRd
+.check_recipes_index <- function(object) {
+    check_recipes_index <- !identical(
+        object@recipes[["index"]],
+        seq_along(object@recipes[["index"]])
+    )
+
+    return(check_recipes_index)
 }
 
 #' @keywords internal

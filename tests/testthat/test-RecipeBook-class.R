@@ -20,6 +20,7 @@ test_that("RecipeBook can be constructed correctly", {
         test_recipebook@recipes[["names"]],
         c("Roast Chicken", "Another Roast")
     ))
+
     expect_true(nrow(test_recipebook@recipes) == 2)
 
     expect_true(identical(
@@ -78,6 +79,17 @@ test_that("RecipeBook validator catches user-input errors", {
         "must be a list containing Ingredients-class objects"
     )
 })
+
+test_that("RecipeBook validator errors on indexes", {
+    test_RecipeBook <- RecipeBook_example
+    test_RecipeBook@recipes[["index"]][2] <- 3
+
+    expect_error(
+        validObject(test_RecipeBook),
+        "should be equivalent to "
+    )
+})
+
 
 ##### read_ingredients #####
 

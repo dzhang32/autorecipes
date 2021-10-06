@@ -32,7 +32,7 @@ a \code{RecipeBook-class} object containing the created \code{meal_plan}.
 Create a meal plan
 }
 \examples{
-RecipeBook <- create_meal_plan(RecipeBook_example)
+meal_plan(RecipeBook_example) <- create_meal_plan(RecipeBook_example)
 
-meal_plan(RecipeBook)
+meal_plan(RecipeBook_example)
 }
