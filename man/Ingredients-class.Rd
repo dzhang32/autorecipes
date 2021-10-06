@@ -4,13 +4,16 @@
 \name{Ingredients-class}
 \alias{Ingredients-class}
 \alias{Ingredients}
+\alias{show,Ingredients-method}
 \alias{names,Ingredients-method}
 \alias{amounts}
 \alias{units}
 \alias{as.data.frame,Ingredients-method}
-\title{An S4 class representing a set of ingredients.}
+\title{S4 class containing names, amounts and units for ingredients}
 \usage{
 Ingredients(names, amounts = 1, units = rep(NA_character_, length(names)))
+
+\S4method{show}{Ingredients}(object)
 
 \S4method{names}{Ingredients}(x)
 
@@ -27,23 +30,14 @@ units(x)
 
 \item{units}{\code{character()} units for the amount of each ingredient.}
 
-\item{x}{of class \code{Ingredients-class}}
+\item{object}{an \code{Ingredients-class} object.}
+
+\item{x}{an \code{Ingredients-class} object.}
 }
 \description{
 Contains information regarding the name, the quantity and the
 units for each ingredient.
 }
-\section{Functions}{
-\itemize{
-\item \code{names,Ingredients-method}: obtain names of ingredients
-
-\item \code{amounts}: obtain amounts of ingredients
-
-\item \code{units}: obtain units of amounts for each ingredient
-
-\item \code{as.data.frame,Ingredients-method}: Convert Ingredients-class object to data.frame
-}}
-
 \section{Slots}{
 
 \describe{
@@ -53,4 +47,34 @@ units for each ingredient.
 
 \item{\code{units}}{units for the amount of each ingredient.}
 }}
+
+\section{Constructor}{
+
+
+\code{Ingredients(names, amounts, units)} creates an object of \code{Ingredients-class}.
+}
+
+\section{Displaying}{
+
+
+\code{show(ingredients)} prints each ingredient.
+}
+
+\section{Getters}{
+
+
+\code{names(ingredients)} obtain the names of each ingredient.
+
+
+
+\code{amounts(ingredients)} obtain the amounts of each ingredient.
+
+
+
+\code{units(ingredients)} obtain the units of each ingredient.
+
+
+
+\code{as.data.frame(ingredients)} converts ingredients to a \code{data.frame}.
+}
 

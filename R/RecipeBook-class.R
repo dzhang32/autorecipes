@@ -1,4 +1,4 @@
-#' RecipeBook containing recipes and ingredients
+#' @title S4 class containing recipes, their ingredients and meal plans
 #'
 #' @description
 #'
@@ -49,7 +49,7 @@ setMethod("initialize", "RecipeBook", initialize_RecipeBook)
 #' @rdname RecipeBook-class
 #' @section Constructor:
 #'
-#'   `RecipeBook(names, ingredients)` creates an object of `RecipeBook-class`.
+#' `RecipeBook(names, ingredients)` creates an object of `RecipeBook-class`.
 #'
 #' @param names `character()` containing the name of of recipes.
 #' @param ingredients `character()` or `list()` of `Ingredient-class` objects.

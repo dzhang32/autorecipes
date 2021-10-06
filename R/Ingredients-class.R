@@ -1,12 +1,12 @@
-#' @title An S4 class representing a set of ingredients.
+#' @title S4 class containing names, amounts and units for ingredients
 #'
-#' @description Contains information regarding the name, the quantity and the
+#' @description
+#'
+#' Contains information regarding the name, the quantity and the
 #' units for each ingredient.
 #'
-#' @param x of class `Ingredients-class`
-#' @param names `character()` name of each ingredient.
-#' @param amounts `numeric()` amount of each ingredient.
-#' @param units `character()` units for the amount of each ingredient.
+#' @param x an `Ingredients-class` object.
+#' @param object an `Ingredients-class` object.
 #'
 #' @slot names name of each ingredient.
 #' @slot amounts amount of each ingredient.
@@ -30,6 +30,14 @@ setClass("Ingredients",
 ##### constructor #####
 
 #' @rdname Ingredients-class
+#'
+#' @section Constructor:
+#'
+#' `Ingredients(names, amounts, units)` creates an object of `Ingredients-class`.
+#'
+#' @param names `character()` name of each ingredient.
+#' @param amounts `numeric()` amount of each ingredient.
+#' @param units `character()` units for the amount of each ingredient.
 Ingredients <- function(names,
     amounts = 1,
     units = rep(NA_character_, length(names))) {
@@ -44,6 +52,8 @@ Ingredients <- function(names,
     new("Ingredients", names = names, amounts = amounts, units = units)
 }
 
+#' @keywords internal
+#' @noRd
 .convert_fractions <- function(x) {
     sapply(x, function(y) eval(parse(text = y))) %>%
         unname()
@@ -51,7 +61,9 @@ Ingredients <- function(names,
 
 ##### validator #####
 
-valid_Ingredients <- function(object) {
+#' @keywords internal
+#' @noRd
+.valid_Ingredients <- function(object) {
     valid_units <- .all_valid_units()
 
     if (.check_Ingredient_names_amounts_length(object)) {
@@ -69,7 +81,7 @@ valid_Ingredients <- function(object) {
     }
 }
 
-setValidity("Ingredients", valid_Ingredients)
+setValidity("Ingredients", .valid_Ingredients)
 
 #' @keywords internal
 #' @noRd

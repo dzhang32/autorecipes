@@ -17,23 +17,38 @@ NULL
     ), sep = "")
 }
 
+#' @rdname Ingredients-class
+#' @section Displaying:
+#'
+#' `show(ingredients)` prints each ingredient.
 #' @importMethodsFrom methods show
 setMethod("show", "Ingredients", .show_Ingredients)
 
 ##### getters #####
 
-#' @describeIn Ingredients-class obtain names of ingredients
+#' @rdname Ingredients-class
+#' @section Getters:
+#'
+#' `names(ingredients)` obtain the names of each ingredient.
 setMethod("names", "Ingredients", function(x) stringr::str_to_title(x@names))
 
-#' @describeIn Ingredients-class obtain amounts of ingredients
+#' @rdname Ingredients-class
+#' @section Getters:
+#'
+#' `amounts(ingredients)` obtain the amounts of each ingredient.
 amounts <- function(x) {
     x@amounts
 }
 
-#' @describeIn Ingredients-class obtain units of amounts for each ingredient
+#' @rdname Ingredients-class
+#' @section Getters:
+#'
+#' `units(ingredients)` obtain the units of each ingredient.
 units <- function(x) {
     x@units
 }
+
+##### coersion #####
 
 #' @keywords internal
 #' @noRd
@@ -45,5 +60,8 @@ units <- function(x) {
     )
 }
 
-#' @describeIn Ingredients-class Convert Ingredients-class object to data.frame
+#' @rdname Ingredients-class
+#' @section Getters:
+#'
+#' `as.data.frame(ingredients)` converts ingredients to a `data.frame`.
 setMethod("as.data.frame", "Ingredients", .as_data_frame_Ingredients)

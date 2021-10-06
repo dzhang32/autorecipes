@@ -14,7 +14,7 @@
 \alias{favourites<-,RecipeBook,numeric-method}
 \alias{favourites<-,RecipeBook,logical-method}
 \alias{favourites<-,RecipeBook,character-method}
-\title{RecipeBook containing recipes and ingredients}
+\title{S4 class containing recipes, their ingredients and meal plans}
 \usage{
 RecipeBook(names, ingredients)
 

@@ -14,6 +14,7 @@ NULL
 #' @section Displaying:
 #'
 #' `show(recipebook)` prints the `recipes` as a `tibble::tibble()`.
+#' @importMethodsFrom methods show
 setMethod("show", "RecipeBook", .show_RecipeBook)
 
 ##### getters #####
