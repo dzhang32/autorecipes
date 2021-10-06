@@ -2,13 +2,14 @@
 % Please edit documentation in R/RecipeBook-class.R
 \name{read_ingredients}
 \alias{read_ingredients}
-\title{Read in a list of ingredients}
+\title{Read in a list of ingredients from a character vector}
 \usage{
 read_ingredients(ingredients, delim = ";", method = "auto")
 }
 \arguments{
 \item{ingredients}{\code{character()} containing ingredient info separated by
-\code{delim}. Each element must denote the ingredients coming from each recipe.}
+\code{delim}. Each element should denote the ingredients coming from a distinct
+recipe.}
 
 \item{delim}{\code{character()} that separates each ingredient.}
 
@@ -17,13 +18,12 @@ ingredients, placeholder for future implementations (e.g. with data.frame
 input).}
 }
 \value{
-\code{list()} of elements of \code{Ingredients-class}.
+\code{list()} of elements of \code{Ingredients-class} objects.
 }
 \description{
-Read in a list of ingredients
+Read in a list of ingredients from a character vector
 }
 \examples{
-
 read_ingredients(
     c(
         "butter;6 eggs;1 bag coriander;1 punnet mixed baby tomatoes",

@@ -1,9 +1,9 @@
-##### favourites getter #####
+##### favourites #####
 
 #' @rdname RecipeBook-class
 #' @section Getters:
 #'
-#' `favourites(recipebook)` obtains the `recipes` marked as a favourite.
+#' `favourites(recipebook)` obtains the `recipes` marked as favourites.
 favourites <- function(x) {
     if (sum(x@recipes[["fav"]]) == 0) {
         message("No favourite recipes set, have you run `favorites<-`?")
@@ -12,8 +12,9 @@ favourites <- function(x) {
     x@recipes[x@recipes[["fav"]], ]
 }
 
-##### favourites setter #####
+##### favourites<- #####
 
+#' @rdname RecipeBook-class
 setGeneric(
     "favourites<-",
     function(object, value, ...) standardGeneric("favourites<-")
@@ -31,7 +32,7 @@ setGeneric(
 #' @rdname RecipeBook-class
 #' @section Setters:
 #'
-#' `favourites(recipebook) <- fav_indexes` set favourite `recipes` by index.
+#' `favourites(recipebook) <- 1` set favourite `recipes` by index.
 setMethod("favourites<-",
     signature = c(object = "RecipeBook", value = "numeric"),
     .set_favourites_numeric
@@ -48,7 +49,7 @@ setMethod("favourites<-",
 #' @rdname RecipeBook-class
 #' @section Setters:
 #'
-#' `favourites(recipebook) <- fav_indexes` set favourite `recipes`.
+#' `favourites(recipebook) <- TRUE` set favourite `recipes` by logical.
 setMethod("favourites<-",
     signature = c(object = "RecipeBook", value = "logical"),
     .set_favourites_logical
@@ -87,7 +88,7 @@ setMethod("favourites<-",
 #' @rdname RecipeBook-class
 #' @section Setters:
 #'
-#' `favourites(recipebook) <- fav_indexes` set favourite `recipes`.
+#' `favourites(recipebook) <- "manual"` set favourite `recipes` manually.
 setMethod("favourites<-",
     signature = c(object = "RecipeBook", value = "character"),
     .set_favourites_manual

@@ -10,20 +10,25 @@
 \alias{recipes}
 \alias{meal_plan}
 \alias{favourites}
+\alias{favourites<-}
 \alias{favourites<-,RecipeBook,numeric-method}
 \alias{favourites<-,RecipeBook,logical-method}
 \alias{favourites<-,RecipeBook,character-method}
 \title{RecipeBook containing recipes and ingredients}
 \usage{
+RecipeBook(names, ingredients)
+
 \S4method{show}{RecipeBook}(object)
 
 \S4method{names}{RecipeBook}(x)
 
-recipes(x)
+recipes(object)
 
-meal_plan(x)
+meal_plan(object)
 
 favourites(x)
+
+favourites(object, ...) <- value
 
 \S4method{favourites}{RecipeBook,numeric}(object) <- value
 
@@ -32,17 +37,38 @@ favourites(x)
 \S4method{favourites}{RecipeBook,character}(object, con = stdin()) <- value
 }
 \arguments{
-\item{object}{RecipeBook object to display.}
+\item{names}{\code{character()} containing the name of of recipes.}
 
-\item{x}{a \code{RecipeBook} object.}
+\item{ingredients}{\code{character()} or \code{list()} of \code{Ingredient-class} objects.
+If a \code{character()}, will be read in using \code{read_ingredients()}.}
+
+\item{object}{a \code{RecipeBook-class} object.}
+
+\item{x}{a \code{RecipeBook-class} object.}
 }
 \description{
-A book of recipes from which meal plans can be generated.
+A book of recipes from which meal plans and shopping lists can be generated.
 }
+\section{Slots}{
+
+\describe{
+\item{\code{recipes}}{\code{tibble::tibble()} storing the names, ingredients and
+favourites status of recipes.}
+
+\item{\code{meal_plan}}{\code{tibble::tibble()} storing a meal plan, created by \code{recipes}
+using \code{create_meal_plan()}.}
+}}
+
+\section{Constructor}{
+
+
+\code{RecipeBook(names, ingredients)} creates an object of \code{RecipeBook-class}.
+}
+
 \section{Displaying}{
 
 
-\code{show(recipebook)} displays the \code{recipes} slot as a \code{tibble::tibble()}.
+\code{show(recipebook)} prints the \code{recipes} as a \code{tibble::tibble()}.
 }
 
 \section{Getters}{
@@ -60,20 +86,20 @@ A book of recipes from which meal plans can be generated.
 
 
 
-\code{favourites(recipebook)} obtains the \code{recipes} marked as a favourite.
+\code{favourites(recipebook)} obtains the \code{recipes} marked as favourites.
 }
 
 \section{Setters}{
 
 
-\code{favourites(recipebook) <- fav_indexes} set favourite \code{recipes} by index.
+\code{favourites(recipebook) <- 1} set favourite \code{recipes} by index.
 
 
 
-\code{favourites(recipebook) <- fav_indexes} set favourite \code{recipes}.
+\code{favourites(recipebook) <- TRUE} set favourite \code{recipes} by logical.
 
 
 
-\code{favourites(recipebook) <- fav_indexes} set favourite \code{recipes}.
+\code{favourites(recipebook) <- "manual"} set favourite \code{recipes} manually.
 }
 

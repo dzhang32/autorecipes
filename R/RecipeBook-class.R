@@ -2,9 +2,15 @@
 #'
 #' @description
 #'
-#' A book of recipes from which meal plans can be generated.
+#' A book of recipes from which meal plans and shopping lists can be generated.
 #'
-#' @param x a `RecipeBook` object.
+#' @slot recipes `tibble::tibble()` storing the names, ingredients and
+#'   favourites status of recipes.
+#' @slot meal_plan `tibble::tibble()` storing a meal plan, created by `recipes`
+#'   using `create_meal_plan()`.
+#'
+#' @param x a `RecipeBook-class` object.
+#' @param object a `RecipeBook-class` object.
 #'
 #' @name RecipeBook-class
 #' @aliases RecipeBook
@@ -16,9 +22,7 @@ setClass("RecipeBook",
     )
 )
 
-setOldClass(class(dplyr::tibble()))
-
-##### constructor #####
+##### initialize #####
 
 #' @keywords internal
 #' @noRd
@@ -34,13 +38,22 @@ initialize_RecipeBook <- function(.Object, names, ingredients, ...) {
     .Object@recipes <- recipes
     .Object@meal_plan <- meal_plan
     validObject(.Object)
-    .Object
+
+    return(.Object)
 }
 
 setMethod("initialize", "RecipeBook", initialize_RecipeBook)
 
 ##### constructor #####
 
+#' @rdname RecipeBook-class
+#' @section Constructor:
+#'
+#'   `RecipeBook(names, ingredients)` creates an object of `RecipeBook-class`.
+#'
+#' @param names `character()` containing the name of of recipes.
+#' @param ingredients `character()` or `list()` of `Ingredient-class` objects.
+#'   If a `character()`, will be read in using `read_ingredients()`.
 RecipeBook <- function(names, ingredients) {
     names <- as.character(names)
 
@@ -52,20 +65,20 @@ RecipeBook <- function(names, ingredients) {
     new("RecipeBook", names = names, ingredients = ingredients)
 }
 
-#' Read in a list of ingredients
+#' Read in a list of ingredients from a character vector
 #'
 #' @param ingredients `character()` containing ingredient info separated by
-#'   `delim`. Each element must denote the ingredients coming from each recipe.
+#'   `delim`. Each element should denote the ingredients coming from a distinct
+#'   recipe.
 #' @param delim `character()` that separates each ingredient.
 #' @param method `character()` used to determine the method of parsing
 #'   ingredients, placeholder for future implementations (e.g. with data.frame
 #'   input).
 #'
-#' @return `list()` of elements of `Ingredients-class`.
+#' @return `list()` of elements of `Ingredients-class` objects.
 #' @export
 #'
 #' @examples
-#'
 #' read_ingredients(
 #'     c(
 #'         "butter;6 eggs;1 bag coriander;1 punnet mixed baby tomatoes",
@@ -78,9 +91,9 @@ read_ingredients <- function(ingredients,
     method = "auto") {
     method <- match.arg(method)
 
-    parse_ingredient_func <- .dispatch_ingredient_reader(method)
+    read_ingredient_func <- .dispatch_ingredient_reader(method)
 
-    ingredients_tidy <- parse_ingredient_func(ingredients, delim)
+    ingredients_tidy <- read_ingredient_func(ingredients, delim)
 
     return(ingredients_tidy)
 }
@@ -146,7 +159,7 @@ read_ingredients <- function(ingredients,
 
 #' @keywords internal
 #' @noRd
-valid_RecipeBook <- function(object) {
+.valid_RecipeBook <- function(object) {
     if (.check_recipes_nrow(object)) {
         "object@recipes must have > 0 rows"
     } else if (.check_recipes_colnames(object)) {
@@ -166,7 +179,7 @@ valid_RecipeBook <- function(object) {
 }
 
 
-setValidity("RecipeBook", valid_RecipeBook)
+setValidity("RecipeBook", .valid_RecipeBook)
 
 #' @keywords internal
 #' @noRd

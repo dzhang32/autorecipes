@@ -7,14 +7,13 @@ NULL
 #' @noRd
 .show_RecipeBook <- function(object) {
     print(object@recipes)
+    return(invisible())
 }
 
 #' @rdname RecipeBook-class
 #' @section Displaying:
 #'
-#' `show(recipebook)` displays the `recipes` slot as a `tibble::tibble()`.
-#'
-#' @param object RecipeBook object to display.
+#' `show(recipebook)` prints the `recipes` as a `tibble::tibble()`.
 setMethod("show", "RecipeBook", .show_RecipeBook)
 
 ##### getters #####
@@ -29,19 +28,19 @@ setMethod("names", "RecipeBook", function(x) x@recipes[["names"]])
 #' @section Getters:
 #'
 #' `recipes(recipebook)` obtains the `recipes` as a `tibble::tibble()`.
-recipes <- function(x) {
-    x@recipes
+recipes <- function(object) {
+    return(object@recipes)
 }
 
 #' @rdname RecipeBook-class
 #' @section Getters:
 #'
 #' `meal_plan(recipebook)` obtains the `meal_plan` as a `tibble::tibble()`.
-meal_plan <- function(x) {
-    if (nrow(x@meal_plan) == 0) {
+meal_plan <- function(object) {
+    if (nrow(object@meal_plan) == 0) {
         message("No meal plan found, have you run create_meal_plan()?")
         return(invisible())
     }
 
-    x@meal_plan
+    return(object@meal_plan)
 }
