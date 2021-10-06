@@ -28,6 +28,12 @@ setMethod("names", "RecipeBook", function(x) x@recipes[["names"]])
 #' @rdname RecipeBook-class
 #' @section Getters:
 #'
+#' `length(recipebook)` obtains the number of recipes.
+setMethod("length", "RecipeBook", function(x) nrow(x@recipes))
+
+#' @rdname RecipeBook-class
+#' @section Getters:
+#'
 #' `recipes(recipebook)` obtains the `recipes` as a `tibble::tibble()`.
 recipes <- function(object) {
     return(object@recipes)
@@ -39,8 +45,7 @@ recipes <- function(object) {
 #' `meal_plan(recipebook)` obtains the `meal_plan` as a `tibble::tibble()`.
 meal_plan <- function(object) {
     if (nrow(object@meal_plan) == 0) {
-        message("No meal plan found, have you run create_meal_plan()?")
-        return(invisible())
+        stop("No meal plan found, have you run create_meal_plan()?")
     }
 
     return(object@meal_plan)
@@ -53,7 +58,7 @@ meal_plan <- function(object) {
 #' @noRd
 `meal_plan<-` <- function(object, value) {
     if (nrow(object@meal_plan) != 0) {
-        message("overwriting existing meal plan")
+        message("Overwriting existing meal plan")
     }
 
     object@meal_plan <- value

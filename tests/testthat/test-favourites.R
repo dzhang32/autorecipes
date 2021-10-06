@@ -2,11 +2,19 @@ test_RecipeBook <- RecipeBook_example
 
 ##### favourites #####
 
-test_that("favourites getter output looks correct when favourites is empty", {
-    expect_message(
+test_that("favourites getter errors when favourites is empty", {
+    expect_error(
         favourites(RecipeBook_example),
         "No favourite recipes set, have you run `favorites<-`?"
     )
+})
+
+test_that("favourites getter errors has correct output", {
+    test_RecipeBook@recipes[["fav"]][1:3] <- TRUE
+    expect_true(identical(
+        favourites(test_RecipeBook),
+        test_RecipeBook@recipes %>% dplyr::filter(fav)
+    ))
 })
 
 ##### favourites<- #####

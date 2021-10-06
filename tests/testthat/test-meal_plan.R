@@ -1,14 +1,29 @@
+test_RecipeBook <- RecipeBook_example
+test_RecipeBook <- create_meal_plan(test_RecipeBook)
+meal_plan(test_RecipeBook)
+
 ##### create_meal_plan #####
 
 test_that("create_meal_plan output looks broadly correct", {
-    test_meal_plan <- create_meal_plan(recipebook_example)
-    expect_true(nrow(test_meal_plan) == 14)
-    expect_false(any(duplicated(test_meal_plan[["names"]])))
+    expect_true(nrow(meal_plan(test_RecipeBook)) == 14)
+    expect_false(any(duplicated(test_RecipeBook@meal_plan[["recipe_index"]])))
 })
 
 test_that("create_meal_plan works for a single recipe", {
-    test_meal_plan <- create_meal_plan(recipebook_example[1, ])
-    expect_true(length(unique(test_meal_plan[["names"]])) == 1)
+    test_RecipeBook@recipes <- test_RecipeBook@recipes[1, ]
+    test_RecipeBook <- create_meal_plan(test_RecipeBook)
+    expect_true(
+        length(unique(meal_plan(test_RecipeBook)[["recipe_index"]])) == 1
+    )
+})
+
+test_that("create_meal_plan works for favourite recipes", {
+    favourites(test_RecipeBook) <- 1:3
+    test_RecipeBook <- create_meal_plan(test_RecipeBook, fav_only = TRUE)
+    expect_true(identical(
+        sort(unique(meal_plan(test_RecipeBook)[["recipe_index"]])),
+        1:3
+    ))
 })
 
 ##### .create_calendar #####
@@ -65,29 +80,5 @@ test_that(".create_calendar works catches input errors", {
     expect_warning(
         .create_calendar(meals = c("Lunch", "Lunch")),
         "days or meals must not contain duplicated values, coercing"
-    )
-})
-
-##### .filter_recipebook #####
-
-test_that(".filter_recipebook output looks correct", {
-    test_recipebook <- recipebook_example
-    test_recipebook[["fav"]] <- FALSE
-    test_recipebook[["fav"]][1:3] <- TRUE
-
-    expect_true(identical(
-        .filter_recipebook(test_recipebook, fav_only = TRUE),
-        test_recipebook %>% dplyr::filter(fav)
-    ))
-    expect_true(identical(
-        .filter_recipebook(recipebook_example, fav_only = FALSE),
-        recipebook_example
-    ))
-})
-
-test_that(".filter_recipebook catches user input errors", {
-    expect_error(
-        .filter_recipebook(recipebook_example, fav_only = TRUE),
-        "To filter by favourites, recipebook must have the column 'fav'"
     )
 })

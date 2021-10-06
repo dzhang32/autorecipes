@@ -8,35 +8,49 @@
 #' @param fav_only `logical()` whether to create a meal plan only using
 #'   favourite recipes.
 #'
-#' @return `tibble::tibble()` containing a meal plan.
+#' @return a `RecipeBook-class` object containing the created `meal_plan`.
 #' @export
 #'
 #' @examples
-#' meal_plan <- create_meal_plan(recipebook_example)
+#' RecipeBook <- create_meal_plan(RecipeBook_example)
 #'
-#' meal_plan
+#' meal_plan(RecipeBook)
 create_meal_plan <- function(recipebook,
     days = c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"),
     meals = c("Lunch", "Dinner"),
     method = c("auto", "random"),
     fav_only = FALSE) {
-    if (!is(object, "RecipeBook")) {
+    if (!is(recipebook, "RecipeBook")) {
         stop("object must be instance of RecipeBook-class")
     }
     validObject(recipebook)
-
-    recipebook <- .filter_recipebook(recipebook, fav_only)
 
     method <- match.arg(method)
     calendar <- .create_calendar(days, meals)
 
     meal_plan_func <- .dispatch_meal_planner(method)
 
-    chosen_recipe_indexes <- meal_plan_func(recipebook, nrow(calendar))
+    if (fav_only) {
+        chosen_recipe_indexes <- meal_plan_func(
+            favourites(recipebook),
+            nrow(calendar)
+        )
+    } else {
+        chosen_recipe_indexes <- meal_plan_func(recipebook, nrow(calendar))
+    }
 
-    meal_plan <- dplyr::bind_cols(calendar, recipebook[chosen_recipe_indexes, ])
+    # copies recipebook upon modification in function execution env
+    # importantly does not affect original recipebook in e.g. global env
+    # avoiding breaking the modify + return rule
+    meal_plan(recipebook) <- calendar %>%
+        dplyr::mutate(recipe_index = chosen_recipe_indexes)
 
-    return(meal_plan)
+    message(
+        "Meal plan has been saved in the recipebook - ",
+        "you can access it via meal_plan(recipebook)"
+    )
+
+    return(recipebook)
 }
 
 #' @keywords internal
@@ -86,25 +100,12 @@ create_meal_plan <- function(recipebook,
 #' @keywords internal
 #' @noRd
 .create_meal_plan_random <- function(recipebook, num_required) {
-    replace <- if (nrow(recipebook) < num_required) TRUE else FALSE
+    replace <- if (length(recipebook) < num_required) TRUE else FALSE
 
     chosen_recipe_indexes <- sample(
-        seq_len(nrow(recipebook)), num_required,
+        seq_len(length(recipebook)), num_required,
         replace = replace
     )
 
     return(chosen_recipe_indexes)
-}
-
-#' @keywords internal
-#' @noRd
-.filter_recipebook <- function(recipebook, fav_only) {
-    if (fav_only) {
-        if (!("fav" %in% colnames(recipebook))) {
-            stop("To filter by favourites, recipebook must have the column 'fav'")
-        }
-        recipebook <- recipebook %>% dplyr::filter(fav)
-    }
-
-    return(recipebook)
 }

@@ -7,6 +7,7 @@
 \alias{RecipeBook}
 \alias{show,RecipeBook-method}
 \alias{names,RecipeBook-method}
+\alias{length,RecipeBook-method}
 \alias{recipes}
 \alias{meal_plan}
 \alias{favourites}
@@ -21,6 +22,8 @@ RecipeBook(names, ingredients)
 \S4method{show}{RecipeBook}(object)
 
 \S4method{names}{RecipeBook}(x)
+
+\S4method{length}{RecipeBook}(x)
 
 recipes(object)
 
@@ -75,6 +78,10 @@ using \code{create_meal_plan()}.}
 
 
 \code{names(recipebook)} obtains the names of the recipes.
+
+
+
+\code{length(recipebook)} obtains the number of recipes.
 
 
 

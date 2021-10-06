@@ -22,7 +22,10 @@ test_that("RecipeBook getters work as expected", {
             RecipeBook_example@recipes
         )
     )
-    expect_message(
+})
+
+test_that("RecipeBook meal_plan getters errors on empty meal_plan", {
+    expect_error(
         meal_plan(RecipeBook_example),
         "No meal plan found, have you run create_meal_plan()?"
     )
@@ -45,7 +48,7 @@ test_that("RecipeBook meal_plan setter works as expected", {
         {
             meal_plan(test_RecipeBook) <- test_meal_plan
         },
-        "overwriting existing meal plan"
+        "Overwriting existing meal plan"
     )
 })
 

@@ -6,8 +6,7 @@
 #' `favourites(recipebook)` obtains the `recipes` marked as favourites.
 favourites <- function(x) {
     if (sum(x@recipes[["fav"]]) == 0) {
-        message("No favourite recipes set, have you run `favorites<-`?")
-        return(invisible())
+        stop("No favourite recipes set, have you run `favorites<-`?")
     }
     x@recipes[x@recipes[["fav"]], ]
 }

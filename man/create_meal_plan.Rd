@@ -26,13 +26,13 @@ create_meal_plan(
 favourite recipes.}
 }
 \value{
-\code{tibble::tibble()} containing a meal plan.
+a \code{RecipeBook-class} object containing the created \code{meal_plan}.
 }
 \description{
 Create a meal plan
 }
 \examples{
-meal_plan <- create_meal_plan(recipebook_example)
+RecipeBook <- create_meal_plan(RecipeBook_example)
 
-meal_plan
+meal_plan(RecipeBook)
 }
