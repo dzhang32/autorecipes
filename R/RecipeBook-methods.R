@@ -45,3 +45,18 @@ meal_plan <- function(object) {
 
     return(object@meal_plan)
 }
+
+##### setters #####
+
+#' for internal use in `create_meal_plan()`
+#' @keywords internal
+#' @noRd
+`meal_plan<-` <- function(object, value) {
+    if (nrow(object@meal_plan) != 0) {
+        message("overwriting existing meal plan")
+    }
+
+    object@meal_plan <- value
+    validObject(object)
+    object
+}

@@ -13,8 +13,7 @@ create_meal_plan(
 )
 }
 \arguments{
-\item{recipebook}{\code{RecipeBook} object containing the recipe information,
-possibly created using \code{create_recipebook()}.}
+\item{recipebook}{a \code{RecipeBook-class} object.}
 
 \item{days}{\code{character()} which days of the week to plan for.}
 

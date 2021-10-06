@@ -173,6 +173,8 @@ read_ingredients <- function(ingredients,
         )
     } else if (.check_recipes_fav(object)) {
         "object@recipes[['fav']] must be logical"
+    } else if (.check_meal_plan(object)) {
+        "object@meal_plan must have the columns; 'day', 'meal', 'recipe_index'"
     } else {
         TRUE
     }
@@ -224,4 +226,16 @@ setValidity("RecipeBook", .valid_RecipeBook)
 
 .check_recipes_fav <- function(object) {
     return(!is.logical(object@recipes[["fav"]]))
+}
+
+.check_meal_plan <- function(object) {
+    check_meal_plan <- FALSE
+    if (nrow(object@meal_plan) > 0) {
+        if (!all(
+            c("day", "meal", "recipe_index") %in% colnames(object@meal_plan)
+        )) {
+            check_meal_plan <- TRUE
+        }
+    }
+    return(check_meal_plan)
 }

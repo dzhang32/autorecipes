@@ -1,7 +1,6 @@
 #' Create a meal plan
 #'
-#' @param recipebook `RecipeBook` object containing the recipe information,
-#'   possibly created using `create_recipebook()`.
+#' @param recipebook a `RecipeBook-class` object.
 #' @param days `character()` which days of the week to plan for.
 #' @param meals `character()` which meals to plan for, out of "Lunch" and
 #'   "Dinner".
@@ -21,11 +20,15 @@ create_meal_plan <- function(recipebook,
     meals = c("Lunch", "Dinner"),
     method = c("auto", "random"),
     fav_only = FALSE) {
-    method <- match.arg(method)
-    calendar <- .create_calendar(days, meals)
+    if (!is(object, "RecipeBook")) {
+        stop("object must be instance of RecipeBook-class")
+    }
+    validObject(recipebook)
 
     recipebook <- .filter_recipebook(recipebook, fav_only)
-    valid_RecipeBook(recipebook)
+
+    method <- match.arg(method)
+    calendar <- .create_calendar(days, meals)
 
     meal_plan_func <- .dispatch_meal_planner(method)
 
