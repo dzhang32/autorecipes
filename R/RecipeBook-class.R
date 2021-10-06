@@ -49,12 +49,6 @@ RecipeBook <- function(names, ingredients) {
         ingredients <- read_ingredients(ingredients)
     }
 
-    # recipes <- dplyr::tibble(
-    #     names = names,
-    #     ingredients = ingredients,
-    #     fav = FALSE
-    # )
-
     new("RecipeBook", names = names, ingredients = ingredients)
 }
 
@@ -164,10 +158,13 @@ valid_RecipeBook <- function(object) {
             "object@recipes[['ingredients']] must be a list",
             "containing Ingredients-class objects"
         )
-    } else {
+    } else if (.check_recipes_fav(object)) {
+        "object@recipes[['fav']] must be logical"
+    }else {
         TRUE
     }
 }
+
 
 setValidity("RecipeBook", valid_RecipeBook)
 
@@ -210,4 +207,8 @@ setValidity("RecipeBook", valid_RecipeBook)
     }
 
     return(check_ingredients)
+}
+
+.check_recipes_fav <- function(object) {
+    return(!is.logical(object@recipes[["fav"]]))
 }
