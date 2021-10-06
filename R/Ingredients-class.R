@@ -5,12 +5,12 @@
 #' Contains information regarding the name, the quantity and the
 #' units for each ingredient.
 #'
-#' @param x an `Ingredients-class` object.
-#' @param object an `Ingredients-class` object.
-#'
 #' @slot names name of each ingredient.
 #' @slot amounts amount of each ingredient.
 #' @slot units units for the amount of each ingredient.
+#'
+#' @param x an `Ingredients-class` object.
+#' @param object an `Ingredients-class` object.
 #'
 #' @export Ingredients
 #' @rdname Ingredients-class
