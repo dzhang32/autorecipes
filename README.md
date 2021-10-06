@@ -33,6 +33,11 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library("autorecipes")
+#> 
+#> Attaching package: 'autorecipes'
+#> The following object is masked from 'package:base':
+#> 
+#>     units
 ```
 
 ## Code of Conduct

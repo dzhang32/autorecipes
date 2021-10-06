@@ -15,6 +15,7 @@
 #' @name RecipeBook-class
 #' @aliases RecipeBook
 #' @exportClass RecipeBook
+#' @importClassesFrom tibble tbl_df
 setClass("RecipeBook",
     slots = c(
         recipes = "tbl_df",

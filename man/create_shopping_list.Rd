@@ -15,9 +15,3 @@ create_shopping_list(recipebook)
 \description{
 Create a shopping list
 }
-\examples{
-meal_plan <- create_meal_plan(recipebook_example)
-shopping_list <- create_shopping_list(meal_plan)
-
-shopping_list
-}

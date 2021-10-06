@@ -23,10 +23,25 @@ test_that("create_meal_plan works for favourite recipes", {
         test_RecipeBook,
         fav_only = TRUE
     )
-
     expect_true(identical(
         sort(unique(meal_plan(test_RecipeBook)[["recipe_index"]])),
         6:10
+    ))
+})
+
+test_that("create_meal_plan works for varying days/meals", {
+    meal_plan(test_RecipeBook) <- create_meal_plan(
+        test_RecipeBook,
+        days = c("Wed", "Thurs"),
+        meals = "Dinner"
+    )
+    expect_true(identical(
+        as.character(meal_plan(test_RecipeBook)[["day"]]),
+        c("Wed", "Thurs")
+    ))
+    expect_true(identical(
+        as.character(unique(meal_plan(test_RecipeBook)[["meal"]])),
+        c("Dinner")
     ))
 })
 

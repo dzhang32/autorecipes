@@ -4,6 +4,7 @@
 #' @section Getters:
 #'
 #' `favourites(recipebook)` obtains the `recipes` marked as favourites.
+#' @export
 favourites <- function(x) {
     if (sum(x@recipes[["fav"]]) == 0) {
         stop("No favourite recipes set, have you run `favorites<-`?")
@@ -14,9 +15,16 @@ favourites <- function(x) {
 ##### favourites<- #####
 
 #' @rdname RecipeBook-class
+#'
+#' @param ... additional arguments passed on the `favourite<-` methods.
+#' @param value either a `integer()` specifying the index of the rows to
+#'   favourite, an `logical()` to set as the "fav" column, or the `character()`
+#'   "manual" to specify setting the favourites manually.
+#'
+#' @export
 setGeneric(
     "favourites<-",
-    function(object, value, ...) standardGeneric("favourites<-")
+    function(object, ..., value) standardGeneric("favourites<-")
 )
 
 #' @keywords internal
@@ -32,6 +40,7 @@ setGeneric(
 #' @section Setters:
 #'
 #' `favourites(recipebook) <- 1` set favourite `recipes` by index.
+#' @export
 setMethod("favourites<-",
     signature = c(object = "RecipeBook", value = "numeric"),
     .set_favourites_numeric
@@ -49,6 +58,7 @@ setMethod("favourites<-",
 #' @section Setters:
 #'
 #' `favourites(recipebook) <- TRUE` set favourite `recipes` by logical.
+#' @export
 setMethod("favourites<-",
     signature = c(object = "RecipeBook", value = "logical"),
     .set_favourites_logical
@@ -85,9 +95,12 @@ setMethod("favourites<-",
 }
 
 #' @rdname RecipeBook-class
+#' @inheritParams base::readLines
+#'
 #' @section Setters:
 #'
 #' `favourites(recipebook) <- "manual"` set favourite `recipes` manually.
+#' @export
 setMethod("favourites<-",
     signature = c(object = "RecipeBook", value = "character"),
     .set_favourites_manual

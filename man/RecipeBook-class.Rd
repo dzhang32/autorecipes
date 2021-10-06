@@ -10,6 +10,7 @@
 \alias{length,RecipeBook-method}
 \alias{recipes}
 \alias{meal_plan}
+\alias{meal_plan<-}
 \alias{favourites}
 \alias{favourites<-}
 \alias{favourites<-,RecipeBook,numeric-method}
@@ -28,6 +29,8 @@ RecipeBook(names, ingredients)
 recipes(object)
 
 meal_plan(object)
+
+meal_plan(object) <- value
 
 favourites(x)
 
@@ -48,6 +51,14 @@ If a \code{character()}, will be read in using \code{read_ingredients()}.}
 \item{object}{a \code{RecipeBook-class} object.}
 
 \item{x}{a \code{RecipeBook-class} object.}
+
+\item{value}{either a \code{integer()} specifying the index of the rows to
+favourite, an \code{logical()} to set as the "fav" column, or the \code{character()}
+"manual" to specify setting the favourites manually.}
+
+\item{...}{additional arguments passed on the \verb{favourite<-} methods.}
+
+\item{con}{a \link[base]{connection} object or a character string.}
 }
 \description{
 A book of recipes from which meal plans and shopping lists can be generated.
@@ -97,6 +108,11 @@ using \code{create_meal_plan()}.}
 }
 
 \section{Setters}{
+
+
+\code{meal_plan(recipebook) <- meal_plan} stores the meal plan inside a
+\code{RecipeBook-class} object.
+
 
 
 \code{favourites(recipebook) <- 1} set favourite \code{recipes} by index.

@@ -30,12 +30,14 @@ setMethod("show", "Ingredients", .show_Ingredients)
 #' @section Getters:
 #'
 #' `names(ingredients)` obtain the names of each ingredient.
+#' @export
 setMethod("names", "Ingredients", function(x) stringr::str_to_title(x@names))
 
 #' @rdname Ingredients-class
 #' @section Getters:
 #'
 #' `amounts(ingredients)` obtain the amounts of each ingredient.
+#' @export
 amounts <- function(x) {
     x@amounts
 }
@@ -44,6 +46,7 @@ amounts <- function(x) {
 #' @section Getters:
 #'
 #' `units(ingredients)` obtain the units of each ingredient.
+#' @export
 units <- function(x) {
     x@units
 }
