@@ -4,5 +4,6 @@ utils::globalVariables(c(
     ".",
     "n",
     "fav",
-    "recipe_index"
+    "recipe_index",
+    "index"
 ))
