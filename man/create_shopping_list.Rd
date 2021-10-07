@@ -4,10 +4,12 @@
 \alias{create_shopping_list}
 \title{Create a shopping list}
 \usage{
-create_shopping_list(recipebook)
+create_shopping_list(recipebook, method = c("none", "manual", "minimal"))
 }
 \arguments{
 \item{recipebook}{a \code{RecipeBook-class} object.}
+
+\item{method}{\code{character()} the method to use when creating a meal plan.}
 }
 \value{
 \code{tibble::tibble()} containing a shopping list.
