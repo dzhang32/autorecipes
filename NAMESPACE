@@ -3,6 +3,7 @@
 export("favourites<-")
 export("meal_plan<-")
 export(Ingredients)
+export(RecipeBook)
 export(amounts)
 export(create_meal_plan)
 export(create_shopping_list)

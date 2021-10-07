@@ -56,6 +56,8 @@ setMethod("initialize", "RecipeBook", initialize_RecipeBook)
 #' @param names `character()` containing the name of of recipes.
 #' @param ingredients `character()` or `list()` of `Ingredient-class` objects.
 #'   If a `character()`, will be read in using `read_ingredients()`.
+#'
+#' @export
 RecipeBook <- function(names, ingredients) {
     names <- as.character(names)
 
