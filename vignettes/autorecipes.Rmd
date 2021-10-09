@@ -58,6 +58,7 @@ meal_plan(recipebook)
 
 ```{r create-shopping-list}
 
+create_shopping_list(recipebook)
 
 ```
 
