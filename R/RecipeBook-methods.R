@@ -52,7 +52,10 @@ meal_plan <- function(object) {
         stop("No meal plan found, have you run create_meal_plan()?")
     }
 
-    return(object@meal_plan)
+    object@meal_plan %>% dplyr::left_join(
+        object@recipes,
+        by = c("recipe_index" = "index")
+    )
 }
 
 ##### setters #####
