@@ -33,12 +33,12 @@ initialize_RecipeBook <- function(.Object, names, ingredients, ...) {
         index = seq_along(names),
         names = names,
         ingredients = ingredients,
-        fav = FALSE
+        fav = FALSE,
+        last_eaten = lubridate::as_date(vector("character", length(names)))
     )
-    meal_plan <- dplyr::tibble()
 
     .Object@recipes <- recipes
-    .Object@meal_plan <- meal_plan
+    .Object@meal_plan <- dplyr::tibble()
     validObject(.Object)
 
     return(.Object)
@@ -182,6 +182,8 @@ read_ingredients <- function(ingredients,
         )
     } else if (.check_recipes_fav(object)) {
         "object@recipes[['fav']] must be logical"
+    } else if (.check_recipes_last_eaten(object)) {
+        "object@recipes[['last_eaten']] must of class Date"
     } else if (.check_meal_plan(object)) {
         "object@meal_plan must have the columns; 'day', 'meal', 'recipe_index'"
     } else {
@@ -245,6 +247,10 @@ setValidity("RecipeBook", .valid_RecipeBook)
 
 .check_recipes_fav <- function(object) {
     return(!is.logical(object@recipes[["fav"]]))
+}
+
+.check_recipes_last_eaten <- function(object) {
+    return(!lubridate::is.Date(object@recipes[["last_eaten"]]))
 }
 
 .check_meal_plan <- function(object) {

@@ -17,6 +17,11 @@ test_that("RecipeBook can be constructed correctly", {
     )
 
     expect_true(identical(
+        test_recipebook@recipes[["index"]],
+        1:2
+    ))
+
+    expect_true(identical(
         test_recipebook@recipes[["names"]],
         c("Roast Chicken", "Another Roast")
     ))
@@ -27,6 +32,10 @@ test_that("RecipeBook can be constructed correctly", {
         test_recipebook@recipes[["ingredients"]][[1]],
         test_ingred
     ))
+
+    expect_true(all(is.na(
+        test_recipebook@recipes[["last_eaten"]]
+    )))
 
     expect_true(nrow(test_recipebook@meal_plan) == 0)
 })
@@ -89,7 +98,6 @@ test_that("RecipeBook validator errors on indexes", {
         "should be equivalent to "
     )
 })
-
 
 ##### read_ingredients #####
 
