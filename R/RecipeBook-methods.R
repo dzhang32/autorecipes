@@ -63,8 +63,8 @@ meal_plan <- function(object) {
 #' @rdname RecipeBook-class
 #' @section Setters:
 #'
-#'   `meal_plan(recipebook) <- meal_plan` stores the meal plan inside a
-#'   `RecipeBook-class` object.
+#' `meal_plan(recipebook) <- meal_plan` stores the meal plan inside a
+#' `RecipeBook-class` object.
 #' @export
 `meal_plan<-` <- function(object, value) {
     if (nrow(object@meal_plan) != 0) {
@@ -72,6 +72,14 @@ meal_plan <- function(object) {
     }
 
     object@meal_plan <- value
+    validObject(object)
+    object
+}
+
+#' @keywords internal
+#' @noRd
+`last_eaten<-` <- function(object, value) {
+    object@recipes[["last_eaten"]][value] <- lubridate::today()
     validObject(object)
     object
 }

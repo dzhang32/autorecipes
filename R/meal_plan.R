@@ -7,19 +7,23 @@
 #' @param method `character()` the method to use when creating a meal plan.
 #' @param fav_only `logical()` whether to create a meal plan only using
 #'   favourite recipes.
+#' @param set_last_eaten `logical()` whether to save the recipes
+#'   were eaten today. Used to optimise the meal planning algorithm when the
+#'   `method` is set to "auto".
 #'
 #' @return a `RecipeBook-class` object containing the created `meal_plan`.
 #' @export
 #'
 #' @examples
-#' meal_plan(RecipeBook_example) <- create_meal_plan(RecipeBook_example)
+#' recipebook <- create_meal_plan(RecipeBook_example)
 #'
-#' meal_plan(RecipeBook_example)
+#' meal_plan(recipebook)
 create_meal_plan <- function(recipebook,
     days = c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"),
     meals = c("Lunch", "Dinner"),
     method = c("auto", "random"),
-    fav_only = FALSE) {
+    fav_only = FALSE,
+    set_last_eaten = TRUE) {
     if (!is(recipebook, "RecipeBook")) {
         stop("recipebook must be instance of RecipeBook-class")
     }
@@ -36,13 +40,20 @@ create_meal_plan <- function(recipebook,
             nrow(calendar)
         )
     } else {
-        chosen_recipe_indexes <- meal_plan_func(recipes(recipebook), nrow(calendar))
+        chosen_recipe_indexes <- meal_plan_func(
+            recipes(recipebook),
+            nrow(calendar)
+        )
     }
 
-    meal_plan <- calendar %>%
+    if (set_last_eaten) {
+        last_eaten(recipebook) <- chosen_recipe_indexes
+    }
+
+    meal_plan(recipebook) <- calendar %>%
         dplyr::mutate(recipe_index = chosen_recipe_indexes)
 
-    return(meal_plan)
+    return(recipebook)
 }
 
 #' @keywords internal
