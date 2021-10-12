@@ -7,6 +7,12 @@
     <loc>/LICENSE-text.html</loc>
   </url>
   <url>
+    <loc>/articles/autorecipes.html</loc>
+  </url>
+  <url>
+    <loc>/articles/index.html</loc>
+  </url>
+  <url>
     <loc>/authors.html</loc>
   </url>
   <url>
@@ -19,10 +25,13 @@
     <loc>/reference/Ingredients-class.html</loc>
   </url>
   <url>
-    <loc>/reference/create_meal_plan.html</loc>
+    <loc>/reference/RecipeBook-class.html</loc>
   </url>
   <url>
-    <loc>/reference/create_recipebook.html</loc>
+    <loc>/reference/RecipeBook_example.html</loc>
+  </url>
+  <url>
+    <loc>/reference/create_meal_plan.html</loc>
   </url>
   <url>
     <loc>/reference/create_shopping_list.html</loc>
@@ -34,12 +43,6 @@
     <loc>/reference/read_ingredients.html</loc>
   </url>
   <url>
-    <loc>/reference/recipebook_example.html</loc>
-  </url>
-  <url>
     <loc>/reference/recipes_example.html</loc>
-  </url>
-  <url>
-    <loc>/reference/set_favourites.html</loc>
   </url>
 </urlset>
