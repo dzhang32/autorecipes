@@ -9,7 +9,8 @@ create_meal_plan(
   days = c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"),
   meals = c("Lunch", "Dinner"),
   method = c("auto", "random"),
-  fav_only = FALSE
+  fav_only = FALSE,
+  set_last_eaten = TRUE
 )
 }
 \arguments{
@@ -24,6 +25,10 @@ create_meal_plan(
 
 \item{fav_only}{\code{logical()} whether to create a meal plan only using
 favourite recipes.}
+
+\item{set_last_eaten}{\code{logical()} whether to save the recipes
+were eaten today. Used to optimise the meal planning algorithm when the
+\code{method} is set to "auto".}
 }
 \value{
 a \code{RecipeBook-class} object containing the created \code{meal_plan}.
@@ -32,7 +37,7 @@ a \code{RecipeBook-class} object containing the created \code{meal_plan}.
 Create a meal plan
 }
 \examples{
-meal_plan(RecipeBook_example) <- create_meal_plan(RecipeBook_example)
+recipebook <- create_meal_plan(RecipeBook_example)
 
-meal_plan(RecipeBook_example)
+meal_plan(recipebook)
 }

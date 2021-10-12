@@ -45,8 +45,8 @@ recipes(recipebook) %>% head()
 
 ```{r create-meal-plan}
 
-meal_plan(recipebook) <- create_meal_plan(
-  recipebook, 
+recipebook <- create_meal_plan(
+  recipebook, days = c("Wed", "Thurs", "Fri", "Sat", "Sun"), meals = "Dinner",
   fav_only = TRUE
 )
 
@@ -58,7 +58,8 @@ meal_plan(recipebook)
 
 ```{r create-shopping-list}
 
-create_shopping_list(recipebook)
+# x <- create_shopping_list(recipebook, method = "manual")
+# x %>% readr::write_delim("/Users/david_zhang/Downloads/shopping_list_dz_cjkg.txt", delim = "\t")
 
 ```
 
