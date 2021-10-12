@@ -1,5 +1,5 @@
 test_RecipeBook <- RecipeBook_example
-meal_plan(test_RecipeBook) <- create_meal_plan(test_RecipeBook)
+test_RecipeBook <- create_meal_plan(test_RecipeBook)
 
 ##### create_shopping_list #####
 

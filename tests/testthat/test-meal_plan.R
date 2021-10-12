@@ -1,25 +1,30 @@
 test_RecipeBook <- RecipeBook_example
-meal_plan(test_RecipeBook) <- create_meal_plan(test_RecipeBook)
-meal_plan(test_RecipeBook)
+test_RecipeBook <- create_meal_plan(test_RecipeBook, set_last_eaten = FALSE)
 
 ##### create_meal_plan #####
 
 test_that("create_meal_plan output looks broadly correct", {
     expect_true(nrow(meal_plan(test_RecipeBook)) == 14)
     expect_false(any(duplicated(test_RecipeBook@meal_plan[["recipe_index"]])))
+    expect_true(all(is.na(
+        test_RecipeBook@recipes[["last_eaten"]]
+    )))
 })
 
 test_that("create_meal_plan works for a single recipe", {
     test_RecipeBook@recipes <- test_RecipeBook@recipes[1, ]
-    meal_plan(test_RecipeBook) <- create_meal_plan(test_RecipeBook)
+    test_RecipeBook <- create_meal_plan(test_RecipeBook)
     expect_true(
         length(unique(meal_plan(test_RecipeBook)[["recipe_index"]])) == 1
+    )
+    expect_true(
+        test_RecipeBook@recipes[["last_eaten"]] == lubridate::today()
     )
 })
 
 test_that("create_meal_plan works for favourite recipes", {
     favourites(test_RecipeBook) <- 6:10
-    meal_plan(test_RecipeBook) <- create_meal_plan(
+    test_RecipeBook <- create_meal_plan(
         test_RecipeBook,
         fav_only = TRUE
     )
@@ -27,10 +32,32 @@ test_that("create_meal_plan works for favourite recipes", {
         sort(unique(meal_plan(test_RecipeBook)[["recipe_index"]])),
         6:10
     ))
+    expect_true(all(
+        test_RecipeBook@recipes[["last_eaten"]][6:10] == lubridate::today()
+    ))
+    expect_true(all(is.na(
+        test_RecipeBook@recipes[["last_eaten"]][1:5]
+    )))
 })
 
 test_that("create_meal_plan works for varying days/meals", {
-    meal_plan(test_RecipeBook) <- create_meal_plan(
+    test_RecipeBook <- create_meal_plan(
+        test_RecipeBook,
+        days = c("Wed", "Thurs"),
+        meals = "Dinner"
+    )
+    expect_true(identical(
+        as.character(meal_plan(test_RecipeBook)[["day"]]),
+        c("Wed", "Thurs")
+    ))
+    expect_true(identical(
+        as.character(unique(meal_plan(test_RecipeBook)[["meal"]])),
+        c("Dinner")
+    ))
+})
+
+test_that("create_meal_plan works for varying days/meals", {
+    test_RecipeBook <- create_meal_plan(
         test_RecipeBook,
         days = c("Wed", "Thurs"),
         meals = "Dinner"

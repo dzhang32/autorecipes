@@ -42,7 +42,13 @@ test_that("RecipeBook meal_plan setter works as expected", {
     )
 
     meal_plan(test_RecipeBook) <- test_meal_plan
-    expect_true(identical(meal_plan(test_RecipeBook), test_meal_plan))
+    expect_true(identical(
+        meal_plan(test_RecipeBook),
+        test_meal_plan %>%
+            dplyr::left_join(recipes(test_RecipeBook),
+                by = c("recipe_index" = "index")
+            )
+    ))
 
     expect_message(
         {
