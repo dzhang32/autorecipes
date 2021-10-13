@@ -24,6 +24,8 @@ create_shopping_list <- function(recipebook, method = c("none", "manual", "minim
 #' @keywords internal
 #' @noRd
 .extract_ingredients <- function(recipebook) {
+    # TODO account for when multiple of the same recipe are in meal plan
+    # currently this will not take into account duplicates
     ingredients_df <- recipes(recipebook) %>%
         dplyr::filter(index %in% meal_plan(recipebook)[["recipe_index"]]) %>%
         .[["ingredients"]] %>%
