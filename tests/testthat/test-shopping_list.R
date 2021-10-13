@@ -1,23 +1,23 @@
-test_RecipeBook <- RecipeBook_example
-test_RecipeBook <- create_meal_plan(test_RecipeBook)
+test_recipebook <- recipebook_example
+test_recipebook <- create_meal_plan(test_recipebook)
 
 ##### create_shopping_list #####
 
 test_that("create_shopping_list (none) output looks correct", {
-  test_shopping_list <- create_shopping_list(test_RecipeBook)
+  test_shopping_list <- create_shopping_list(test_recipebook)
   expect_false(any(duplicated(test_shopping_list[["names"]])))
   expect_true(ncol(test_shopping_list) == 2)
   expect_true(any(.all_store_cupboard() %in% test_shopping_list[["names"]]))
 })
 
 test_that("create_shopping_list (minimal) output looks correct", {
-  test_shopping_list <- create_shopping_list(test_RecipeBook, "minimal")
+  test_shopping_list <- create_shopping_list(test_recipebook, "minimal")
   expect_false(any(.all_store_cupboard() %in% test_shopping_list[["names"]]))
 })
 
 test_that("create_shopping_list catches user-input errors", {
   expect_error(
-    create_shopping_list(RecipeBook_example, method = "not_a_method"),
+    create_shopping_list(recipebook_example, method = "not_a_method"),
     "should be one of"
   )
   expect_error(
@@ -25,7 +25,7 @@ test_that("create_shopping_list catches user-input errors", {
     "recipebook must be instance of RecipeBook-class"
   )
   expect_error(
-    create_shopping_list(RecipeBook_example),
+    create_shopping_list(recipebook_example),
     "No meal plan found, have you run create_meal_plan"
   )
 })
@@ -33,7 +33,7 @@ test_that("create_shopping_list catches user-input errors", {
 ##### .filter_shopping_list_manual #####
 
 test_that(".filter_shopping_list_manual output looks correct", {
-  test_shopping_list <- create_shopping_list(test_RecipeBook, method = "none")
+  test_shopping_list <- create_shopping_list(test_recipebook, method = "none")
   test_sc <- .all_store_cupboard()
   # setup testing to mirror manual input
   # based on https://debruine.github.io/posts/interactive-test/
@@ -53,14 +53,14 @@ test_that(".filter_shopping_list_manual output looks correct", {
 ##### .extract_ingredients #####
 
 test_that(".extract_ingredients output looks correct", {
-  recipes_test <- recipes(test_RecipeBook) %>%
-    .[meal_plan(test_RecipeBook)[["recipe_index"]], ]
+  recipes_test <- recipes(test_recipebook) %>%
+    .[meal_plan(test_recipebook)[["recipe_index"]], ]
   ingredients_test <- recipes_test[["ingredients"]] %>%
     lapply(function(x) x@names) %>%
     unlist() %>%
     sort()
 
-  test_ingredients_df <- .extract_ingredients(test_RecipeBook)
+  test_ingredients_df <- .extract_ingredients(test_recipebook)
   expect_true(identical(
     sort(test_ingredients_df[["names"]]),
     ingredients_test

@@ -5,11 +5,11 @@ library(autorecipes)
 
 # Main --------------------------------------------------------------------
 
-RecipeBook_example <- RecipeBook(
+recipebook_example <- RecipeBook(
   names = recipes_example[["title"]],
   ingredients = recipes_example[["ingredients"]]
 )
 
 # Save data ---------------------------------------------------------------
 
-usethis::use_data(RecipeBook_example, overwrite = TRUE)
+usethis::use_data(recipebook_example, overwrite = TRUE)

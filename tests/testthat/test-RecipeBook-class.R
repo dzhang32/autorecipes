@@ -90,11 +90,11 @@ test_that("RecipeBook validator catches user-input errors", {
 })
 
 test_that("RecipeBook validator errors on indexes", {
-  test_RecipeBook <- RecipeBook_example
-  test_RecipeBook@recipes[["index"]][2] <- 3
+  test_recipebook <- recipebook_example
+  test_recipebook@recipes[["index"]][2] <- 3
 
   expect_error(
-    validObject(test_RecipeBook),
+    validObject(test_recipebook),
     "should be equivalent to "
   )
 })

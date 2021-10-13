@@ -5,7 +5,7 @@ NULL
 
 #' @keywords internal
 #' @noRd
-.show_Ingredients <- function(object) {
+.show_ingredients <- function(object) {
   units_no_NA <- units(object)
   units_no_NA[is.na(units_no_NA)] <- ""
 
@@ -22,7 +22,7 @@ NULL
 #'
 #' `show(ingredients)` prints each ingredient.
 #' @importMethodsFrom methods show
-setMethod("show", "Ingredients", .show_Ingredients)
+setMethod("show", "Ingredients", .show_ingredients)
 
 ##### getters #####
 
@@ -55,7 +55,7 @@ units <- function(x) {
 
 #' @keywords internal
 #' @noRd
-.as_data_frame_Ingredients <- function(x) {
+.as_data_frame_ingredients <- function(x) {
   data.frame(
     names = x@names,
     amounts = x@amounts,
@@ -67,4 +67,4 @@ units <- function(x) {
 #' @section Getters:
 #'
 #' `as.data.frame(ingredients)` converts ingredients to a `data.frame`.
-setMethod("as.data.frame", "Ingredients", .as_data_frame_Ingredients)
+setMethod("as.data.frame", "Ingredients", .as_data_frame_ingredients)

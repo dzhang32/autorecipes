@@ -15,7 +15,7 @@
 #' @export
 #'
 #' @examples
-#' recipebook <- create_meal_plan(RecipeBook_example)
+#' recipebook <- create_meal_plan(recipebook_example)
 #'
 #' meal_plan(recipebook)
 create_meal_plan <- function(recipebook,

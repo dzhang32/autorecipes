@@ -5,7 +5,7 @@ NULL
 
 #' @keywords internal
 #' @noRd
-.show_RecipeBook <- function(object) {
+.show_recipebook <- function(object) {
   print(object@recipes)
   return(invisible())
 }
@@ -15,7 +15,7 @@ NULL
 #'
 #' `show(recipebook)` prints the `recipes` as a `tibble::tibble()`.
 #' @importMethodsFrom methods show
-setMethod("show", "RecipeBook", .show_RecipeBook)
+setMethod("show", "RecipeBook", .show_recipebook)
 
 ##### getters #####
 

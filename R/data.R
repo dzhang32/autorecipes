@@ -38,4 +38,4 @@
 #' }
 #'
 #' @source generated using data-raw/recipebook_example.R
-"RecipeBook_example"
+"recipebook_example"

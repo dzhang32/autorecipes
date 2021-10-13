@@ -27,7 +27,7 @@ setClass("RecipeBook",
 
 #' @keywords internal
 #' @noRd
-initialize_RecipeBook <- function(.Object, names, ingredients, ...) {
+initialize_recipebook <- function(.Object, names, ingredients, ...) {
   .Object <- callNextMethod(.Object, ...)
   recipes <- dplyr::tibble(
     index = seq_along(names),
@@ -44,7 +44,7 @@ initialize_RecipeBook <- function(.Object, names, ingredients, ...) {
   return(.Object)
 }
 
-setMethod("initialize", "RecipeBook", initialize_RecipeBook)
+setMethod("initialize", "RecipeBook", initialize_recipebook)
 
 ##### constructor #####
 
@@ -58,7 +58,7 @@ setMethod("initialize", "RecipeBook", initialize_RecipeBook)
 #'   If a `character()`, will be read in using `read_ingredients()`.
 #'
 #' @export
-RecipeBook <- function(names, ingredients) {
+RecipeBook <- function(names, ingredients) { # nolint
   names <- as.character(names)
 
   # allow users to put in a character for ingredients
@@ -137,7 +137,8 @@ read_ingredients <- function(ingredients,
   ingredients_tibble <- ingredients_tibble %>%
     dplyr::mutate(
       amounts = ingredients %>% stringr::str_extract(amounts_regex),
-      units = ingredients %>% stringr::str_extract(units_regex) %>%
+      units = ingredients %>%
+        stringr::str_extract(units_regex) %>%
         stringr::str_trim(),
       names = ingredients %>%
         stringr::str_remove(amounts_regex) %>%

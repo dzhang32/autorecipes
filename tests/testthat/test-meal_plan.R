@@ -1,73 +1,73 @@
-test_RecipeBook <- RecipeBook_example
-test_RecipeBook <- create_meal_plan(test_RecipeBook, set_last_eaten = FALSE)
+test_recipebook <- recipebook_example
+test_recipebook <- create_meal_plan(test_recipebook, set_last_eaten = FALSE)
 
 ##### create_meal_plan #####
 
 test_that("create_meal_plan output looks broadly correct", {
-  expect_true(nrow(meal_plan(test_RecipeBook)) == 14)
-  expect_false(any(duplicated(test_RecipeBook@meal_plan[["recipe_index"]])))
+  expect_true(nrow(meal_plan(test_recipebook)) == 14)
+  expect_false(any(duplicated(test_recipebook@meal_plan[["recipe_index"]])))
   expect_true(all(is.na(
-    test_RecipeBook@recipes[["last_eaten"]]
+    test_recipebook@recipes[["last_eaten"]]
   )))
 })
 
 test_that("create_meal_plan works for a single recipe", {
-  test_RecipeBook@recipes <- test_RecipeBook@recipes[1, ]
-  test_RecipeBook <- create_meal_plan(test_RecipeBook)
+  test_recipebook@recipes <- test_recipebook@recipes[1, ]
+  test_recipebook <- create_meal_plan(test_recipebook)
   expect_true(
-    length(unique(meal_plan(test_RecipeBook)[["recipe_index"]])) == 1
+    length(unique(meal_plan(test_recipebook)[["recipe_index"]])) == 1
   )
   expect_true(
-    test_RecipeBook@recipes[["last_eaten"]] == lubridate::today()
+    test_recipebook@recipes[["last_eaten"]] == lubridate::today()
   )
 })
 
 test_that("create_meal_plan works for favourite recipes", {
-  favourites(test_RecipeBook) <- 6:10
-  test_RecipeBook <- create_meal_plan(
-    test_RecipeBook,
+  favourites(test_recipebook) <- 6:10
+  test_recipebook <- create_meal_plan(
+    test_recipebook,
     fav_only = TRUE
   )
   expect_true(identical(
-    sort(unique(meal_plan(test_RecipeBook)[["recipe_index"]])),
+    sort(unique(meal_plan(test_recipebook)[["recipe_index"]])),
     6:10
   ))
   expect_true(all(
-    test_RecipeBook@recipes[["last_eaten"]][6:10] == lubridate::today()
+    test_recipebook@recipes[["last_eaten"]][6:10] == lubridate::today()
   ))
   expect_true(all(is.na(
-    test_RecipeBook@recipes[["last_eaten"]][1:5]
+    test_recipebook@recipes[["last_eaten"]][1:5]
   )))
 })
 
 test_that("create_meal_plan works for varying days/meals", {
-  test_RecipeBook <- create_meal_plan(
-    test_RecipeBook,
+  test_recipebook <- create_meal_plan(
+    test_recipebook,
     days = c("Wed", "Thurs"),
     meals = "Dinner"
   )
   expect_true(identical(
-    as.character(meal_plan(test_RecipeBook)[["day"]]),
+    as.character(meal_plan(test_recipebook)[["day"]]),
     c("Wed", "Thurs")
   ))
   expect_true(identical(
-    as.character(unique(meal_plan(test_RecipeBook)[["meal"]])),
+    as.character(unique(meal_plan(test_recipebook)[["meal"]])),
     c("Dinner")
   ))
 })
 
 test_that("create_meal_plan works for varying days/meals", {
-  test_RecipeBook <- create_meal_plan(
-    test_RecipeBook,
+  test_recipebook <- create_meal_plan(
+    test_recipebook,
     days = c("Wed", "Thurs"),
     meals = "Dinner"
   )
   expect_true(identical(
-    as.character(meal_plan(test_RecipeBook)[["day"]]),
+    as.character(meal_plan(test_recipebook)[["day"]]),
     c("Wed", "Thurs")
   ))
   expect_true(identical(
-    as.character(unique(meal_plan(test_RecipeBook)[["meal"]])),
+    as.character(unique(meal_plan(test_recipebook)[["meal"]])),
     c("Dinner")
   ))
 })
