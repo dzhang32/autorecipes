@@ -6,8 +6,8 @@ library(autorecipes)
 # Main --------------------------------------------------------------------
 
 RecipeBook_example <- RecipeBook(
-    names = recipes_example[["title"]],
-    ingredients = recipes_example[["ingredients"]]
+  names = recipes_example[["title"]],
+  ingredients = recipes_example[["ingredients"]]
 )
 
 # Save data ---------------------------------------------------------------

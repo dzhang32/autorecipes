@@ -6,8 +6,8 @@ NULL
 #' @keywords internal
 #' @noRd
 .show_RecipeBook <- function(object) {
-    print(object@recipes)
-    return(invisible())
+  print(object@recipes)
+  return(invisible())
 }
 
 #' @rdname RecipeBook-class
@@ -39,7 +39,7 @@ setMethod("length", "RecipeBook", function(x) nrow(x@recipes))
 #' `recipes(recipebook)` obtains the `recipes` as a `tibble::tibble()`.
 #' @export
 recipes <- function(object) {
-    return(object@recipes)
+  return(object@recipes)
 }
 
 #' @rdname RecipeBook-class
@@ -48,14 +48,14 @@ recipes <- function(object) {
 #' `meal_plan(recipebook)` obtains the `meal_plan` as a `tibble::tibble()`.
 #' @export
 meal_plan <- function(object) {
-    if (nrow(object@meal_plan) == 0) {
-        stop("No meal plan found, have you run create_meal_plan()?")
-    }
+  if (nrow(object@meal_plan) == 0) {
+    stop("No meal plan found, have you run create_meal_plan()?")
+  }
 
-    object@meal_plan %>% dplyr::left_join(
-        object@recipes,
-        by = c("recipe_index" = "index")
-    )
+  object@meal_plan %>% dplyr::left_join(
+    object@recipes,
+    by = c("recipe_index" = "index")
+  )
 }
 
 ##### setters #####
@@ -67,19 +67,19 @@ meal_plan <- function(object) {
 #' `RecipeBook-class` object.
 #' @export
 `meal_plan<-` <- function(object, value) {
-    if (nrow(object@meal_plan) != 0) {
-        message("Overwriting existing meal plan")
-    }
+  if (nrow(object@meal_plan) != 0) {
+    message("Overwriting existing meal plan")
+  }
 
-    object@meal_plan <- value
-    validObject(object)
-    object
+  object@meal_plan <- value
+  validObject(object)
+  object
 }
 
 #' @keywords internal
 #' @noRd
 `last_eaten<-` <- function(object, value) {
-    object@recipes[["last_eaten"]][value] <- lubridate::today()
-    validObject(object)
-    object
+  object@recipes[["last_eaten"]][value] <- lubridate::today()
+  validObject(object)
+  object
 }
