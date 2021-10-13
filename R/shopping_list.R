@@ -4,7 +4,8 @@
 #'
 #' @return `tibble::tibble()` containing a shopping list.
 #' @export
-create_shopping_list <- function(recipebook, method = c("none", "manual", "minimal")) {
+create_shopping_list <- function(recipebook,
+                                 method = c("none", "manual", "minimal")) {
   if (!is(recipebook, "RecipeBook")) {
     stop("recipebook must be instance of RecipeBook-class")
   }
@@ -15,7 +16,7 @@ create_shopping_list <- function(recipebook, method = c("none", "manual", "minim
   ingredients_df <- .extract_ingredients(recipebook)
   shopping_list <- .collapse_ingredients(ingredients_df)
 
-  filter_shopping_list_func <- .dispatch_shopping_list_filterer(method)
+  filter_shopping_list_func <- .dispatch_shopping_list_filter(method)
   shopping_list <- filter_shopping_list_func(shopping_list)
 
   return(shopping_list)
@@ -49,7 +50,7 @@ create_shopping_list <- function(recipebook, method = c("none", "manual", "minim
 
 #' @keywords internal
 #' @noRd
-.dispatch_shopping_list_filterer <- function(method) {
+.dispatch_shopping_list_filter <- function(method) {
   switch(method,
     "none" = .filter_shopping_list_none,
     "manual" = .filter_shopping_list_manual,

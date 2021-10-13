@@ -51,7 +51,8 @@ units for each ingredient.
 \section{Constructor}{
 
 
-\code{Ingredients(names, amounts, units)} creates an object of \code{Ingredients-class}.
+\code{Ingredients(names, amounts, units)} creates an object of
+\code{Ingredients-class}.
 }
 
 \section{Displaying}{

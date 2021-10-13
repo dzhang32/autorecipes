@@ -25,10 +25,10 @@ Read in a list of ingredients from a character vector
 }
 \examples{
 read_ingredients(
-    c(
-        "butter;6 eggs;1 bag coriander;1 punnet mixed baby tomatoes",
-        "1 tsp garam masala;1 bag baby spinach;1 lemon;1 chilli"
-    ),
-    delim = ";"
+  c(
+    "butter;6 eggs;1 bag coriander;1 punnet mixed baby tomatoes",
+    "1 tsp garam masala;1 bag baby spinach;1 lemon;1 chilli"
+  ),
+  delim = ";"
 )
 }

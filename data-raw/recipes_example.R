@@ -18,7 +18,7 @@ tidy_instructions <- function(instruction) {
     as.integer()
 
   # check we only find 1 of each [1-9]\\. and all are present
-  stopifnot(all.equal(ins_order %>% sort(), seq_along(ins_order)))
+  stopifnot(all.equal(sort(ins_order), seq_along(ins_order)))
 
   ins_text <- instruction %>%
     stringr::str_split("[1-9][0-9]?\\. ") %>%
