@@ -33,12 +33,13 @@ setClass("Ingredients",
 #'
 #' @section Constructor:
 #'
-#' `Ingredients(names, amounts, units)` creates an object of `Ingredients-class`.
+#'   `Ingredients(names, amounts, units)` creates an object of
+#'   `Ingredients-class`.
 #'
 #' @param names `character()` name of each ingredient.
 #' @param amounts `numeric()` amount of each ingredient.
 #' @param units `character()` units for the amount of each ingredient.
-Ingredients <- function(names,
+Ingredients <- function(names, # nolint
                         amounts = 1,
                         units = rep(NA_character_, length(names))) {
   names <- stringr::str_to_lower(names)
@@ -63,14 +64,14 @@ Ingredients <- function(names,
 
 #' @keywords internal
 #' @noRd
-.valid_Ingredients <- function(object) {
+.valid_ingredients <- function(object) {
   valid_units <- .all_valid_units()
 
-  if (.check_Ingredient_names_amounts_length(object)) {
+  if (.check_names_amounts_length(object)) {
     "object@names and object@amounts must have equal lengths"
-  } else if (.check_Ingredient_names(object)) {
+  } else if (.check_names_upper_case(object)) {
     "All object@names values must be lower case"
-  } else if (.check_Ingredient_units(object, valid_units)) {
+  } else if (.check_valid_units(object, valid_units)) {
     paste(
       "object@units must be the same length as",
       "object@names and object@amounts and be one of;",
@@ -81,24 +82,24 @@ Ingredients <- function(names,
   }
 }
 
-setValidity("Ingredients", .valid_Ingredients)
+setValidity("Ingredients", .valid_ingredients)
 
 #' @keywords internal
 #' @noRd
-.check_Ingredient_names_amounts_length <- function(object) {
+.check_names_amounts_length <- function(object) {
   return(length(object@names) != length(object@amounts))
 }
 
 #' @keywords internal
 #' @noRd
-.check_Ingredient_names <- function(object) {
+.check_names_upper_case <- function(object) {
   # check all ingredient names are lowercase
   return(any(stringr::str_detect(object@names, "[[:upper:]]")))
 }
 
 #' @keywords internal
 #' @noRd
-.check_Ingredient_units <- function(object, valid_units) {
+.check_valid_units <- function(object, valid_units) {
   check_units <- FALSE
 
   if (length(object@names) != length(object@units)) {
