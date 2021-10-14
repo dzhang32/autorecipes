@@ -56,5 +56,5 @@ meal_plan(recipebook)
 
 ```{r create-shopping-list}
 
-x <- create_shopping_list(recipebook, method = "manual")
+create_shopping_list(recipebook, method = "minimal")
 ```
