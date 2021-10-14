@@ -103,12 +103,20 @@ create_meal_plan <- function(recipebook,
 #' @keywords internal
 #' @noRd
 .create_meal_plan_random <- function(recipes, num_required) {
-  replace <- if (nrow(recipes) < num_required) TRUE else FALSE
+  # need to extract [["index"]] vs seq_along()
+  # in the case recipes are filtered by favourites()
+  # while used to make sure recipes don't repeat until they're all used once
+  # avoid e.g. 1, 1, 1, 3, 4 ... occurring if replace = TRUE
+  chosen_recipe_indexes <- c()
 
-  chosen_recipe_indexes <- sample(
-    recipes[["index"]], num_required,
-    replace = replace
-  )
+  while (length(chosen_recipe_indexes) < num_required) {
+    chosen_recipe_indexes <- c(
+      chosen_recipe_indexes,
+      sample(recipes[["index"]], nrow(recipes))
+    )
+  }
+
+  chosen_recipe_indexes <- chosen_recipe_indexes[1:num_required]
 
   return(chosen_recipe_indexes)
 }
