@@ -56,6 +56,5 @@ meal_plan(recipebook)
 
 ```{r create-shopping-list}
 
-# x <- create_shopping_list(recipebook, method = "manual")
-# x %>% readr::write_delim("/Users/david_zhang/Downloads/shopping_list_dz_cjkg.txt", delim = "\t")
+x <- create_shopping_list(recipebook, method = "manual")
 ```

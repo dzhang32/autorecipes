@@ -6,13 +6,13 @@ NULL
 #' @keywords internal
 #' @noRd
 .show_ingredients <- function(object) {
-  units_no_NA <- units(object)
-  units_no_NA[is.na(units_no_NA)] <- ""
+  units_no_na <- units(object)
+  units_no_na[is.na(units_no_na)] <- ""
 
   cat(stringr::str_c(
     amounts(object), " ",
-    units_no_NA,
-    ifelse(units_no_NA == "", "", " "),
+    units_no_na,
+    ifelse(units_no_na == "", "", " "),
     names(object), "\n"
   ), sep = "")
 }
