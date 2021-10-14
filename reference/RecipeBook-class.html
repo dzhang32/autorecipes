@@ -85,7 +85,8 @@
 <span class="co"># S4 method for RecipeBook,character</span>
 <span class="fu">favourites</span><span class="op">(</span><span class="va">object</span>, con <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/showConnections.html">stdin</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></code></pre></div>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <div id="arguments">
+    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>names</th>
       <td><p><code><a href="https://rdrr.io/r/base/character.html">character()</a></code> containing the name of of recipes.</p></td>
     </tr><tr><th>ingredients</th>
@@ -103,8 +104,10 @@ favourite, an <code><a href="https://rdrr.io/r/base/logical.html">logical()</a><
       <td><p>additional arguments passed on the <code>favourite&lt;-</code> methods.</p></td>
     </tr><tr><th>con</th>
       <td><p>a <a href="https://rdrr.io/r/base/connections.html">connection</a> object or a character string.</p></td>
-    </tr></table><h2 class="hasAnchor" id="slots"><a class="anchor" href="#slots"></a>Slots</h2>
+    </tr></table></div>
 
+    <div id="slots">
+    <h2>Slots<a class="anchor" aria-label="anchor" href="#slots"></a></h2>
     
 
 <dl><dt><code>recipes</code></dt><dd><p><code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble::tibble()</a></code> storing the names, ingredients and
@@ -113,20 +116,23 @@ favourites status of recipes.</p></dd>
 <dt><code>meal_plan</code></dt><dd><p><code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble::tibble()</a></code> storing a meal plan, created by <code>recipes</code>
 using <code><a href="create_meal_plan.html">create_meal_plan()</a></code>.</p></dd>
 
-</dl><h2 class="hasAnchor" id="constructor"><a class="anchor" href="#constructor"></a>Constructor</h2>
-
+</dl></div>
+    <div id="constructor">
+    <h2>Constructor<a class="anchor" aria-label="anchor" href="#constructor"></a></h2>
     
 
 
 <p><code>RecipeBook(names, ingredients)</code> creates an object of <code>RecipeBook-class</code>.</p>
-    <h2 class="hasAnchor" id="displaying"><a class="anchor" href="#displaying"></a>Displaying</h2>
-
+    </div>
+    <div id="displaying">
+    <h2>Displaying<a class="anchor" aria-label="anchor" href="#displaying"></a></h2>
     
 
 
 <p><code>show(recipebook)</code> prints the <code>recipes</code> as a <code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble::tibble()</a></code>.</p>
-    <h2 class="hasAnchor" id="getters"><a class="anchor" href="#getters"></a>Getters</h2>
-
+    </div>
+    <div id="getters">
+    <h2>Getters<a class="anchor" aria-label="anchor" href="#getters"></a></h2>
     
 
 
@@ -143,8 +149,9 @@ using <code><a href="create_meal_plan.html">create_meal_plan()</a></code>.</p></
 
 
 <p><code>favourites(recipebook)</code> obtains the <code>recipes</code> marked as favourites.</p>
-    <h2 class="hasAnchor" id="setters"><a class="anchor" href="#setters"></a>Setters</h2>
-
+    </div>
+    <div id="setters">
+    <h2>Setters<a class="anchor" aria-label="anchor" href="#setters"></a></h2>
     
 
 
@@ -159,6 +166,7 @@ using <code><a href="create_meal_plan.html">create_meal_plan()</a></code>.</p></
 
 
 <p><code>favourites(recipebook) &lt;- "manual"</code> set favourite <code>recipes</code> manually.</p>
+    </div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
