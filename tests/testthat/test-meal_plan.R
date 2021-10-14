@@ -56,6 +56,32 @@ test_that("create_meal_plan works for varying days/meals", {
   ))
 })
 
+##### .create_meal_plan_auto #####
+
+test_that(".create_meal_plan_auto works correctly", {
+  test_recipebook@recipes[["last_eaten"]][1:2] <- lubridate::today()
+  test_recipebook@recipes[["last_eaten"]][3:4] <- lubridate::today() - 5
+
+  set.seed(32)
+  test_recipe_indexes <- .create_meal_plan_auto(
+    recipes = test_recipebook@recipes[1:6, ],
+    num_required = 3
+  )
+
+  exp_rank <- rep(1:3, 2) %>%
+    sort() %>%
+    rank()
+  exp_prob <- exp_rank / sum(exp_rank)
+  set.seed(32)
+  exp_recipe_indexes <- sample(1:6, 3, prob = exp_prob)
+
+  expect_true(length(test_recipe_indexes) == 3)
+  expect_true(identical(
+    test_recipe_indexes,
+    exp_recipe_indexes
+  ))
+})
+
 ##### .create_meal_plan_random #####
 
 test_that(".create_meal_plan_random works correctly", {

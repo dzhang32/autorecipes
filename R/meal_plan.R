@@ -119,14 +119,41 @@ weekdays <- function(which_days = NULL) {
 #' @noRd
 .dispatch_meal_planner <- function(method) {
   switch(method,
-    "auto" = .create_meal_plan_random,
+    "auto" = .create_meal_plan_auto,
     "random" = .create_meal_plan_random
   )
 }
 
 #' @keywords internal
 #' @noRd
-.create_meal_plan_random <- function(recipes, num_required) {
+.create_meal_plan_auto <- function(recipes, num_required) {
+  if (!all(is.na(recipes[["last_eaten"]]))) {
+    # set a probability such that the later the recipe was last eaten
+    # greater the chance it's picked
+    prob <- recipes %>%
+      dplyr::mutate(
+        last_eaten = dplyr::if_else( # change NAs (never) to earliest date - 1
+          is.na(last_eaten),
+          min(last_eaten, na.rm = TRUE) - 1,
+          last_eaten
+        ),
+        rank_last_eaten = rank(last_eaten), # rank, available method only does asc
+        rank_last_eaten = rank(-rank_last_eaten), # so re-rank on -rank for desc
+        prob = rank_last_eaten / sum(rank_last_eaten) # normalise ranks into prob
+      ) %>%
+      .[["prob"]]
+  } else {
+    prob <- NULL
+  }
+
+  chosen_recipe_indexes <- .create_meal_plan_random(recipes, num_required, prob)
+
+  return(chosen_recipe_indexes)
+}
+
+#' @keywords internal
+#' @noRd
+.create_meal_plan_random <- function(recipes, num_required, prob = NULL) {
   # need to extract [["index"]] vs seq_along()
   # in the case recipes are filtered by favourites()
   # while used to make sure recipes don't repeat until they're all used once
@@ -136,7 +163,7 @@ weekdays <- function(which_days = NULL) {
   while (length(chosen_recipe_indexes) < num_required) {
     chosen_recipe_indexes <- c(
       chosen_recipe_indexes,
-      sample(recipes[["index"]], nrow(recipes))
+      sample(recipes[["index"]], nrow(recipes), prob = prob)
     )
   }
 
