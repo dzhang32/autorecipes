@@ -164,7 +164,7 @@ read_ingredients <- function(ingredients,
 
 #' @keywords internal
 #' @noRd
-.valid_recipeBook <- function(object) {
+.valid_recipebook <- function(object) {
   if (.check_recipes_nrow(object)) {
     "object@recipes must have > 0 rows"
   } else if (.check_recipes_colnames(object)) {
@@ -197,7 +197,7 @@ read_ingredients <- function(ingredients,
   }
 }
 
-setValidity("RecipeBook", .valid_recipeBook)
+setValidity("RecipeBook", .valid_recipebook)
 
 #' @keywords internal
 #' @noRd

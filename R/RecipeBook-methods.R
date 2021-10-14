@@ -66,7 +66,7 @@ meal_plan <- function(object) {
 #' `meal_plan(recipebook) <- meal_plan` stores the meal plan inside a
 #' `RecipeBook-class` object.
 #' @export
-`meal_plan<-` <- function(object, value) {
+`meal_plan<-` <- function(object, value) { # nolint
   if (nrow(object@meal_plan) != 0) {
     message("Overwriting existing meal plan")
   }
@@ -78,7 +78,7 @@ meal_plan <- function(object) {
 
 #' @keywords internal
 #' @noRd
-`last_eaten<-` <- function(object, value) {
+`last_eaten<-` <- function(object, value) { # nolint
   object@recipes[["last_eaten"]][value] <- lubridate::today()
   validObject(object)
   object
