@@ -83,9 +83,9 @@
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/dzhang32/autorecipes" class="external-link">autorecipes</a></span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Attaching package: 'autorecipes'</span>
-<span class="co">#&gt; The following object is masked from 'package:base':</span>
+<span class="co">#&gt; The following objects are masked from 'package:base':</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;     units</span>
+<span class="co">#&gt;     units, weekdays</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></code></pre></div>
 <div id="usage" class="section level1">
 <h1 class="hasAnchor">
@@ -141,19 +141,39 @@
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 7</span></span>
 <span class="co">#&gt;   day   meal   recipe_index names                   ingredients fav   last_eaten</span>
 <span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Wed   Dinner            1 Akoori Eggs with Spina… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-13</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Thurs Dinner            1 Akoori Eggs with Spina… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-13</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Fri   Dinner            2 Crispy Duck with Fava … <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-13</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Sat   Dinner            1 Akoori Eggs with Spina… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-13</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Sun   Dinner            3 Chicken with Rosemary … <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-13</span></code></pre></div>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Wed   Dinner            2 Crispy Duck with Fava … <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-14</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Thurs Dinner            1 Akoori Eggs with Spina… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-14</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Fri   Dinner            3 Chicken with Rosemary … <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-14</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Sat   Dinner            1 Akoori Eggs with Spina… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-14</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Sun   Dinner            2 Crispy Duck with Fava … <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-14</span></code></pre></div>
 </div>
 <div id="create-shopping-list" class="section level2">
 <h2 class="hasAnchor">
 <a href="#create-shopping-list" class="anchor" aria-hidden="true"></a>Create shopping list</h2>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="co"># x &lt;- create_shopping_list(recipebook, method = "manual")</span>
-<span class="co"># x %&gt;% readr::write_delim("/Users/david_zhang/Downloads/shopping_list_dz_cjkg.txt", delim = "\t")</span></code></pre></div>
+<span class="fu"><a href="../reference/create_shopping_list.html">create_shopping_list</a></span><span class="op">(</span><span class="va">recipebook</span>, method <span class="op">=</span> <span class="st">"minimal"</span><span class="op">)</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 18 × 2</span></span>
+<span class="co">#&gt;    names                   n</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> rosemary                2</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> baby spinach            1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> chicken drumsticks      1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> chicken thighs          1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> chilli                  1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> coriander               1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> duck legs               1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fava beans              1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> french beans            1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> garam masala            1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">11</span> mixed baby tomatoes     1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">12</span> plums                   1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">13</span> potatoes                1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">14</span> rainbow carrots         1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">15</span> salad potatoes          1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">16</span> savoy cabbage           1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">17</span> thyme                   1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">18</span> white wine              1</span></code></pre></div>
 </div>
 </div>
   </div>
