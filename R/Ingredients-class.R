@@ -56,7 +56,7 @@ Ingredients <- function(names, # nolint
 #' @keywords internal
 #' @noRd
 .convert_fractions <- function(x) {
-  sapply(x, function(y) eval(parse(text = y))) %>%
+  purrr::map_dbl(x, function(y) eval(parse(text = y))) %>%
     unname()
 }
 

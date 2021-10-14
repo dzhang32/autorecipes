@@ -88,33 +88,6 @@ create_meal_plan <- function(recipebook,
   return(calendar)
 }
 
-weekdays <- function(which_days = NULL) {
-  valid_days <- c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun")
-
-  if (is.numeric(which_days)) {
-    which_days <- unique(as.integer(which_days))
-
-    if (any(!which_days %in% seq_along(valid_days))) {
-      stop("When an numeric, which_days must be one of 1:7")
-    }
-
-    chosen_days <- valid_days[which_days]
-  } else if (is.character(valid_days)) {
-    if (!all(days %in% valid_days)) {
-      stop(
-        "When an character, which_days must be one of 1:7",
-        stringr::str_c(valid_days, collapse = ",")
-      )
-    }
-
-    chosen_days <- valid_days[valid_days %in% which_days]
-  } else if (is.null(which_days)) {
-    chosen_days <- valid_days
-  }
-
-  return(chosen_days)
-}
-
 #' @keywords internal
 #' @noRd
 .dispatch_meal_planner <- function(method) {
