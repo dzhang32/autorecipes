@@ -56,20 +56,19 @@ test_that("create_meal_plan works for varying days/meals", {
   ))
 })
 
-test_that("create_meal_plan works for varying days/meals", {
-  test_recipebook <- create_meal_plan(
-    test_recipebook,
-    c("Wed", "Thurs"),
-    "Dinner"
+##### .create_meal_plan_random #####
+
+test_that(".create_meal_plan_random works correctly", {
+  test_recipe_indexes <- .create_meal_plan_random(
+    recipes = test_recipebook@recipes[1:10, ],
+    num_required = 20
   )
-  expect_true(identical(
-    as.character(meal_plan(test_recipebook)[["day"]]),
-    c("Wed", "Thurs")
-  ))
-  expect_true(identical(
-    as.character(unique(meal_plan(test_recipebook)[["meal"]])),
-    c("Dinner")
-  ))
+
+  expect_true(length(test_recipe_indexes) == 20)
+
+  # make sure that the first 10 recipes do not repeat
+  expect_true(length(unique(test_recipe_indexes[1:10])) == 10)
+  expect_true(length(unique(test_recipe_indexes)) == 10)
 })
 
 ##### .create_calendar #####
