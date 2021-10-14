@@ -51,9 +51,7 @@ test_that("RecipeBook meal_plan setter works as expected", {
   ))
 
   expect_message(
-    {
-      meal_plan(test_recipebook) <- test_meal_plan
-    },
+    meal_plan(test_recipebook) <- test_meal_plan,
     "Overwriting existing meal plan"
   )
 })
