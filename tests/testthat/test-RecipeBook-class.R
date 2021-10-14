@@ -65,6 +65,19 @@ test_that("RecipeBook can be constructed using character as ingredients", {
 ##### validator #####
 
 test_that("RecipeBook validator catches user-input errors", {
+  test_recipebook <- recipebook_example
+  test_recipebook <- create_meal_plan(
+    test_recipebook,
+    days = c("Wed", "Thurs"),
+    meals = "Dinner"
+  )
+
+  test_recipebook@meal_plan[["days"]][1] <- "not_a_weekday"
+  expect_error(
+    validObject(test_recipebook),
+    "must all be one of"
+  )
+
   expect_error(
     new("RecipeBook", names = character(), ingredients = integer()),
     "object@recipes must have > 0 rows"

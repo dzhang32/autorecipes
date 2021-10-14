@@ -185,8 +185,13 @@ read_ingredients <- function(ingredients,
     "object@recipes[['fav']] must be logical"
   } else if (.check_recipes_last_eaten(object)) {
     "object@recipes[['last_eaten']] must of class Date"
-  } else if (.check_meal_plan(object)) {
+  } else if (.check_meal_plan_colnames(object)) {
     "object@meal_plan must have the columns; 'day', 'meal', 'recipe_index'"
+  } else if (.check_meal_plan_days(object)) {
+    paste(
+      "object@meal_plan[['days']] must all be one of:",
+      stringr::str_c(weekdays(), collapse = ", ")
+    )
   } else {
     TRUE
   }
@@ -254,7 +259,7 @@ setValidity("RecipeBook", .valid_RecipeBook)
   return(!lubridate::is.Date(object@recipes[["last_eaten"]]))
 }
 
-.check_meal_plan <- function(object) {
+.check_meal_plan_colnames <- function(object) {
   check_meal_plan <- FALSE
   if (nrow(object@meal_plan) > 0) {
     if (!all(
@@ -264,4 +269,9 @@ setValidity("RecipeBook", .valid_RecipeBook)
     }
   }
   return(check_meal_plan)
+}
+
+.check_meal_plan_days <- function(object) {
+  valid_days <- weekdays()
+  return(any(!(object@meal_plan[["days"]] %in% valid_days)))
 }
