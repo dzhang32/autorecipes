@@ -16,7 +16,11 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 coverage](https://codecov.io/gh/dzhang32/autorecipes/branch/master/graph/badge.svg)](https://codecov.io/gh/dzhang32/autorecipes?branch=master)
 <!-- badges: end -->
 
-The goal of `autorecipes` is to …
+`autorecipes` automates your recipe planning by taking care of:
+
+1.  Creating and storing a database of recipes.
+2.  Generating a weekly meal plan.
+3.  Deriving your shopping list of ingredients.
 
 ## Installation instructions
 
@@ -29,15 +33,49 @@ devtools::install_github("dzhang32/autorecipes")
 
 ## Usage
 
-This is a basic example which shows you how to solve a common problem:
+Below is a basic illustration of how to use `autorecipes`. For a more
+comprehensive overview, please read the
+[vignette](https://dzhang32.github.io/autorecipes/articles/autorecipes.html).
 
 ``` r
 library("autorecipes")
 #> 
 #> Attaching package: 'autorecipes'
-#> The following object is masked from 'package:base':
+#> The following objects are masked from 'package:base':
 #> 
-#>     units
+#>     units, weekdays
+# autorecipes contains an example set of recipes in recipebook_example
+# recipes stored in RecipeBook-class objects can be retrieved using recipes()
+head(recipes(recipebook_example))
+#> # A tibble: 6 × 5
+#>   index names                                            ingredients fav   last_eaten
+#>   <int> <chr>                                            <list>      <lgl> <date>    
+#> 1     1 Akoori Eggs with Spinach & Potato                <Ingrdnts>  FALSE NA        
+#> 2     2 Crispy Duck with Fava Beans & Caramelised Onions <Ingrdnts>  FALSE NA        
+#> 3     3 Chicken with Rosemary Plumns                     <Ingrdnts>  FALSE NA        
+#> 4     4 Chickpea & Sweet Potato Masala                   <Ingrdnts>  FALSE NA        
+#> 5     5 Gaucho Steaks with Chimichurri Salad             <Ingrdnts>  FALSE NA        
+#> 6     6 Chipotle Bean Taco Salad                         <Ingrdnts>  FALSE NA
+# create a meal plan for your lunch and dinner across all weekdays
+recipebook <- create_meal_plan(recipebook_example)
+meal_plan(recipebook)
+#> # A tibble: 14 × 7
+#>    day   meal   recipe_index names                  ingredients fav   last_eaten
+#>    <fct> <fct>         <int> <chr>                  <list>      <lgl> <date>    
+#>  1 Mon   Lunch            25 Korean Beef & Kimchi … <Ingrdnts>  FALSE 2021-10-14
+#>  2 Mon   Dinner           16 Creamy Pollock, Samph… <Ingrdnts>  FALSE 2021-10-14
+#>  3 Tues  Lunch             3 Chicken with Rosemary… <Ingrdnts>  FALSE 2021-10-14
+#>  4 Tues  Dinner            7 Steak Tagliata & Roas… <Ingrdnts>  FALSE 2021-10-14
+#>  5 Wed   Lunch             2 Crispy Duck with Fava… <Ingrdnts>  FALSE 2021-10-14
+#>  6 Wed   Dinner           11 Pink Grapefruit, Mint… <Ingrdnts>  FALSE 2021-10-14
+#>  7 Thurs Lunch             1 Akoori Eggs with Spin… <Ingrdnts>  FALSE 2021-10-14
+#>  8 Thurs Dinner           13 Creamy Chicken & Much… <Ingrdnts>  FALSE 2021-10-14
+#>  9 Fri   Lunch            24 Mexican Enchiladas     <Ingrdnts>  FALSE 2021-10-14
+#> 10 Fri   Dinner            9 Squash, Corn & Tomati… <Ingrdnts>  FALSE 2021-10-14
+#> 11 Sat   Lunch            26 Afghan Spliced Squash  <Ingrdnts>  FALSE 2021-10-14
+#> 12 Sat   Dinner            4 Chickpea & Sweet Pota… <Ingrdnts>  FALSE 2021-10-14
+#> 13 Sun   Lunch            19 Beef & Spinach Lasagne <Ingrdnts>  FALSE 2021-10-14
+#> 14 Sun   Dinner           12 Honey & Sesame Buffal… <Ingrdnts>  FALSE 2021-10-14
 ```
 
 ## Code of Conduct

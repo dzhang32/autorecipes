@@ -23,22 +23,36 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/dzhang32/autorecipes/branch/master/graph/badge.svg)](https://codecov.io/gh/dzhang32/autorecipes?branch=master)
 <!-- badges: end -->
 
-The goal of `autorecipes` is to ...
+`autorecipes` automates your recipe planning by taking care of: 
+
+  1. Creating and storing a database of recipes.
+  2. Generating a weekly meal plan. 
+  3. Deriving your shopping list of ingredients. 
 
 ## Installation instructions
 
 And the development version from [GitHub](https://github.com/dzhang32/autorecipes) with:
 
-```{r 'install_dev', eval = FALSE}
+```{r install_dev, eval = FALSE}
 devtools::install_github("dzhang32/autorecipes")
 ```
 
 ## Usage
 
-This is a basic example which shows you how to solve a common problem:
+Below is a basic illustration of how to use `autorecipes`. For a more comprehensive overview, please read the [vignette](https://dzhang32.github.io/autorecipes/articles/autorecipes.html). 
 
 ```{r example, eval = requireNamespace('autorecipes')}
+
 library("autorecipes")
+
+# autorecipes contains an example set of recipes in recipebook_example
+# recipes stored in RecipeBook-class objects can be retrieved using recipes()
+head(recipes(recipebook_example))
+
+
+# create a meal plan for your lunch and dinner across all weekdays
+recipebook <- create_meal_plan(recipebook_example)
+meal_plan(recipebook)
 ```
 
 ## Code of Conduct
