@@ -45,4 +45,5 @@ Collate:
     'globals.R'
     'meal_plan.R'
     'shopping_list.R'
+    'utils.R'
 VignetteBuilder: knitr
