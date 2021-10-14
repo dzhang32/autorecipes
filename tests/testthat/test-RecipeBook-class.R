@@ -68,8 +68,8 @@ test_that("RecipeBook validator catches user-input errors", {
   test_recipebook <- recipebook_example
   test_recipebook <- create_meal_plan(
     test_recipebook,
-    days = c("Wed", "Thurs"),
-    meals = "Dinner"
+    c("Wed", "Thurs"),
+    "Dinner"
   )
 
   test_recipebook@meal_plan[["days"]][1] <- "not_a_weekday"

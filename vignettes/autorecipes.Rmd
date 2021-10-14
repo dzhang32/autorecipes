@@ -45,7 +45,7 @@ recipes(recipebook) %>% head()
 
 recipebook <- create_meal_plan(
   recipebook,
-  days = c("Wed", "Thurs", "Fri", "Sat", "Sun"), meals = "Dinner",
+  which_days = c("Wed", "Thurs", "Fri", "Sat", "Sun"), which_meals = "Dinner",
   fav_only = TRUE
 )
 

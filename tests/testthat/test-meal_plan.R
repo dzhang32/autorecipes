@@ -43,8 +43,8 @@ test_that("create_meal_plan works for favourite recipes", {
 test_that("create_meal_plan works for varying days/meals", {
   test_recipebook <- create_meal_plan(
     test_recipebook,
-    days = c("Wed", "Thurs"),
-    meals = "Dinner"
+    c("Wed", "Thurs"),
+    "Dinner"
   )
   expect_true(identical(
     as.character(meal_plan(test_recipebook)[["day"]]),
@@ -59,8 +59,8 @@ test_that("create_meal_plan works for varying days/meals", {
 test_that("create_meal_plan works for varying days/meals", {
   test_recipebook <- create_meal_plan(
     test_recipebook,
-    days = c("Wed", "Thurs"),
-    meals = "Dinner"
+    c("Wed", "Thurs"),
+    "Dinner"
   )
   expect_true(identical(
     as.character(meal_plan(test_recipebook)[["day"]]),
@@ -92,8 +92,8 @@ test_that(".create_calendar output looks correct", {
 
 test_that(".create_calendar works with when filtering by days/meals", {
   test_calendar <- .create_calendar(
-    days = c("Mon", "Sun"),
-    meals = c("Lunch")
+    c("Mon", "Sun"),
+    c("Lunch")
   )
 
   expect_true(nrow(test_calendar) == 2)
@@ -109,22 +109,17 @@ test_that(".create_calendar works with when filtering by days/meals", {
 
 test_that(".create_calendar works catches input errors", {
   expect_error(
-    .create_calendar(days = c("mon")),
-    "days must be one of: Mon, Tues, Wed, Thurs, Fri, Sat, Sun"
+    .create_calendar(which_days = c("mon")),
+    "which_days must be one of: Mon, Tues, Wed, Thurs, Fri, Sat, Sun"
   )
 
   expect_error(
-    .create_calendar(meals = c("lunch")),
+    .create_calendar(which_meals = c("lunch")),
     "meals must be one of: Lunch, Dinner"
   )
 
   expect_warning(
-    .create_calendar(days = c("Mon", "Mon")),
-    "days or meals must not contain duplicated values, coercing"
-  )
-
-  expect_warning(
-    .create_calendar(meals = c("Lunch", "Lunch")),
-    "days or meals must not contain duplicated values, coercing"
+    .create_calendar(which_meals = c("Lunch", "Lunch")),
+    "which_meals must not contain duplicated values, coercing"
   )
 })

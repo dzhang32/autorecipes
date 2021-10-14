@@ -6,8 +6,8 @@
 \usage{
 create_meal_plan(
   recipebook,
-  days = c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"),
-  meals = c("Lunch", "Dinner"),
+  which_days = weekdays(),
+  which_meals = c("Lunch", "Dinner"),
   method = c("auto", "random"),
   fav_only = FALSE,
   set_last_eaten = TRUE
@@ -16,9 +16,9 @@ create_meal_plan(
 \arguments{
 \item{recipebook}{a \code{RecipeBook-class} object.}
 
-\item{days}{\code{character()} which days of the week to plan for.}
+\item{which_days}{\code{character()} which days of the week to plan for.}
 
-\item{meals}{\code{character()} which meals to plan for, out of "Lunch" and
+\item{which_meals}{\code{character()} which meals to plan for, out of "Lunch" and
 "Dinner".}
 
 \item{method}{\code{character()} the method to use when creating a meal plan.}

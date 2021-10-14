@@ -1,8 +1,8 @@
 #' Create a meal plan
 #'
 #' @param recipebook a `RecipeBook-class` object.
-#' @param days `character()` which days of the week to plan for.
-#' @param meals `character()` which meals to plan for, out of "Lunch" and
+#' @param which_days `character()` which days of the week to plan for.
+#' @param which_meals `character()` which meals to plan for, out of "Lunch" and
 #'   "Dinner".
 #' @param method `character()` the method to use when creating a meal plan.
 #' @param fav_only `logical()` whether to create a meal plan only using
@@ -19,8 +19,8 @@
 #'
 #' meal_plan(recipebook)
 create_meal_plan <- function(recipebook,
-                             days = c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"),
-                             meals = c("Lunch", "Dinner"),
+                             which_days = weekdays(),
+                             which_meals = c("Lunch", "Dinner"),
                              method = c("auto", "random"),
                              fav_only = FALSE,
                              set_last_eaten = TRUE) {
@@ -30,7 +30,7 @@ create_meal_plan <- function(recipebook,
   validObject(recipebook)
 
   method <- match.arg(method)
-  calendar <- .create_calendar(days, meals)
+  calendar <- .create_calendar(which_days, which_meals)
 
   meal_plan_func <- .dispatch_meal_planner(method)
 
@@ -53,30 +53,27 @@ create_meal_plan <- function(recipebook,
   meal_plan(recipebook) <- calendar %>%
     dplyr::mutate(recipe_index = chosen_recipe_indexes)
 
+  validObject(recipebook)
+
   return(recipebook)
 }
 
 #' @keywords internal
 #' @noRd
-.create_calendar <- function(days = c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"),
-                             meals = c("Lunch", "Dinner")) {
-  valid_days <- c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun")
+.create_calendar <- function(which_days = weekdays(),
+                             which_meals = c("Lunch", "Dinner")) {
+  valid_days <- weekdays()
   valid_meals <- c("Lunch", "Dinner")
 
-  if (any(duplicated(days)) | any(duplicated(meals))) {
-    warning("days or meals must not contain duplicated values, coercing")
-    days <- unique(days)
-    meals <- unique(meals)
+  # will de-duplicate and check which_days are valid
+  which_days <- weekdays(which_days)
+
+  if (any(duplicated(which_meals))) {
+    warning("which_meals must not contain duplicated values, coercing")
+    which_meals <- unique(which_meals)
   }
 
-  if (any(!(days %in% valid_days))) {
-    stop(
-      "days must be one of: ",
-      stringr::str_c(valid_days, collapse = ", ")
-    )
-  }
-
-  if (any(!(meals %in% valid_meals))) {
+  if (any(!(which_meals %in% valid_meals))) {
     stop(
       "meals must be one of: ",
       stringr::str_c(valid_meals, collapse = ", ")
@@ -84,11 +81,38 @@ create_meal_plan <- function(recipebook,
   }
 
   calendar <- tidyr::expand_grid(
-    day = factor(days, levels = valid_days),
-    meal = factor(meals, levels = valid_meals)
+    day = factor(which_days, levels = valid_days),
+    meal = factor(which_meals, levels = valid_meals)
   )
 
   return(calendar)
+}
+
+weekdays <- function(which_days = NULL) {
+  valid_days <- c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun")
+
+  if (is.numeric(which_days)) {
+    which_days <- unique(as.integer(which_days))
+
+    if (any(!which_days %in% seq_along(valid_days))) {
+      stop("When an numeric, which_days must be one of 1:7")
+    }
+
+    chosen_days <- valid_days[which_days]
+  } else if (is.character(valid_days)) {
+    if (!all(days %in% valid_days)) {
+      stop(
+        "When an character, which_days must be one of 1:7",
+        stringr::str_c(valid_days, collapse = ",")
+      )
+    }
+
+    chosen_days <- valid_days[valid_days %in% which_days]
+  } else if (is.null(which_days)) {
+    chosen_days <- valid_days
+  }
+
+  return(chosen_days)
 }
 
 #' @keywords internal

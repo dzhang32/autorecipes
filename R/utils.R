@@ -28,7 +28,7 @@ weekdays <- function(which_days = NULL) {
     if (!all(which_days %in% valid_days)) {
       stop(
         "When an character, which_days must be one of: ",
-        stringr::str_c(valid_days, collapse = ",")
+        stringr::str_c(valid_days, collapse = ", ")
       )
     }
 
