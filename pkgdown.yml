@@ -1,7 +1,7 @@
 pandoc: 2.14.0.3
 pkgdown: 1.9000.9000.9000
-pkgdown_sha: ff098399cc6548e8c6db3d3a9edca444e03475d5
+pkgdown_sha: 40ea927dd7de4d1a2a18f248b79f4b2dac486306
 articles:
   autorecipes: autorecipes.html
-last_built: 2021-10-15T13:22Z
+last_built: 2021-10-15T21:12Z
 
