@@ -76,8 +76,8 @@
 <p><code>autorecipes</code> automates your recipe planning by taking care of:</p>
 <ol style="list-style-type: decimal">
 <li>Creating and storing a database of recipes.</li>
-<li>Generating a weekly meal plan.</li>
-<li>Deriving your shopping list of ingredients.</li>
+<li>Customizing weekly meal plans.</li>
+<li>Generating shopping lists of ingredients.</li>
 </ol>
 <div id="installation-instructions" class="section level2">
 <h2>Installation instructions<a class="anchor" aria-label="anchor" href="#installation-instructions"></a>
@@ -89,7 +89,7 @@
 <div id="usage" class="section level2">
 <h2>Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
-<p>Below is a basic illustration of how to use <code>autorecipes</code>. For a more comprehensive overview, please read the <a href="https://dzhang32.github.io/autorecipes/articles/autorecipes.html" class="external-link">vignette</a>.</p>
+<p>The below example gives a taste of <code>autorecipes</code>. If you would like to sink your teeth into a more detailed overview, please head over to the <a href="https://dzhang32.github.io/autorecipes/articles/autorecipes.html" class="external-link">vignette</a>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/dzhang32/autorecipes" class="external-link">"autorecipes"</a></span><span class="op">)</span>
 <span class="co">#&gt; </span>
@@ -115,20 +115,20 @@
 <span class="co">#&gt; # A tibble: 14 × 7</span>
 <span class="co">#&gt;    day   meal   recipe_index names                  ingredients fav   last_eaten</span>
 <span class="co">#&gt;    &lt;fct&gt; &lt;fct&gt;         &lt;int&gt; &lt;chr&gt;                  &lt;list&gt;      &lt;lgl&gt; &lt;date&gt;    </span>
-<span class="co">#&gt;  1 Mon   Lunch            25 Korean Beef &amp; Kimchi … &lt;Ingrdnts&gt;  FALSE 2021-10-14</span>
-<span class="co">#&gt;  2 Mon   Dinner           16 Creamy Pollock, Samph… &lt;Ingrdnts&gt;  FALSE 2021-10-14</span>
-<span class="co">#&gt;  3 Tues  Lunch             3 Chicken with Rosemary… &lt;Ingrdnts&gt;  FALSE 2021-10-14</span>
-<span class="co">#&gt;  4 Tues  Dinner            7 Steak Tagliata &amp; Roas… &lt;Ingrdnts&gt;  FALSE 2021-10-14</span>
-<span class="co">#&gt;  5 Wed   Lunch             2 Crispy Duck with Fava… &lt;Ingrdnts&gt;  FALSE 2021-10-14</span>
-<span class="co">#&gt;  6 Wed   Dinner           11 Pink Grapefruit, Mint… &lt;Ingrdnts&gt;  FALSE 2021-10-14</span>
-<span class="co">#&gt;  7 Thurs Lunch             1 Akoori Eggs with Spin… &lt;Ingrdnts&gt;  FALSE 2021-10-14</span>
-<span class="co">#&gt;  8 Thurs Dinner           13 Creamy Chicken &amp; Much… &lt;Ingrdnts&gt;  FALSE 2021-10-14</span>
-<span class="co">#&gt;  9 Fri   Lunch            24 Mexican Enchiladas     &lt;Ingrdnts&gt;  FALSE 2021-10-14</span>
-<span class="co">#&gt; 10 Fri   Dinner            9 Squash, Corn &amp; Tomati… &lt;Ingrdnts&gt;  FALSE 2021-10-14</span>
-<span class="co">#&gt; 11 Sat   Lunch            26 Afghan Spliced Squash  &lt;Ingrdnts&gt;  FALSE 2021-10-14</span>
-<span class="co">#&gt; 12 Sat   Dinner            4 Chickpea &amp; Sweet Pota… &lt;Ingrdnts&gt;  FALSE 2021-10-14</span>
-<span class="co">#&gt; 13 Sun   Lunch            19 Beef &amp; Spinach Lasagne &lt;Ingrdnts&gt;  FALSE 2021-10-14</span>
-<span class="co">#&gt; 14 Sun   Dinner           12 Honey &amp; Sesame Buffal… &lt;Ingrdnts&gt;  FALSE 2021-10-14</span></code></pre></div>
+<span class="co">#&gt;  1 Mon   Lunch             1 Akoori Eggs with Spin… &lt;Ingrdnts&gt;  FALSE 2021-10-15</span>
+<span class="co">#&gt;  2 Mon   Dinner           16 Creamy Pollock, Samph… &lt;Ingrdnts&gt;  FALSE 2021-10-15</span>
+<span class="co">#&gt;  3 Tues  Lunch             4 Chickpea &amp; Sweet Pota… &lt;Ingrdnts&gt;  FALSE 2021-10-15</span>
+<span class="co">#&gt;  4 Tues  Dinner           13 Creamy Chicken &amp; Much… &lt;Ingrdnts&gt;  FALSE 2021-10-15</span>
+<span class="co">#&gt;  5 Wed   Lunch             2 Crispy Duck with Fava… &lt;Ingrdnts&gt;  FALSE 2021-10-15</span>
+<span class="co">#&gt;  6 Wed   Dinner           19 Beef &amp; Spinach Lasagne &lt;Ingrdnts&gt;  FALSE 2021-10-15</span>
+<span class="co">#&gt;  7 Thurs Lunch            26 Afghan Spliced Squash  &lt;Ingrdnts&gt;  FALSE 2021-10-15</span>
+<span class="co">#&gt;  8 Thurs Dinner           21 Chickpea Falafels wit… &lt;Ingrdnts&gt;  FALSE 2021-10-15</span>
+<span class="co">#&gt;  9 Fri   Lunch            24 Mexican Enchiladas     &lt;Ingrdnts&gt;  FALSE 2021-10-15</span>
+<span class="co">#&gt; 10 Fri   Dinner           22 New Potato Tagine      &lt;Ingrdnts&gt;  FALSE 2021-10-15</span>
+<span class="co">#&gt; 11 Sat   Lunch            10 Chipotle, Corn &amp; Chee… &lt;Ingrdnts&gt;  FALSE 2021-10-15</span>
+<span class="co">#&gt; 12 Sat   Dinner           18 Normandy Pork &amp; Cider… &lt;Ingrdnts&gt;  FALSE 2021-10-15</span>
+<span class="co">#&gt; 13 Sun   Lunch            20 Provencal Butterbean … &lt;Ingrdnts&gt;  FALSE 2021-10-15</span>
+<span class="co">#&gt; 14 Sun   Dinner           23 Hoisin Beef Noodles &amp;… &lt;Ingrdnts&gt;  FALSE 2021-10-15</span></code></pre></div>
 </div>
 <div id="code-of-conduct" class="section level2">
 <h2>Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
