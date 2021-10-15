@@ -17,9 +17,9 @@ create_shopping_list <- function(recipebook,
   shopping_list <- .collapse_ingredients(ingredients_df)
 
   filter_shopping_list_func <- .dispatch_shopping_list_filter(method)
-  shopping_list <- filter_shopping_list_func(shopping_list)
+  shopping_list(recipebook) <- filter_shopping_list_func(shopping_list)
 
-  return(shopping_list)
+  return(recipebook)
 }
 
 #' @keywords internal

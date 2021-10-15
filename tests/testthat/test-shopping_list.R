@@ -4,15 +4,19 @@ test_recipebook <- create_meal_plan(test_recipebook)
 ##### create_shopping_list #####
 
 test_that("create_shopping_list (none) output looks correct", {
-  test_shopping_list <- create_shopping_list(test_recipebook)
-  expect_false(any(duplicated(test_shopping_list[["names"]])))
-  expect_true(ncol(test_shopping_list) == 2)
-  expect_true(any(.all_store_cupboard() %in% test_shopping_list[["names"]]))
+  test_recipebook <- create_shopping_list(test_recipebook)
+  expect_false(any(duplicated(test_recipebook@shopping_list[["names"]])))
+  expect_true(ncol(test_recipebook@shopping_list) == 2)
+  expect_true(any(
+    .all_store_cupboard() %in% test_recipebook@shopping_list[["names"]]
+  ))
 })
 
 test_that("create_shopping_list (minimal) output looks correct", {
-  test_shopping_list <- create_shopping_list(test_recipebook, "minimal")
-  expect_false(any(.all_store_cupboard() %in% test_shopping_list[["names"]]))
+  test_recipebook <- create_shopping_list(test_recipebook, "minimal")
+  expect_false(any(
+    .all_store_cupboard() %in% test_recipebook@shopping_list[["names"]]
+  ))
 })
 
 test_that("create_shopping_list catches user-input errors", {
@@ -33,7 +37,7 @@ test_that("create_shopping_list catches user-input errors", {
 ##### .filter_shopping_list_manual #####
 
 test_that(".filter_shopping_list_manual output looks correct", {
-  test_shopping_list <- create_shopping_list(test_recipebook, method = "none")
+  test_recipebook <- create_shopping_list(test_recipebook, method = "none")
   test_sc <- .all_store_cupboard()
   # setup testing to mirror manual input
   # based on https://debruine.github.io/posts/interactive-test/
@@ -41,12 +45,12 @@ test_that(".filter_shopping_list_manual output looks correct", {
   lines <- "1,2,3"
   write(lines, input)
   test_manual <- .filter_shopping_list_manual(
-    test_shopping_list,
+    test_recipebook@shopping_list,
     con = input
   )
   close(input)
 
-  expect_true(nrow(test_manual) < nrow(test_shopping_list))
+  expect_true(nrow(test_manual) < nrow(test_recipebook@shopping_list))
   expect_false(any(test_sc[4:length(test_sc)] %in% test_manual[["names"]]))
 })
 
