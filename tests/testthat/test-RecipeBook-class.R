@@ -38,6 +38,7 @@ test_that("RecipeBook can be constructed correctly", {
   )))
 
   expect_true(nrow(test_recipebook@meal_plan) == 0)
+  expect_true(nrow(test_recipebook@shopping_list) == 0)
 })
 
 test_that("RecipeBook can be constructed using character as ingredients", {
@@ -65,19 +66,6 @@ test_that("RecipeBook can be constructed using character as ingredients", {
 ##### validator #####
 
 test_that("RecipeBook validator catches user-input errors", {
-  test_recipebook <- recipebook_example
-  test_recipebook <- create_meal_plan(
-    test_recipebook,
-    c("Wed", "Thurs"),
-    "Dinner"
-  )
-
-  test_recipebook@meal_plan[["days"]][1] <- "not_a_weekday"
-  expect_error(
-    validObject(test_recipebook),
-    "must all be one of"
-  )
-
   expect_error(
     new("RecipeBook", names = character(), ingredients = integer()),
     "object@recipes must have > 0 rows"
@@ -109,6 +97,42 @@ test_that("RecipeBook validator errors on indexes", {
   expect_error(
     validObject(test_recipebook),
     "should be equivalent to "
+  )
+})
+
+test_that("RecipeBook validator catches meal_plan errors", {
+  test_recipebook <- recipebook_example
+  test_recipebook <- create_meal_plan(
+    test_recipebook,
+    c("Wed", "Thurs"),
+    "Dinner"
+  )
+
+  expect_warning(
+    test_recipebook@meal_plan[["day"]][1] <- "not_a_weekday",
+    "invalid factor level"
+  )
+  expect_error(
+    validObject(test_recipebook),
+    "must all be one of"
+  )
+
+  test_recipebook@meal_plan[["day"]] <- NULL
+  expect_error(
+    validObject(test_recipebook),
+    "object@meal_plan must have the columns:"
+  )
+})
+
+test_that("RecipeBook validator catches meal_plan errors", {
+  test_recipebook <- recipebook_example
+  test_recipebook@shopping_list <- dplyr::tibble(
+    names = "Chicken"
+  )
+
+  expect_error(
+    validObject(test_recipebook),
+    "object@shopping_list must have the columns: "
   )
 })
 

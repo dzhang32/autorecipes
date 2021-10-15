@@ -19,7 +19,8 @@
 setClass("RecipeBook",
   slots = c(
     recipes = "tbl_df",
-    meal_plan = "tbl_df"
+    meal_plan = "tbl_df",
+    shopping_list = "tbl_df"
   )
 )
 
@@ -39,6 +40,7 @@ initialize_recipebook <- function(.Object, names, ingredients, ...) {
 
   .Object@recipes <- recipes
   .Object@meal_plan <- dplyr::tibble()
+  .Object@shopping_list <- dplyr::tibble()
   validObject(.Object)
 
   return(.Object)
@@ -186,11 +188,15 @@ read_ingredients <- function(ingredients,
   } else if (.check_recipes_last_eaten(object)) {
     "object@recipes[['last_eaten']] must of class Date"
   } else if (.check_meal_plan_colnames(object)) {
-    "object@meal_plan must have the columns; 'day', 'meal', 'recipe_index'"
+    "object@meal_plan must have the columns: 'day', 'meal', 'recipe_index'"
   } else if (.check_meal_plan_days(object)) {
     paste(
-      "object@meal_plan[['days']] must all be one of:",
+      "object@meal_plan[['day']] must all be one of:",
       stringr::str_c(weekdays(), collapse = ", ")
+    )
+  } else if (.check_shopping_list_colnames(object)) {
+    paste(
+      "object@shopping_list must have the columns: 'names', 'n'"
     )
   } else {
     TRUE
@@ -273,5 +279,17 @@ setValidity("RecipeBook", .valid_recipebook)
 
 .check_meal_plan_days <- function(object) {
   valid_days <- weekdays()
-  return(any(!(object@meal_plan[["days"]] %in% valid_days)))
+  return(any(!(object@meal_plan[["day"]] %in% valid_days)))
+}
+
+.check_shopping_list_colnames <- function(object) {
+  check_shopping_list <- FALSE
+  if (nrow(object@shopping_list) > 0) {
+    if (!all(
+      c("names", "n") %in% colnames(object@shopping_list)
+    )) {
+      check_shopping_list <- TRUE
+    }
+  }
+  return(check_shopping_list)
 }
