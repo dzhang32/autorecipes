@@ -2,9 +2,18 @@
 % Please edit documentation in R/set_recipes.R
 \name{set_recipes}
 \alias{set_recipes}
+\alias{add_recipes}
 \title{Add or remove recipes}
+\usage{
+add_recipes(recipebook, names, ingredients)
+}
 \arguments{
 \item{recipebook}{object of \code{RecipeBook-class}.}
+
+\item{names}{\code{character()} containing the name of of recipes.}
+
+\item{ingredients}{\code{character()} or \code{list()} of \code{Ingredient-class} objects.
+If a \code{character()}, will be read in using \code{read_ingredients()}.}
 }
 \description{
 Add or remove recipes

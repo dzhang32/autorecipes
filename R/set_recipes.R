@@ -2,12 +2,13 @@
 
 #' Add or remove recipes
 #'
+#' @inheritParams RecipeBook-class
 #' @param recipebook object of `RecipeBook-class`.
 #'
 #' @name set_recipes
 NULL
 
-#' @rdname set_favourites
+#' @rdname set_recipes
 #' @export
 add_recipes <- function(recipebook,
                         names,
