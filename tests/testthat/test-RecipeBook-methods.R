@@ -31,7 +31,7 @@ test_that("RecipeBook meal_plan getters errors on empty meal_plan", {
   )
 })
 
-##### setters #####
+##### setters - meal_plan #####
 
 test_that("RecipeBook meal_plan setter works as expected", {
   test_recipebook <- recipebook_example
@@ -59,10 +59,38 @@ test_that("RecipeBook meal_plan setter works as expected", {
 test_that("RecipeBook meal_plan setter catches user input errors", {
   expect_error(
     meal_plan(recipebook_example) <- dplyr::tibble(invalid = "x"),
-    "object@meal_plan must have the columns;"
+    "object@meal_plan must have the columns:"
   )
   expect_error(
     meal_plan(recipebook_example) <- dplyr::tibble(days = "x", meals = 1),
-    "object@meal_plan must have the columns;"
+    "object@meal_plan must have the columns:"
+  )
+})
+
+##### setters - shopping_list #####
+
+test_that("RecipeBook shopping_list setter works as expected", {
+  test_recipebook <- recipebook_example
+  test_shopping_list <- dplyr::tibble(
+    names = "Chicken",
+    n = 1
+  )
+
+  shopping_list(test_recipebook) <- test_shopping_list
+  expect_true(identical(
+    shopping_list(test_recipebook),
+    test_shopping_list
+  ))
+
+  expect_message(
+    shopping_list(test_recipebook) <- test_shopping_list,
+    "Overwriting existing shopping list"
+  )
+})
+
+test_that("RecipeBook shopping_list setter catches user input errors", {
+  expect_error(
+    shopping_list(recipebook_example) <- dplyr::tibble(invalid = "x"),
+    "object@shopping_list must have the columns:"
   )
 })

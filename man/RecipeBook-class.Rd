@@ -10,7 +10,7 @@
 \alias{length,RecipeBook-method}
 \alias{recipes}
 \alias{meal_plan}
-\alias{meal_plan<-}
+\alias{shopping_list}
 \alias{favourites}
 \alias{favourites<-}
 \alias{favourites<-,RecipeBook,numeric-method}
@@ -30,7 +30,7 @@ recipes(object)
 
 meal_plan(object)
 
-meal_plan(object) <- value
+shopping_list(object)
 
 favourites(x)
 
@@ -52,11 +52,11 @@ If a \code{character()}, will be read in using \code{read_ingredients()}.}
 
 \item{x}{a \code{RecipeBook-class} object.}
 
+\item{...}{additional arguments passed on the \verb{favourite<-} methods.}
+
 \item{value}{either a \code{integer()} specifying the index of the rows to
 favourite, an \code{logical()} to set as the "fav" column, or the \code{character()}
 "manual" to specify setting the favourites manually.}
-
-\item{...}{additional arguments passed on the \verb{favourite<-} methods.}
 
 \item{con}{a \link[base]{connection} object or a character string.}
 }
@@ -104,15 +104,15 @@ using \code{create_meal_plan()}.}
 
 
 
+\code{shopping_list(recipebook)} obtains the \code{shopping_list} as a
+\code{tibble::tibble()}.
+
+
+
 \code{favourites(recipebook)} obtains the \code{recipes} marked as favourites.
 }
 
 \section{Setters}{
-
-
-\code{meal_plan(recipebook) <- meal_plan} stores the meal plan inside a
-\code{RecipeBook-class} object.
-
 
 
 \code{favourites(recipebook) <- 1} set favourite \code{recipes} by index.

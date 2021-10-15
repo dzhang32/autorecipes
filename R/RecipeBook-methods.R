@@ -45,7 +45,7 @@ recipes <- function(object) {
 #' @rdname RecipeBook-class
 #' @section Getters:
 #'
-#' `meal_plan(recipebook)` obtains the `meal_plan` as a `tibble::tibble()`.
+#'   `meal_plan(recipebook)` obtains the `meal_plan` as a `tibble::tibble()`.
 #' @export
 meal_plan <- function(object) {
   if (nrow(object@meal_plan) == 0) {
@@ -58,20 +58,42 @@ meal_plan <- function(object) {
   )
 }
 
+#' @rdname RecipeBook-class
+#' @section Getters:
+#'
+#'   `shopping_list(recipebook)` obtains the `shopping_list` as a
+#'   `tibble::tibble()`.
+#' @export
+shopping_list <- function(object) {
+  if (nrow(object@shopping_list) == 0) {
+    stop("No shopping_list found, have you run create_shopping_list()?")
+  }
+
+  object@shopping_list
+}
+
 ##### setters #####
 
-#' @rdname RecipeBook-class
-#' @section Setters:
-#'
-#' `meal_plan(recipebook) <- meal_plan` stores the meal plan inside a
-#' `RecipeBook-class` object.
-#' @export
+#' @keywords internal
+#' @noRd
 `meal_plan<-` <- function(object, value) { # nolint
   if (nrow(object@meal_plan) != 0) {
     message("Overwriting existing meal plan")
   }
 
   object@meal_plan <- value
+  validObject(object)
+  object
+}
+
+#' @keywords internal
+#' @noRd
+`shopping_list<-` <- function(object, value) { # nolint
+  if (nrow(object@shopping_list) != 0) {
+    message("Overwriting existing shopping list")
+  }
+
+  object@shopping_list <- value
   validObject(object)
   object
 }
