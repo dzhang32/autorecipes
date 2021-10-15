@@ -44,5 +44,6 @@ Collate:
     'data.R'
     'globals.R'
     'set_favourites.R'
+    'set_recipes.R'
     'utils.R'
 VignetteBuilder: knitr
