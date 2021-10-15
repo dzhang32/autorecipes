@@ -69,8 +69,11 @@ A book of recipes from which meal plans and shopping lists can be generated.
 \item{\code{recipes}}{\code{tibble::tibble()} storing the names, ingredients and
 favourites status of recipes.}
 
-\item{\code{meal_plan}}{\code{tibble::tibble()} storing a meal plan, created by \code{recipes}
-using \code{create_meal_plan()}.}
+\item{\code{meal_plan}}{\code{tibble::tibble()} storing a meal plan, created by
+\code{create_meal_plan()}.}
+
+\item{\code{shopping_list}}{\code{tibble::tibble()} storing a shopping list, created by
+\code{create_shopping_list()}.}
 }}
 
 \section{Constructor}{

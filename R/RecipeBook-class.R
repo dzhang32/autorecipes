@@ -6,8 +6,10 @@
 #'
 #' @slot recipes `tibble::tibble()` storing the names, ingredients and
 #'   favourites status of recipes.
-#' @slot meal_plan `tibble::tibble()` storing a meal plan, created by `recipes`
-#'   using `create_meal_plan()`.
+#' @slot meal_plan `tibble::tibble()` storing a meal plan, created by
+#'   `create_meal_plan()`.
+#' @slot shopping_list `tibble::tibble()` storing a shopping list, created by
+#'   `create_shopping_list()`.
 #'
 #' @param x a `RecipeBook-class` object.
 #' @param object a `RecipeBook-class` object.
