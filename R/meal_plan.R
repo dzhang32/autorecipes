@@ -53,8 +53,6 @@ create_meal_plan <- function(recipebook,
   meal_plan(recipebook) <- calendar %>%
     dplyr::mutate(recipe_index = chosen_recipe_indexes)
 
-  validObject(recipebook)
-
   return(recipebook)
 }
 
