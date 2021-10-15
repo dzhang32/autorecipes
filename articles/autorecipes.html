@@ -141,11 +141,11 @@
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 7</span></span>
 <span class="co">#&gt;   day   meal   recipe_index names                   ingredients fav   last_eaten</span>
 <span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Wed   Dinner            1 Akoori Eggs with Spina… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-15</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Wed   Dinner            3 Chicken with Rosemary … <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-15</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Thurs Dinner            2 Crispy Duck with Fava … <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-15</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Fri   Dinner            3 Chicken with Rosemary … <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-15</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Sat   Dinner            2 Crispy Duck with Fava … <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-15</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Sun   Dinner            3 Chicken with Rosemary … <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-15</span></code></pre></div>
+<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Fri   Dinner            1 Akoori Eggs with Spina… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-15</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Sat   Dinner            1 Akoori Eggs with Spina… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-15</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Sun   Dinner            2 Crispy Duck with Fava … <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-15</span></code></pre></div>
 </div>
 <div id="create-shopping-list" class="section level2">
 <h2>Create shopping list<a class="anchor" aria-label="anchor" href="#create-shopping-list"></a>
@@ -153,27 +153,20 @@
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="fu"><a href="../reference/create_shopping_list.html">create_shopping_list</a></span><span class="op">(</span><span class="va">recipebook</span>, method <span class="op">=</span> <span class="st">"minimal"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 18 × 2</span></span>
-<span class="co">#&gt;    names                   n</span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> rosemary                2</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> baby spinach            1</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> chicken drumsticks      1</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> chicken thighs          1</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> chilli                  1</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> coriander               1</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> duck legs               1</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fava beans              1</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> french beans            1</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> garam masala            1</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">11</span> mixed baby tomatoes     1</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">12</span> plums                   1</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">13</span> potatoes                1</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">14</span> rainbow carrots         1</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">15</span> salad potatoes          1</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">16</span> savoy cabbage           1</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">17</span> thyme                   1</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">18</span> white wine              1</span></code></pre></div>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 26 × 5</span></span>
+<span class="co">#&gt;    index names                                      ingredients fav   last_eaten</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                      <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>    </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     1 Akoori Eggs with Spinach &amp; Potato          <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-15</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     2 Crispy Duck with Fava Beans &amp; Caramelised… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-15</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     3 Chicken with Rosemary Plumns               <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-15</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     4 Chickpea &amp; Sweet Potato Masala             <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE <span style="color: #BB0000;">NA</span>        </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     5 Gaucho Steaks with Chimichurri Salad       <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE <span style="color: #BB0000;">NA</span>        </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     6 Chipotle Bean Taco Salad                   <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE <span style="color: #BB0000;">NA</span>        </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     7 Steak Tagliata &amp; Roasted Potato Salad      <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE <span style="color: #BB0000;">NA</span>        </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     8 Sweetcorn &amp; Spring Onion Orzotto           <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE <span style="color: #BB0000;">NA</span>        </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     9 Squash, Corn &amp; Tomatillo Tostadas          <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE <span style="color: #BB0000;">NA</span>        </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>    10 Chipotle, Corn &amp; Cheese Baked Rice         <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE <span style="color: #BB0000;">NA</span>        </span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 16 more rows</span></span></code></pre></div>
 </div>
 </div>
   </div>

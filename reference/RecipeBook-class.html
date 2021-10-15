@@ -70,7 +70,7 @@
 
 <span class="fu">meal_plan</span><span class="op">(</span><span class="va">object</span><span class="op">)</span>
 
-<span class="fu">meal_plan</span><span class="op">(</span><span class="va">object</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
+<span class="fu">shopping_list</span><span class="op">(</span><span class="va">object</span><span class="op">)</span>
 
 <span class="fu">favourites</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 
@@ -96,12 +96,12 @@ If a <code><a href="https://rdrr.io/r/base/character.html">character()</a></code
       <td><p>a <code>RecipeBook-class</code> object.</p></td>
     </tr><tr><th>x</th>
       <td><p>a <code>RecipeBook-class</code> object.</p></td>
+    </tr><tr><th>...</th>
+      <td><p>additional arguments passed on the <code>favourite&lt;-</code> methods.</p></td>
     </tr><tr><th>value</th>
       <td><p>either a <code><a href="https://rdrr.io/r/base/integer.html">integer()</a></code> specifying the index of the rows to
 favourite, an <code><a href="https://rdrr.io/r/base/logical.html">logical()</a></code> to set as the "fav" column, or the <code><a href="https://rdrr.io/r/base/character.html">character()</a></code>
 "manual" to specify setting the favourites manually.</p></td>
-    </tr><tr><th>...</th>
-      <td><p>additional arguments passed on the <code>favourite&lt;-</code> methods.</p></td>
     </tr><tr><th>con</th>
       <td><p>a <a href="https://rdrr.io/r/base/connections.html">connection</a> object or a character string.</p></td>
     </tr></table></div>
@@ -113,8 +113,11 @@ favourite, an <code><a href="https://rdrr.io/r/base/logical.html">logical()</a><
 <dl><dt><code>recipes</code></dt><dd><p><code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble::tibble()</a></code> storing the names, ingredients and
 favourites status of recipes.</p></dd>
 
-<dt><code>meal_plan</code></dt><dd><p><code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble::tibble()</a></code> storing a meal plan, created by <code>recipes</code>
-using <code><a href="create_meal_plan.html">create_meal_plan()</a></code>.</p></dd>
+<dt><code>meal_plan</code></dt><dd><p><code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble::tibble()</a></code> storing a meal plan, created by
+<code><a href="create_meal_plan.html">create_meal_plan()</a></code>.</p></dd>
+
+<dt><code>shopping_list</code></dt><dd><p><code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble::tibble()</a></code> storing a shopping list, created by
+<code><a href="create_shopping_list.html">create_shopping_list()</a></code>.</p></dd>
 
 </dl></div>
     <div id="constructor">
@@ -148,15 +151,15 @@ using <code><a href="create_meal_plan.html">create_meal_plan()</a></code>.</p></
 <p><code>meal_plan(recipebook)</code> obtains the <code>meal_plan</code> as a <code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble::tibble()</a></code>.</p>
 
 
+<p><code>shopping_list(recipebook)</code> obtains the <code>shopping_list</code> as a
+<code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble::tibble()</a></code>.</p>
+
+
 <p><code>favourites(recipebook)</code> obtains the <code>recipes</code> marked as favourites.</p>
     </div>
     <div id="setters">
     <h2>Setters<a class="anchor" aria-label="anchor" href="#setters"></a></h2>
     
-
-
-<p><code>meal_plan(recipebook) &lt;- meal_plan</code> stores the meal plan inside a
-<code>RecipeBook-class</code> object.</p>
 
 
 <p><code>favourites(recipebook) &lt;- 1</code> set favourite <code>recipes</code> by index.</p>
