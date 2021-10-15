@@ -39,3 +39,13 @@ weekdays <- function(which_days = NULL) {
 
   return(chosen_days)
 }
+
+.check_object <- function(object, class_name) {
+  if (!is(object, class_name)) {
+    stop(
+      "object is not an instance of ",
+      stringr::str_c(class_name, "-class")
+    )
+  }
+  validObject(object)
+}
