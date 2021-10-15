@@ -19,8 +19,8 @@ coverage](https://codecov.io/gh/dzhang32/autorecipes/branch/master/graph/badge.s
 `autorecipes` automates your recipe planning by taking care of:
 
 1.  Creating and storing a database of recipes.
-2.  Generating a weekly meal plan.
-3.  Deriving your shopping list of ingredients.
+2.  Customizing weekly meal plans.
+3.  Generating shopping lists of ingredients.
 
 ## Installation instructions
 
@@ -33,8 +33,8 @@ devtools::install_github("dzhang32/autorecipes")
 
 ## Usage
 
-Below is a basic illustration of how to use `autorecipes`. For a more
-comprehensive overview, please read the
+The below example gives a taste of `autorecipes`. If you would like to
+sink your teeth into a more detailed overview, please head over to the
 [vignette](https://dzhang32.github.io/autorecipes/articles/autorecipes.html).
 
 ``` r
@@ -62,20 +62,20 @@ meal_plan(recipebook)
 #> # A tibble: 14 × 7
 #>    day   meal   recipe_index names                  ingredients fav   last_eaten
 #>    <fct> <fct>         <int> <chr>                  <list>      <lgl> <date>    
-#>  1 Mon   Lunch            25 Korean Beef & Kimchi … <Ingrdnts>  FALSE 2021-10-14
-#>  2 Mon   Dinner           16 Creamy Pollock, Samph… <Ingrdnts>  FALSE 2021-10-14
-#>  3 Tues  Lunch             3 Chicken with Rosemary… <Ingrdnts>  FALSE 2021-10-14
-#>  4 Tues  Dinner            7 Steak Tagliata & Roas… <Ingrdnts>  FALSE 2021-10-14
-#>  5 Wed   Lunch             2 Crispy Duck with Fava… <Ingrdnts>  FALSE 2021-10-14
-#>  6 Wed   Dinner           11 Pink Grapefruit, Mint… <Ingrdnts>  FALSE 2021-10-14
-#>  7 Thurs Lunch             1 Akoori Eggs with Spin… <Ingrdnts>  FALSE 2021-10-14
-#>  8 Thurs Dinner           13 Creamy Chicken & Much… <Ingrdnts>  FALSE 2021-10-14
-#>  9 Fri   Lunch            24 Mexican Enchiladas     <Ingrdnts>  FALSE 2021-10-14
-#> 10 Fri   Dinner            9 Squash, Corn & Tomati… <Ingrdnts>  FALSE 2021-10-14
-#> 11 Sat   Lunch            26 Afghan Spliced Squash  <Ingrdnts>  FALSE 2021-10-14
-#> 12 Sat   Dinner            4 Chickpea & Sweet Pota… <Ingrdnts>  FALSE 2021-10-14
-#> 13 Sun   Lunch            19 Beef & Spinach Lasagne <Ingrdnts>  FALSE 2021-10-14
-#> 14 Sun   Dinner           12 Honey & Sesame Buffal… <Ingrdnts>  FALSE 2021-10-14
+#>  1 Mon   Lunch             1 Akoori Eggs with Spin… <Ingrdnts>  FALSE 2021-10-15
+#>  2 Mon   Dinner           16 Creamy Pollock, Samph… <Ingrdnts>  FALSE 2021-10-15
+#>  3 Tues  Lunch             4 Chickpea & Sweet Pota… <Ingrdnts>  FALSE 2021-10-15
+#>  4 Tues  Dinner           13 Creamy Chicken & Much… <Ingrdnts>  FALSE 2021-10-15
+#>  5 Wed   Lunch             2 Crispy Duck with Fava… <Ingrdnts>  FALSE 2021-10-15
+#>  6 Wed   Dinner           19 Beef & Spinach Lasagne <Ingrdnts>  FALSE 2021-10-15
+#>  7 Thurs Lunch            26 Afghan Spliced Squash  <Ingrdnts>  FALSE 2021-10-15
+#>  8 Thurs Dinner           21 Chickpea Falafels wit… <Ingrdnts>  FALSE 2021-10-15
+#>  9 Fri   Lunch            24 Mexican Enchiladas     <Ingrdnts>  FALSE 2021-10-15
+#> 10 Fri   Dinner           22 New Potato Tagine      <Ingrdnts>  FALSE 2021-10-15
+#> 11 Sat   Lunch            10 Chipotle, Corn & Chee… <Ingrdnts>  FALSE 2021-10-15
+#> 12 Sat   Dinner           18 Normandy Pork & Cider… <Ingrdnts>  FALSE 2021-10-15
+#> 13 Sun   Lunch            20 Provencal Butterbean … <Ingrdnts>  FALSE 2021-10-15
+#> 14 Sun   Dinner           23 Hoisin Beef Noodles &… <Ingrdnts>  FALSE 2021-10-15
 ```
 
 ## Code of Conduct
