@@ -6,11 +6,7 @@
 #' @export
 create_shopping_list <- function(recipebook,
                                  method = c("none", "manual", "minimal")) {
-  if (!is(recipebook, "RecipeBook")) {
-    stop("recipebook must be instance of RecipeBook-class")
-  }
-  validObject(recipebook)
-
+  .check_object(recipebook, "RecipeBook")
   method <- match.arg(method)
 
   ingredients_df <- .extract_ingredients(recipebook)

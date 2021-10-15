@@ -26,7 +26,7 @@ test_that("create_shopping_list catches user-input errors", {
   )
   expect_error(
     create_shopping_list(tibble::tibble()),
-    "recipebook must be instance of RecipeBook-class"
+    "is not an instance of RecipeBook-class"
   )
   expect_error(
     create_shopping_list(recipebook_example),

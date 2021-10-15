@@ -24,12 +24,9 @@ create_meal_plan <- function(recipebook,
                              method = c("auto", "random"),
                              fav_only = FALSE,
                              set_last_eaten = TRUE) {
-  if (!is(recipebook, "RecipeBook")) {
-    stop("recipebook must be instance of RecipeBook-class")
-  }
-  validObject(recipebook)
-
+  .check_object(recipebook, "RecipeBook")
   method <- match.arg(method)
+
   calendar <- .create_calendar(which_days, which_meals)
 
   meal_plan_func <- .dispatch_meal_planner(method)

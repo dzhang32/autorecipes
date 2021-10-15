@@ -61,6 +61,8 @@ rm_favourites <- function(recipebook,
 #' @keywords internal
 #' @noRd
 .set_favourites_manual <- function(recipebook, indexes, con = stdin()) {
+  # TODO - take into account and only show recipes that are/are not favs
+  # TODO - add checking for used input
   message(
     stringr::str_c(
       seq_along(names(recipebook)), " - ",
