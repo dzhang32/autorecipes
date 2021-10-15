@@ -13,6 +13,7 @@
 #'
 #' @param x a `RecipeBook-class` object.
 #' @param object a `RecipeBook-class` object.
+#' @param value `tibble::tibble()` which will be used to set the `recipes` slot.
 #'
 #' @name RecipeBook-class
 #' @aliases RecipeBook

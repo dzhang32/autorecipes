@@ -13,7 +13,7 @@ NULL
 #' @rdname RecipeBook-class
 #' @section Displaying:
 #'
-#' `show(recipebook)` prints the `recipes` as a `tibble::tibble()`.
+#'   `show(recipebook)` prints the `recipes` as a `tibble::tibble()`.
 #' @importMethodsFrom methods show
 setMethod("show", "RecipeBook", .show_recipebook)
 
@@ -22,21 +22,21 @@ setMethod("show", "RecipeBook", .show_recipebook)
 #' @rdname RecipeBook-class
 #' @section Getters:
 #'
-#' `names(recipebook)` obtains the names of the recipes.
+#'   `names(recipebook)` obtains the names of the recipes.
 #' @export
 setMethod("names", "RecipeBook", function(x) x@recipes[["names"]])
 
 #' @rdname RecipeBook-class
 #' @section Getters:
 #'
-#' `length(recipebook)` obtains the number of recipes.
+#'   `length(recipebook)` obtains the number of recipes.
 #' @export
 setMethod("length", "RecipeBook", function(x) nrow(x@recipes))
 
 #' @rdname RecipeBook-class
 #' @section Getters:
 #'
-#' `recipes(recipebook)` obtains the `recipes` as a `tibble::tibble()`.
+#'   `recipes(recipebook)` obtains the `recipes` as a `tibble::tibble()`.
 #' @export
 recipes <- function(object) {
   return(object@recipes)
@@ -72,7 +72,31 @@ shopping_list <- function(object) {
   object@shopping_list
 }
 
+#' @rdname RecipeBook-class
+#' @section Getters:
+#'
+#' `favourites(recipebook)` obtains the `recipes` marked as favourites.
+#' @export
+favourites <- function(x) {
+  if (sum(x@recipes[["fav"]]) == 0) {
+    stop("No favourite recipes set, have you run `favorites<-`?")
+  }
+  x@recipes[x@recipes[["fav"]], ]
+}
+
 ##### setters #####
+
+#' @rdname RecipeBook-class
+#' @section Setters:
+#'
+#'   `recipes(object) <- value` can be used to set the `recipes`.
+#' @export
+`recipes<-` <- function(object, value) { # nolint
+  object@recipes <- value
+  validObject(object)
+  object
+}
+
 
 #' @keywords internal
 #' @noRd

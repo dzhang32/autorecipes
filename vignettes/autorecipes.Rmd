@@ -34,7 +34,7 @@ recipes(recipebook) %>% head()
 
 ```{r set-favourite}
 
-favourites(recipebook) <- 1:3
+recipebook <- add_favourites(recipebook, "index", 1:3)
 
 recipes(recipebook) %>% head()
 ```
@@ -56,5 +56,5 @@ meal_plan(recipebook)
 
 ```{r create-shopping-list}
 
-create_shopping_list(recipebook, method = "minimal")
+recipebook <- create_shopping_list(recipebook, method = "minimal")
 ```

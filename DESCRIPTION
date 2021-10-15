@@ -39,10 +39,10 @@ Collate:
     'RecipeBook-class.R'
     'RecipeBook-methods.R'
     'autorecipes-package.R'
+    'create_meal_plan.R'
+    'create_shopping_list.R'
     'data.R'
-    'favourites.R'
     'globals.R'
-    'meal_plan.R'
-    'shopping_list.R'
+    'set_favourites.R'
     'utils.R'
 VignetteBuilder: knitr

@@ -31,6 +31,22 @@ test_that("RecipeBook meal_plan getters errors on empty meal_plan", {
   )
 })
 
+test_that("favourites getter errors when favourites is empty", {
+  expect_error(
+    favourites(recipebook_example),
+    "No favourite recipes set, have you run `favorites<-`?"
+  )
+})
+
+test_that("favourites getter errors has correct output", {
+  test_recipebook <- recipebook_example
+  test_recipebook@recipes[["fav"]][1:3] <- TRUE
+  expect_true(identical(
+    favourites(test_recipebook),
+    test_recipebook@recipes %>% dplyr::filter(fav)
+  ))
+})
+
 ##### setters - meal_plan #####
 
 test_that("RecipeBook meal_plan setter works as expected", {

@@ -23,7 +23,7 @@ test_that("create_meal_plan works for a single recipe", {
 })
 
 test_that("create_meal_plan works for favourite recipes", {
-  favourites(test_recipebook) <- 6:10
+  test_recipebook <- add_favourites(test_recipebook, "index", 6:10)
   test_recipebook <- create_meal_plan(
     test_recipebook,
     fav_only = TRUE
