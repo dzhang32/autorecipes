@@ -259,14 +259,20 @@ setValidity("RecipeBook", .valid_recipebook)
   return(check_ingredients)
 }
 
+#' @keywords internal
+#' @noRd
 .check_recipes_fav <- function(object) {
   return(!is.logical(object@recipes[["fav"]]))
 }
 
+#' @keywords internal
+#' @noRd
 .check_recipes_last_eaten <- function(object) {
   return(!lubridate::is.Date(object@recipes[["last_eaten"]]))
 }
 
+#' @keywords internal
+#' @noRd
 .check_meal_plan_colnames <- function(object) {
   check_meal_plan <- FALSE
   if (nrow(object@meal_plan) > 0) {
@@ -279,11 +285,15 @@ setValidity("RecipeBook", .valid_recipebook)
   return(check_meal_plan)
 }
 
+#' @keywords internal
+#' @noRd
 .check_meal_plan_days <- function(object) {
   valid_days <- weekdays()
   return(any(!(object@meal_plan[["day"]] %in% valid_days)))
 }
 
+#' @keywords internal
+#' @noRd
 .check_shopping_list_colnames <- function(object) {
   check_shopping_list <- FALSE
   if (nrow(object@shopping_list) > 0) {
