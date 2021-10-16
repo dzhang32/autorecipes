@@ -3,9 +3,12 @@
 \name{set_recipes}
 \alias{set_recipes}
 \alias{add_recipes}
+\alias{rm_recipes}
 \title{Add or remove recipes}
 \usage{
 add_recipes(recipebook, names, ingredients)
+
+rm_recipes(recipebook, indexes = NULL, method = c("manual", "index"))
 }
 \arguments{
 \item{recipebook}{object of \code{RecipeBook-class}.}
@@ -14,6 +17,13 @@ add_recipes(recipebook, names, ingredients)
 
 \item{ingredients}{\code{character()} or \code{list()} of \code{Ingredient-class} objects.
 If a \code{character()}, will be read in using \code{read_ingredients()}.}
+
+\item{indexes}{\code{numeric()} the indexes of the recipes to change, required if
+method is set to 'index'.}
+
+\item{method}{\code{character()} one of 'manual' or 'index'. If 'manual', will
+allow users to interactively pick the recipes to add/remove as favourites.
+If 'index' will modify the recipes corresponding to \code{indexes}.}
 }
 \description{
 Add or remove recipes
