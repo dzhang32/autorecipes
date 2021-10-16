@@ -62,20 +62,20 @@ meal_plan(recipebook)
 #> # A tibble: 14 × 7
 #>    day   meal   recipe_index names                  ingredients fav   last_eaten
 #>    <fct> <fct>         <int> <chr>                  <list>      <lgl> <date>    
-#>  1 Mon   Lunch             1 Akoori Eggs with Spin… <Ingrdnts>  FALSE 2021-10-15
-#>  2 Mon   Dinner           16 Creamy Pollock, Samph… <Ingrdnts>  FALSE 2021-10-15
-#>  3 Tues  Lunch             4 Chickpea & Sweet Pota… <Ingrdnts>  FALSE 2021-10-15
-#>  4 Tues  Dinner           13 Creamy Chicken & Much… <Ingrdnts>  FALSE 2021-10-15
-#>  5 Wed   Lunch             2 Crispy Duck with Fava… <Ingrdnts>  FALSE 2021-10-15
-#>  6 Wed   Dinner           19 Beef & Spinach Lasagne <Ingrdnts>  FALSE 2021-10-15
-#>  7 Thurs Lunch            26 Afghan Spliced Squash  <Ingrdnts>  FALSE 2021-10-15
-#>  8 Thurs Dinner           21 Chickpea Falafels wit… <Ingrdnts>  FALSE 2021-10-15
-#>  9 Fri   Lunch            24 Mexican Enchiladas     <Ingrdnts>  FALSE 2021-10-15
-#> 10 Fri   Dinner           22 New Potato Tagine      <Ingrdnts>  FALSE 2021-10-15
-#> 11 Sat   Lunch            10 Chipotle, Corn & Chee… <Ingrdnts>  FALSE 2021-10-15
-#> 12 Sat   Dinner           18 Normandy Pork & Cider… <Ingrdnts>  FALSE 2021-10-15
-#> 13 Sun   Lunch            20 Provencal Butterbean … <Ingrdnts>  FALSE 2021-10-15
-#> 14 Sun   Dinner           23 Hoisin Beef Noodles &… <Ingrdnts>  FALSE 2021-10-15
+#>  1 Mon   Lunch             8 Sweetcorn & Spring On… <Ingrdnts>  FALSE 2021-10-16
+#>  2 Mon   Dinner           18 Normandy Pork & Cider… <Ingrdnts>  FALSE 2021-10-16
+#>  3 Tues  Lunch             5 Gaucho Steaks with Ch… <Ingrdnts>  FALSE 2021-10-16
+#>  4 Tues  Dinner           23 Hoisin Beef Noodles &… <Ingrdnts>  FALSE 2021-10-16
+#>  5 Wed   Lunch             3 Chicken with Rosemary… <Ingrdnts>  FALSE 2021-10-16
+#>  6 Wed   Dinner           26 Afghan Spliced Squash  <Ingrdnts>  FALSE 2021-10-16
+#>  7 Thurs Lunch            22 New Potato Tagine      <Ingrdnts>  FALSE 2021-10-16
+#>  8 Thurs Dinner            2 Crispy Duck with Fava… <Ingrdnts>  FALSE 2021-10-16
+#>  9 Fri   Lunch            17 Aubergine Schnitzel w… <Ingrdnts>  FALSE 2021-10-16
+#> 10 Fri   Dinner           11 Pink Grapefruit, Mint… <Ingrdnts>  FALSE 2021-10-16
+#> 11 Sat   Lunch            15 Globe Arichoke & Pine… <Ingrdnts>  FALSE 2021-10-16
+#> 12 Sat   Dinner            1 Akoori Eggs with Spin… <Ingrdnts>  FALSE 2021-10-16
+#> 13 Sun   Lunch            13 Creamy Chicken & Much… <Ingrdnts>  FALSE 2021-10-16
+#> 14 Sun   Dinner            4 Chickpea & Sweet Pota… <Ingrdnts>  FALSE 2021-10-16
 ```
 
 ## Code of Conduct

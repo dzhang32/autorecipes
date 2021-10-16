@@ -7,7 +7,11 @@
 #' @return `tibble::tibble()` containing a shopping list.
 #' @export
 create_shopping_list <- function(recipebook,
-                                 filter_method = c("none", "manual", "minimal")) {
+                                 filter_method = c(
+                                   "none",
+                                   "manual",
+                                   "minimal"
+                                 )) {
   .check_object(recipebook, "RecipeBook")
   filter_method <- match.arg(filter_method)
 

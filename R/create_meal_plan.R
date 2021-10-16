@@ -97,17 +97,21 @@ create_meal_plan <- function(recipebook,
 .create_meal_plan_auto <- function(recipes, num_required) {
   if (!all(is.na(recipes[["last_eaten"]]))) {
     # set a probability such that the later the recipe was last eaten
-    # greater the chance it's picked
+    # greater the chance it's picked, the below does this by:
+    # 1. change NAs (never) to earliest date - 1
+    # 2. rank by last_eaten, the available methods only allow ascending rank
+    # 3. re-rank using -rank  (descending - earlier dates = higher rank)
+    # 4. normalise ranks into prob by dividing by sum(rank)
     prob <- recipes %>%
       dplyr::mutate(
-        last_eaten = dplyr::if_else( # change NAs (never) to earliest date - 1
+        last_eaten = dplyr::if_else(
           is.na(last_eaten),
           min(last_eaten, na.rm = TRUE) - 1,
           last_eaten
         ),
-        rank_last_eaten = rank(last_eaten), # rank, available method only does asc
-        rank_last_eaten = rank(-rank_last_eaten), # so re-rank on -rank for desc
-        prob = rank_last_eaten / sum(rank_last_eaten) # normalise ranks into prob
+        rank_last_eaten = rank(last_eaten),
+        rank_last_eaten = rank(-rank_last_eaten),
+        prob = rank_last_eaten / sum(rank_last_eaten)
       ) %>%
       .[["prob"]]
   } else {
