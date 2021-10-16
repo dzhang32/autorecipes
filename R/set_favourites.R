@@ -15,9 +15,9 @@ NULL
 #' @rdname set_favourites
 #' @export
 add_favourites <- function(recipebook,
-                           method = c("manual", "index"),
-                           indexes = NULL) {
-  recipebook <- .set_favourites(recipebook, method, indexes, TRUE)
+                           indexes,
+                           method = c("index", "manual")) {
+  recipebook <- .set_favourites(recipebook, indexes, method, TRUE)
 
   return(recipebook)
 }
@@ -25,9 +25,9 @@ add_favourites <- function(recipebook,
 #' @rdname set_favourites
 #' @export
 rm_favourites <- function(recipebook,
-                          method = c("manual", "index"),
-                          indexes = NULL) {
-  recipebook <- .set_favourites(recipebook, method, indexes, FALSE)
+                          indexes,
+                          method = c("index", "manual")) {
+  recipebook <- .set_favourites(recipebook, indexes, method, FALSE)
 
   return(recipebook)
 }
@@ -35,14 +35,14 @@ rm_favourites <- function(recipebook,
 #' @keywords internal
 #' @noRd
 .set_favourites <- function(recipebook,
-                            method = c("manual", "index"),
-                            indexes = NULL,
-                            value = TRUE) {
+                            indexes,
+                            method = c("index", "manual"),
+                            value) {
   .check_object(recipebook, "RecipeBook")
   method <- match.arg(method)
 
   favourite_setter_func <- .dispatch_favourite_setter(method)
-  indexes <- favourite_setter_func(recipebook, indexes)
+  indexes <- favourite_setter_func(recipebook, indexes, value)
 
   recipebook@recipes[["fav"]][indexes] <- value
 
@@ -60,23 +60,30 @@ rm_favourites <- function(recipebook,
 
 #' @keywords internal
 #' @noRd
-.set_favourites_manual <- function(recipebook, indexes, con = stdin()) {
-  # TODO - take into account and only show recipes that are/are not favs
-  # TODO - add checking for used input
+.set_favourites_manual <- function(recipebook, indexes, value, con = stdin()) {
+  fav_options <- recipes(recipebook) %>%
+    dplyr::filter(fav != value)
+
+  if (nrow(fav_options) == 0) {
+    stop("No recipes found with favourite as ", as.character(value))
+  }
+
   .select_index_message(
-    names(recipebook),
-    "recipes", "favourite", "recipebook"
+    fav_options[["names"]],
+    "recipes",
+    ifelse(value, "favourite", "unfavourite"),
+    "recipebook"
   )
 
   indexes <- readLines(con = con, n = 1L)
-  indexes <- .check_tidy_index_input(indexes, seq_along(names(recipebook)))
+  indexes <- .check_tidy_index_input(indexes, seq_along(fav_options[["names"]]))
 
   return(indexes)
 }
 
 #' @keywords internal
 #' @noRd
-.set_favourites_index <- function(recipebook, indexes) {
+.set_favourites_index <- function(recipebook, indexes, value) {
   if (is.null(indexes)) {
     stop("'index' method requires non-NULL indexes")
   } else if (!is.numeric(indexes)) {

@@ -6,19 +6,19 @@
 \alias{rm_favourites}
 \title{Add or remove favourite recipes}
 \usage{
-add_favourites(recipebook, method = c("manual", "index"), indexes = NULL)
+add_favourites(recipebook, indexes, method = c("index", "manual"))
 
-rm_favourites(recipebook, method = c("manual", "index"), indexes = NULL)
+rm_favourites(recipebook, indexes, method = c("index", "manual"))
 }
 \arguments{
 \item{recipebook}{object of \code{RecipeBook-class}.}
 
+\item{indexes}{\code{numeric()} the indexes of the recipes to change, required if
+method is set to 'index'.}
+
 \item{method}{\code{character()} one of 'manual' or 'index'. If 'manual', will
 allow users to interactively pick the recipes to add/remove as favourites.
 If 'index' will modify the recipes corresponding to \code{indexes}.}
-
-\item{indexes}{\code{numeric()} the indexes of the recipes to change, required if
-method is set to 'index'.}
 }
 \description{
 Add or remove favourite recipes

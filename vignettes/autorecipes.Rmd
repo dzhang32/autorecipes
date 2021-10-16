@@ -34,7 +34,7 @@ recipes(recipebook) %>% head()
 
 ```{r set-favourite}
 
-recipebook <- add_favourites(recipebook, "index", 1:3)
+recipebook <- add_favourites(recipebook, 1:3)
 
 recipes(recipebook) %>% head()
 ```
