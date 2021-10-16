@@ -76,7 +76,7 @@ rm_recipes <- function(recipebook,
 .rm_recipes_manual <- function(recipebook, indexes, con = stdin()) {
   .select_index_message(
     names(recipebook),
-    "recipes", "favourite", "recipebook"
+    "recipes", "exclude", "recipebook"
   )
 
   indexes <- readLines(con = con, n = 1L)
