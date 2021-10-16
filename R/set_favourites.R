@@ -63,14 +63,9 @@ rm_favourites <- function(recipebook,
 .set_favourites_manual <- function(recipebook, indexes, con = stdin()) {
   # TODO - take into account and only show recipes that are/are not favs
   # TODO - add checking for used input
-  message(
-    stringr::str_c(
-      seq_along(names(recipebook)), " - ",
-      names(recipebook), "\n"
-    ),
-    "\nPlease select your favourites recipes from the above.",
-    "\nEnter the indexes, separated with a ',' - for example '1,2,3' to ",
-    "favourite the first three recipes."
+  .select_index_message(
+    names(recipebook),
+    "recipes", "favourite", "recipebook"
   )
 
   indexes <- readLines(con = con, n = 1L)

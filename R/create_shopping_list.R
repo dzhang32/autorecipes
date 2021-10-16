@@ -1,19 +1,28 @@
 #' Create a shopping list
 #'
 #' @inheritParams create_meal_plan
+#' @param filter_method `character()` the method to used to filter out store
+#'   cupboard ingredients from your shopping list.
 #'
 #' @return `tibble::tibble()` containing a shopping list.
 #' @export
 create_shopping_list <- function(recipebook,
-                                 method = c("none", "manual", "minimal")) {
+                                 filter_method = c("none", "manual", "minimal")) {
   .check_object(recipebook, "RecipeBook")
-  method <- match.arg(method)
+  filter_method <- match.arg(filter_method)
 
   ingredients_df <- .extract_ingredients(recipebook)
   shopping_list <- .collapse_ingredients(ingredients_df)
 
-  filter_shopping_list_func <- .dispatch_shopping_list_filter(method)
-  shopping_list(recipebook) <- filter_shopping_list_func(shopping_list)
+  if (filter_method != "none") {
+    filter_shopping_list_func <- .dispatch_shopping_list_filter(filter_method)
+    store_cupboard <- filter_shopping_list_func()
+
+    shopping_list <- shopping_list %>%
+      dplyr::filter(!(names %in% store_cupboard))
+  }
+
+  shopping_list(recipebook) <- shopping_list
 
   return(recipebook)
 }
@@ -46,34 +55,21 @@ create_shopping_list <- function(recipebook,
 
 #' @keywords internal
 #' @noRd
-.dispatch_shopping_list_filter <- function(method) {
-  switch(method,
-    "none" = .filter_shopping_list_none,
+.dispatch_shopping_list_filter <- function(filter_method) {
+  switch(filter_method,
     "manual" = .filter_shopping_list_manual,
-    "minimal" = .filter_shopping_list_minimal
+    "minimal" = .all_store_cupboard
   )
 }
 
 #' @keywords internal
 #' @noRd
-.filter_shopping_list_none <- function(shopping_list) {
-  return(shopping_list)
-}
-
-#' @keywords internal
-#' @noRd
-.filter_shopping_list_manual <- function(shopping_list, con = stdin()) {
+.filter_shopping_list_manual <- function(con = stdin()) {
   store_cupboard <- .all_store_cupboard()
 
-  message(
-    stringr::str_c(
-      seq_along(store_cupboard), " - ",
-      store_cupboard, "\n"
-    ),
-    "\nPlease select the store cupboard ingredients you want to include ",
-    "in your shopping list from the above.",
-    "\nEnter the indexes, separated with a ',' - for example '1,2,3' to ",
-    "include the first three ingredients."
+  .select_index_message(
+    store_cupboard,
+    "store cupboard ingredients", "include", "shopping list"
   )
 
   include_indexes <- readLines(con = con, n = 1L)
@@ -88,21 +84,7 @@ create_shopping_list <- function(recipebook,
     store_cupboard <- store_cupboard[-c(include_indexes)]
   }
 
-  shopping_list <- shopping_list %>%
-    dplyr::filter(!(names %in% store_cupboard))
-
-  return(shopping_list)
-}
-
-#' @keywords internal
-#' @noRd
-.filter_shopping_list_minimal <- function(shopping_list) {
-  store_cupboard <- .all_store_cupboard()
-
-  shopping_list <- shopping_list %>%
-    dplyr::filter(!(names %in% store_cupboard))
-
-  return(shopping_list)
+  return(store_cupboard)
 }
 
 #' @keywords internal

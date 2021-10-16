@@ -40,6 +40,8 @@ weekdays <- function(which_days = NULL) {
   return(chosen_days)
 }
 
+#' @keywords internal
+#' @noRd
 .check_object <- function(object, class_name) {
   if (!is(object, class_name)) {
     stop(
@@ -48,4 +50,27 @@ weekdays <- function(which_days = NULL) {
     )
   }
   validObject(object)
+}
+
+#' @keywords internal
+#' @noRd
+.select_index_message <- function(object,
+                                  what,
+                                  to,
+                                  in_from) {
+  message(
+    stringr::str_c(
+      seq_along(object), " - ",
+      object, "\n"
+    ),
+    "\nFrom the above, ",
+    "please select the ", what, " you would like to ", to,
+    " ", ifelse(to %in% c("include", "favourite"), "in", "from"),
+    " your ", in_from, ".",
+    "\nEnter the selected indexes, ",
+    "separated with a ',' - for example '1,2,3' to ",
+    "include the first three ingredients."
+  )
+
+  return(invisible())
 }

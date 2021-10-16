@@ -13,8 +13,6 @@ test_that("favourites setter (numeric) output looks correct", {
   expect_false(any(test_recipebook@recipes[["fav"]]))
 })
 
-##### set_favourites #####
-
 test_that(".set_favourites_manual output looks correct", {
   # setup testing to mirror manual input
   # based on https://debruine.github.io/posts/interactive-test/

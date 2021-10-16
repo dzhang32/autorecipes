@@ -74,14 +74,9 @@ rm_recipes <- function(recipebook,
 #' @keywords internal
 #' @noRd
 .rm_recipes_manual <- function(recipebook, indexes, con = stdin()) {
-  message(
-    stringr::str_c(
-      seq_along(names(recipebook)), " - ",
-      names(recipebook), "\n"
-    ),
-    "\nPlease select the recipes to remove from the above.",
-    "\nEnter the indexes, separated with a ',' - for example '1,2,3' to ",
-    "favourite the first three recipes."
+  .select_index_message(
+    names(recipebook),
+    "recipes", "favourite", "recipebook"
   )
 
   indexes <- readLines(con = con, n = 1L)

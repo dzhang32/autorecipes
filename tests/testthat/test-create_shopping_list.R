@@ -21,7 +21,7 @@ test_that("create_shopping_list (minimal) output looks correct", {
 
 test_that("create_shopping_list catches user-input errors", {
   expect_error(
-    create_shopping_list(recipebook_example, method = "not_a_method"),
+    create_shopping_list(recipebook_example, "not_a_method"),
     "should be one of"
   )
   expect_error(
@@ -37,21 +37,22 @@ test_that("create_shopping_list catches user-input errors", {
 ##### .filter_shopping_list_manual #####
 
 test_that(".filter_shopping_list_manual output looks correct", {
-  test_recipebook <- create_shopping_list(test_recipebook, method = "none")
+  test_recipebook <- create_shopping_list(test_recipebook, "none")
   test_sc <- .all_store_cupboard()
   # setup testing to mirror manual input
   # based on https://debruine.github.io/posts/interactive-test/
   input <- file()
   lines <- "1,2,3"
   write(lines, input)
-  test_manual <- .filter_shopping_list_manual(
-    test_recipebook@shopping_list,
+  test_store_cupboard <- .filter_shopping_list_manual(
     con = input
   )
   close(input)
 
-  expect_true(nrow(test_manual) < nrow(test_recipebook@shopping_list))
-  expect_false(any(test_sc[4:length(test_sc)] %in% test_manual[["names"]]))
+  expect_true(identical(
+    test_store_cupboard,
+    .all_store_cupboard()[-c(1:3)]
+  ))
 })
 
 ##### .extract_ingredients #####
