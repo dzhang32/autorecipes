@@ -73,3 +73,27 @@ test_that(".check_object output looks correct", {
     "select the ingredients you would like to exclude from your shopping list"
   )
 })
+
+##### .check_tidy_index_input #####
+
+test_that(".check_tidy_index_input output looks correct", {
+  expect_true(identical(
+    .check_tidy_index_input(1:5, 1:10),
+    1:5
+  ))
+})
+
+test_that(".check_tidy_index_input catches user input errors", {
+  expect_error(
+    .check_tidy_index_input(1:7, 1:5),
+    "Invalid indexes found in input: 6, 7"
+  )
+  expect_error(
+    suppressWarnings(.check_tidy_index_input(c("not_an_int"), 1:5)),
+    "Entered indexes must be entered as integers"
+  )
+  expect_error(
+    .check_tidy_index_input("", 1:5),
+    "No indexes entered"
+  )
+})

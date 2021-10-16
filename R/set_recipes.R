@@ -80,12 +80,7 @@ rm_recipes <- function(recipebook,
   )
 
   indexes <- readLines(con = con, n = 1L)
-
-  indexes <- indexes %>%
-    stringr::str_split(",") %>%
-    unlist() %>%
-    stringr::str_trim() %>%
-    as.integer()
+  indexes <- .check_tidy_index_input(indexes, seq_along(names(recipebook)))
 
   return(indexes)
 }

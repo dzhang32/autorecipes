@@ -74,3 +74,32 @@ weekdays <- function(which_days = NULL) {
 
   return(invisible())
 }
+
+#' @keywords internal
+#' @noRd
+.check_tidy_index_input <- function(input_indexes, valid_indexes) {
+  if (length(input_indexes) == 1 && input_indexes == "") {
+    stop("No indexes entered")
+  }
+
+  input_indexes <- input_indexes %>%
+    stringr::str_split(",") %>%
+    unlist() %>%
+    stringr::str_trim() %>%
+    as.integer()
+
+  if (any(is.na(input_indexes))) {
+    stop("Entered indexes must be entered as integers")
+  }
+
+  invalid_indexes <- input_indexes[!(input_indexes %in% valid_indexes)]
+
+  if (length(invalid_indexes) > 0) {
+    stop(
+      "Invalid indexes found in input: ",
+      stringr::str_c(invalid_indexes, collapse = ", ")
+    )
+  }
+
+  return(input_indexes)
+}

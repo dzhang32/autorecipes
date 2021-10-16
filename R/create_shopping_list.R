@@ -72,17 +72,10 @@ create_shopping_list <- function(recipebook,
     "store cupboard ingredients", "include", "shopping list"
   )
 
-  include_indexes <- readLines(con = con, n = 1L)
+  indexes <- readLines(con = con, n = 1L)
+  indexes <- .check_tidy_index_input(indexes, seq_along(store_cupboard))
 
-  if (include_indexes != "") {
-    include_indexes <- include_indexes %>%
-      stringr::str_split(",") %>%
-      unlist() %>%
-      stringr::str_trim() %>%
-      as.integer()
-
-    store_cupboard <- store_cupboard[-c(include_indexes)]
-  }
+  store_cupboard <- store_cupboard[-c(indexes)]
 
   return(store_cupboard)
 }
