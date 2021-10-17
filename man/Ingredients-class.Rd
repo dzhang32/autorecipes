@@ -9,7 +9,7 @@
 \alias{amounts}
 \alias{units}
 \alias{as.data.frame,Ingredients-method}
-\title{S4 class containing names, amounts and units for ingredients}
+\title{S4 class containing names, amounts and units of recipe ingredients}
 \usage{
 Ingredients(names, amounts = 1, units = rep(NA_character_, length(names)))
 
@@ -24,28 +24,35 @@ units(x)
 \S4method{as.data.frame}{Ingredients}(x)
 }
 \arguments{
-\item{names}{\code{character()} name of each ingredient.}
+\item{names}{\code{character()} containing the names of each ingredient.}
 
-\item{amounts}{\code{numeric()} amount of each ingredient.}
+\item{amounts}{\code{numeric()} containing the amounts of each ingredient.}
 
-\item{units}{\code{character()} units for the amount of each ingredient.}
+\item{units}{\code{character()} containing the units for the amount of each
+ingredient.}
 
 \item{object}{an \code{Ingredients-class} object.}
 
 \item{x}{an \code{Ingredients-class} object.}
 }
 \description{
-Contains information regarding the name, the quantity and the
-units for each ingredient.
+This data structure contains information regarding the name, quantity and
+units for each ingredient. Although \code{autorecipes} provides an \code{Ingredients()}
+constructor, it is unlikely that users will need to call this to create
+\code{Ingredient-class} instances directly. Instead, when creating a
+\code{RecipeBook-class} instance, helper functions are included to read
+ingredients into the appropriate format such as the \code{RecipeBook()}
+constructor and \code{read_ingredients()}.
 }
 \section{Slots}{
 
 \describe{
-\item{\code{names}}{name of each ingredient.}
+\item{\code{names}}{\code{character()} containing the names of each ingredient.}
 
-\item{\code{amounts}}{amount of each ingredient.}
+\item{\code{amounts}}{\code{numeric()} containing the amounts of each ingredient.}
 
-\item{\code{units}}{units for the amount of each ingredient.}
+\item{\code{units}}{\code{character()} containing the units for the amount of each
+ingredient.}
 }}
 
 \section{Constructor}{
@@ -79,3 +86,13 @@ units for each ingredient.
 \code{as.data.frame(ingredients)} converts ingredients to a \code{data.frame}.
 }
 
+\examples{
+
+Ingredients("salt", 1, "tsp")
+
+# one instance can store multiple ingredients
+Ingredients(c("salt", "tomatoes"), c(1, 400), c("tsp", "g"))
+
+# amounts and units are optional
+Ingredients("Chicken")
+}

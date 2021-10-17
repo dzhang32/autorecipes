@@ -1,19 +1,35 @@
-#' @title S4 class containing names, amounts and units for ingredients
+#' @title S4 class containing names, amounts and units of recipe ingredients
 #'
 #' @description
 #'
-#' Contains information regarding the name, the quantity and the
-#' units for each ingredient.
+#' This data structure contains information regarding the name, quantity and
+#' units for each ingredient. Although `autorecipes` provides an `Ingredients()`
+#' constructor, it is unlikely that users will need to call this to create
+#' `Ingredient-class` instances directly. Instead, when creating a
+#' `RecipeBook-class` instance, helper functions are included to read
+#' ingredients into the appropriate format such as the `RecipeBook()`
+#' constructor and `read_ingredients()`.
 #'
-#' @slot names name of each ingredient.
-#' @slot amounts amount of each ingredient.
-#' @slot units units for the amount of each ingredient.
+#' @slot names `character()` containing the names of each ingredient.
+#' @slot amounts `numeric()` containing the amounts of each ingredient.
+#' @slot units `character()` containing the units for the amount of each
+#'   ingredient.
 #'
 #' @param x an `Ingredients-class` object.
 #' @param object an `Ingredients-class` object.
 #'
-#' @export Ingredients
-#' @rdname Ingredients-class
+#' @examples
+#'
+#' Ingredients("salt", 1, "tsp")
+#'
+#' # one instance can store multiple ingredients
+#' Ingredients(c("salt", "tomatoes"), c(1, 400), c("tsp", "g"))
+#'
+#' # amounts and units are optional
+#' Ingredients("Chicken")
+#' @name Ingredients-class
+#' @aliases Ingredients
+#' @exportClass Ingredients
 setClass("Ingredients",
   slots = c(
     names = "character",
@@ -36,9 +52,12 @@ setClass("Ingredients",
 #'   `Ingredients(names, amounts, units)` creates an object of
 #'   `Ingredients-class`.
 #'
-#' @param names `character()` name of each ingredient.
-#' @param amounts `numeric()` amount of each ingredient.
-#' @param units `character()` units for the amount of each ingredient.
+#' @param names `character()` containing the names of each ingredient.
+#' @param amounts `numeric()` containing the amounts of each ingredient.
+#' @param units `character()` containing the units for the amount of each
+#'   ingredient.
+#'
+#' @export
 Ingredients <- function(names, # nolint
                         amounts = 1,
                         units = rep(NA_character_, length(names))) {
