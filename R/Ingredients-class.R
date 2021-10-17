@@ -117,7 +117,7 @@ setValidity("Ingredients", .valid_ingredients)
 #' @noRd
 .all_valid_units <- function(no_na = FALSE, regex = FALSE) {
   stopifnot(length(no_na) == 1 && length(regex) == 1)
-  if (regex & !no_na) stop("when regex is TRUE, no_na should be FALSE")
+  if (regex && !no_na) stop("when regex is TRUE, no_na should be TRUE")
 
   valid_units <- c(
     "g", "kg",

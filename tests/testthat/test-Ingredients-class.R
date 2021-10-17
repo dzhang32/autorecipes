@@ -73,6 +73,6 @@ test_that(".all_valid_units output looks correct", {
 test_that(".all_valid_units catches user_input errors", {
   expect_error(
     .all_valid_units(regex = TRUE),
-    "when regex is TRUE, no_na should be FALSE"
+    "when regex is TRUE, no_na should be TRUE"
   )
 })
