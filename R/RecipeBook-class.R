@@ -129,27 +129,22 @@ read_ingredients <- function(ingredients,
     lapply(FUN = function(x) length(x)) %>%
     unlist()
 
-  ingredients_tibble <-
-    dplyr::tibble(
-      recipe_index = rep(seq_along(ingredients_parsed), n_ingred_per_recipe),
-      ingredients = unlist(ingredients_parsed)
-    )
-
   amounts_regex <- "[1-9]/?[0-9]?[0-9]?"
   units_regex <- .all_valid_units(no_na = TRUE, regex = TRUE)
 
   # extract each individual component
-  ingredients_tibble <- ingredients_tibble %>%
-    dplyr::mutate(
-      amounts = ingredients %>% stringr::str_extract(amounts_regex),
-      units = ingredients %>%
-        stringr::str_extract(units_regex) %>%
-        stringr::str_trim(),
-      names = ingredients %>%
-        stringr::str_remove(amounts_regex) %>%
-        stringr::str_remove(units_regex) %>%
-        stringr::str_trim()
-    )
+  ingredients_tibble <- dplyr::tibble(
+    recipe_index = rep(seq_along(ingredients_parsed), n_ingred_per_recipe),
+    ingredients = unlist(ingredients_parsed),
+    amounts = ingredients %>% stringr::str_extract(amounts_regex),
+    units = ingredients %>%
+      stringr::str_extract(units_regex) %>%
+      stringr::str_trim(),
+    names = ingredients %>%
+      stringr::str_remove(amounts_regex) %>%
+      stringr::str_remove(units_regex) %>%
+      stringr::str_trim()
+  )
 
   ingredients_tidy <- vector(mode = "list", length = length(ingredients_parsed))
   for (i in seq_along(ingredients_parsed)) {

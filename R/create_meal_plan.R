@@ -96,11 +96,11 @@ create_meal_plan <- function(recipebook,
 #' @noRd
 .create_meal_plan_auto <- function(recipes, num_required) {
   if (!all(is.na(recipes[["last_eaten"]]))) {
-    # set a probability such that the later the recipe was last eaten
-    # greater the chance it's picked, the below does this by:
-    # 1. change NAs (never) to earliest date - 1
-    # 2. rank by last_eaten, the available methods only allow ascending rank
-    # 3. re-rank using -rank  (descending - earlier dates = higher rank)
+    # set a probability so the later the recipe was last eaten
+    # the greater the chance it's picked:
+    # 1. set NAs (never eaten) to earliest date - 1
+    # 2. rank by last_eaten, the default method only allows ascending
+    # 3. re-rank using -rank (descending so earlier dates = higher rank)
     # 4. normalise ranks into prob by dividing by sum(rank)
     prob <- recipes %>%
       dplyr::mutate(
@@ -126,10 +126,10 @@ create_meal_plan <- function(recipebook,
 #' @keywords internal
 #' @noRd
 .create_meal_plan_random <- function(recipes, num_required, prob = NULL) {
-  # need to extract [["index"]] vs seq_along()
+  # need to extract [["index"]] rather than seq_along()
   # in the case recipes are filtered by favourites()
-  # while used to make sure recipes don't repeat until they're all used once
-  # avoid e.g. 1, 1, 1, 3, 4 ... occurring if replace = TRUE
+  # while() is used so recipes don't repeat until all used at least once
+  # this avoids e.g. 1, 1, 1, 3, 4 ... occurring if replace = TRUE was used
   chosen_recipe_indexes <- c()
 
   while (length(chosen_recipe_indexes) < num_required) {
