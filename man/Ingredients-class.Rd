@@ -36,10 +36,10 @@ ingredient.}
 \item{x}{an \code{Ingredients-class} object.}
 }
 \description{
-This data structure contains information regarding the name, quantity and
-units for each ingredient. Although \code{autorecipes} provides an \code{Ingredients()}
-constructor, it is unlikely that users will need to call this to create
-\code{Ingredient-class} instances directly. Instead, when creating a
+An \code{Ingredients-class} object contains information regarding the name,
+quantity and units for each ingredient. Although \code{autorecipes} provides an
+\code{Ingredients()} constructor, it is unlikely that users will need to call this
+to create \code{Ingredient-class} instances directly. Instead, when creating a
 \code{RecipeBook-class} instance, helper functions are included to read
 ingredients into the appropriate format such as the \code{RecipeBook()}
 constructor and \code{read_ingredients()}.

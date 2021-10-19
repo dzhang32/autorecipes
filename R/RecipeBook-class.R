@@ -2,8 +2,11 @@
 #'
 #' @description
 #'
-#' A book of recipes from which meal plans and shopping lists can be generated.
-#'
+#' An `RecipeBook-class` object contains 3 components; 1. a set of recipes
+#' retrievable using `recipes()`, 2. a meal plan created using
+#' `create_meal_plan()` and 3. a shopping list created using
+#' `create_shopping_list()`.
+#' 
 #' @slot recipes `tibble::tibble()` storing the names, ingredients and
 #'   favourites status of recipes.
 #' @slot meal_plan `tibble::tibble()` storing a meal plan, created by

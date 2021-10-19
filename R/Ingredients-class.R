@@ -2,14 +2,14 @@
 #'
 #' @description
 #'
-#' This data structure contains information regarding the name, quantity and
-#' units for each ingredient. Although `autorecipes` provides an `Ingredients()`
-#' constructor, it is unlikely that users will need to call this to create
-#' `Ingredient-class` instances directly. Instead, when creating a
+#' An `Ingredients-class` object contains information regarding the name,
+#' quantity and units for each ingredient. Although `autorecipes` provides an
+#' `Ingredients()` constructor, it is unlikely that users will need to call this
+#' to create `Ingredient-class` instances directly. Instead, when creating a
 #' `RecipeBook-class` instance, helper functions are included to read
 #' ingredients into the appropriate format such as the `RecipeBook()`
 #' constructor and `read_ingredients()`.
-#'
+#' 
 #' @slot names `character()` containing the names of each ingredient.
 #' @slot amounts `numeric()` containing the amounts of each ingredient.
 #' @slot units `character()` containing the units for the amount of each

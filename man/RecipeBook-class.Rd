@@ -45,7 +45,10 @@ If a \code{character()}, will be read in using \code{read_ingredients()}.}
 \item{value}{\code{tibble::tibble()} which will be used to set the \code{recipes} slot.}
 }
 \description{
-A book of recipes from which meal plans and shopping lists can be generated.
+An \code{RecipeBook-class} object contains 3 components; 1. a set of recipes
+retrievable using \code{recipes()}, 2. a meal plan created using
+\code{create_meal_plan()} and 3. a shopping list created using
+\code{create_shopping_list()}.
 }
 \section{Slots}{
 
