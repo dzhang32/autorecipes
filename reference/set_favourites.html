@@ -32,7 +32,7 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/dzhang32/autorecipes/">
+  <a href="https://github.com/dzhang32/autorecipes/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -47,7 +47,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Add or remove favourite recipes</h1>
-    <small class="dont-index">Source: <a href="https://github.com/dzhang32/autorecipes/blob/master/R/set_favourites.R"><code>R/set_favourites.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/dzhang32/autorecipes/blob/master/R/set_favourites.R" class="external-link"><code>R/set_favourites.R</code></a></small>
     <div class="hidden name"><code>set_favourites.Rd</code></div>
     </div>
 
@@ -55,19 +55,20 @@
     <p>Add or remove favourite recipes</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">add_favourites</span><span class="op">(</span><span class="va">recipebook</span>, <span class="va">indexes</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"index"</span>, <span class="st">"manual"</span><span class="op">)</span><span class="op">)</span>
+    <div class="ref-usage sourceCode"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/set_favourites.html">add_favourites</a></span><span class="op">(</span><span class="va">recipebook</span>, <span class="va">indexes</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"index"</span>, <span class="st">"manual"</span><span class="op">)</span><span class="op">)</span>
 
-<span class="fu">rm_favourites</span><span class="op">(</span><span class="va">recipebook</span>, <span class="va">indexes</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"index"</span>, <span class="st">"manual"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="../reference/set_favourites.html">rm_favourites</a></span><span class="op">(</span><span class="va">recipebook</span>, <span class="va">indexes</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"index"</span>, <span class="st">"manual"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>recipebook</th>
+    <h2>Arguments</h2>
+    <table class="table ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>recipebook</th>
       <td><p>object of <code>RecipeBook-class</code>.</p></td>
     </tr><tr><th>indexes</th>
-      <td><p><code><a href="https://rdrr.io/r/base/numeric.html">numeric()</a></code> the indexes of the recipes to change, required if
+      <td><p><code><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric()</a></code> the indexes of the recipes to change, required if
 method is set to 'index'.</p></td>
     </tr><tr><th>method</th>
-      <td><p><code><a href="https://rdrr.io/r/base/character.html">character()</a></code> one of 'manual' or 'index'. If 'manual', will
+      <td><p><code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code> one of 'manual' or 'index'. If 'manual', will
 allow users to interactively pick the recipes to add/remove as favourites.
 If 'index' will modify the recipes corresponding to <code>indexes</code>.</p></td>
     </tr></table></div>

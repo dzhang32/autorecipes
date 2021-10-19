@@ -28,9 +28,6 @@
     <loc>/reference/RecipeBook-class.html</loc>
   </url>
   <url>
-    <loc>/reference/RecipeBook_example.html</loc>
-  </url>
-  <url>
     <loc>/reference/create_meal_plan.html</loc>
   </url>
   <url>
@@ -41,6 +38,9 @@
   </url>
   <url>
     <loc>/reference/read_ingredients.html</loc>
+  </url>
+  <url>
+    <loc>/reference/recipebook_example.html</loc>
   </url>
   <url>
     <loc>/reference/recipes_example.html</loc>
