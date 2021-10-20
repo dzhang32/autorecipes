@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_meal_plan.R
 \name{create_meal_plan}
 \alias{create_meal_plan}
-\title{Create a meal plan}
+\title{Create a customizable meal plan}
 \usage{
 create_meal_plan(
   recipebook,
@@ -16,25 +16,29 @@ create_meal_plan(
 \arguments{
 \item{recipebook}{a \code{RecipeBook-class} object.}
 
-\item{which_days}{\code{character()} which days of the week to plan for.}
+\item{which_days}{\code{character()} which days of the week to plan for, in the
+format "Mon"}
 
-\item{which_meals}{\code{character()} which meals to plan for, out of "Lunch" and
+\item{which_meals}{\code{character()} which meals to plan for, one of "Lunch" or
 "Dinner".}
 
-\item{method}{\code{character()} the method to use when creating a meal plan.}
+\item{method}{\code{character()} the method to use when creating a meal plan, one
+of "auto", or "random".}
 
-\item{fav_only}{\code{logical()} whether to create a meal plan only using
-favourite recipes.}
+\item{fav_only}{\code{logical()} whether to only pick from favourite recipes.}
 
-\item{set_last_eaten}{\code{logical()} whether to save the recipes
-were eaten today. Used to optimise the meal planning algorithm when the
-\code{method} is set to "auto".}
+\item{set_last_eaten}{\code{logical()} whether to record the that selected recipes
+were used for a meal plan today. This info is taken into account when
+optimising the meal planning algorithm if \code{method} is set to "auto".}
 }
 \value{
 a \code{RecipeBook-class} object containing the created \code{meal_plan}.
 }
 \description{
-Create a meal plan
+\code{create_meal_plan()} expects a \code{RecipeBook-class} object as input. The
+available options for customizing the meal plan include; the days of the week
+and the meals ("Lunch" or "Dinner") to plan for, the method to use and
+whether to only use favourite recipes.
 }
 \examples{
 recipebook <- create_meal_plan(recipebook_example)
