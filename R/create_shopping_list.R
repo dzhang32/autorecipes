@@ -1,5 +1,9 @@
 #' Create a shopping list
 #'
+#' Expects a `RecipeBook-class` object with non-empty meal plan slot as input. A
+#' shopping list consist of a summarised table with all of the ingredients that
+#' are required to cook the recipes in the current meal plan.
+#' 
 #' @inheritParams create_meal_plan
 #' @param filter_method `character()` the method to used to filter out store
 #'   cupboard ingredients from your shopping list.

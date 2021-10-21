@@ -19,5 +19,7 @@ cupboard ingredients from your shopping list.}
 \code{tibble::tibble()} containing a shopping list.
 }
 \description{
-Create a shopping list
+Expects a \code{RecipeBook-class} object with non-empty meal plan slot as input. A
+shopping list consist of a summarised table with all of the ingredients that
+are required to cook the recipes in the current meal plan.
 }
