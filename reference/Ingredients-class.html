@@ -60,15 +60,14 @@ constructor and read_ingredients()."><!-- mathjax --><script src="https://cdnjs.
     <div class="ref-description">
     <p>An <code>Ingredients-class</code> object contains information regarding the name,
 quantity and units for each ingredient. Although <code>autorecipes</code> provides an
-<code><a href="../reference/Ingredients-class.html">Ingredients()</a></code> constructor, it is unlikely that users will need to call this
+<code>Ingredients()</code> constructor, it is unlikely that users will need to call this
 to create <code>Ingredient-class</code> instances directly. Instead, when creating a
 <code>RecipeBook-class</code> instance, helper functions are included to read
 ingredients into the appropriate format such as the <code><a href="RecipeBook-class.html">RecipeBook()</a></code>
 constructor and <code><a href="read_ingredients.html">read_ingredients()</a></code>.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/Ingredients-class.html">Ingredients</a></span><span class="op">(</span><span class="va">names</span>, amounts <span class="op">=</span> <span class="fl">1</span>, units <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">NA_character_</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">names</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">Ingredients</span><span class="op">(</span><span class="va">names</span>, amounts <span class="op">=</span> <span class="fl">1</span>, units <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">NA_character_</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">names</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># S4 method for Ingredients</span>
 <span class="fu">show</span><span class="op">(</span><span class="va">object</span><span class="op">)</span>
@@ -76,9 +75,9 @@ constructor and <code><a href="read_ingredients.html">read_ingredients()</a></co
 <span class="co"># S4 method for Ingredients</span>
 <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/Ingredients-class.html">amounts</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="fu">amounts</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/Ingredients-class.html">units</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="fu">units</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 
 <span class="co"># S4 method for Ingredients</span>
 <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
@@ -146,19 +145,18 @@ ingredient.</p></dd>
 
     <div id="examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="fu"><a href="../reference/Ingredients-class.html">Ingredients</a></span><span class="op">(</span><span class="st">"salt"</span>, <span class="fl">1</span>, <span class="st">"tsp"</span><span class="op">)</span>
-<span class="co">#&gt; 1 tsp Salt</span>
-
-<span class="co"># one instance can store multiple ingredients</span>
-<span class="fu"><a href="../reference/Ingredients-class.html">Ingredients</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"salt"</span>, <span class="st">"tomatoes"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">400</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"tsp"</span>, <span class="st">"g"</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; 1 tsp Salt</span>
-<span class="co">#&gt; 400 g Tomatoes</span>
-
-<span class="co"># amounts and units are optional</span>
-<span class="fu"><a href="../reference/Ingredients-class.html">Ingredients</a></span><span class="op">(</span><span class="st">"Chicken"</span><span class="op">)</span>
-<span class="co">#&gt; 1 Chicken</span>
+    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
+<span class="r-in"><span class="fu">Ingredients</span><span class="op">(</span><span class="st">"salt"</span>, <span class="fl">1</span>, <span class="st">"tsp"</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 tsp Salt</span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># one instance can store multiple ingredients</span></span>
+<span class="r-in"><span class="fu">Ingredients</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"salt"</span>, <span class="st">"tomatoes"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">400</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"tsp"</span>, <span class="st">"g"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 tsp Salt</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 400 g Tomatoes</span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># amounts and units are optional</span></span>
+<span class="r-in"><span class="fu">Ingredients</span><span class="op">(</span><span class="st">"Chicken"</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Chicken</span>
 </code></pre></div>
     </div>
   </div>

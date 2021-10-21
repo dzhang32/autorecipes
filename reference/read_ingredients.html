@@ -55,8 +55,7 @@
     <p>Read in a list of ingredients from a character vector</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/read_ingredients.html">read_ingredients</a></span><span class="op">(</span><span class="va">ingredients</span>, delim <span class="op">=</span> <span class="st">";"</span>, method <span class="op">=</span> <span class="st">"auto"</span><span class="op">)</span></code></pre></div>
+    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">read_ingredients</span><span class="op">(</span><span class="va">ingredients</span>, delim <span class="op">=</span> <span class="st">";"</span><span class="op">)</span></code></pre></div>
 
     <div id="arguments">
     <h2>Arguments</h2>
@@ -66,10 +65,6 @@
 recipe.</p></td>
     </tr><tr><th>delim</th>
       <td><p><code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code> that separates each ingredient.</p></td>
-    </tr><tr><th>method</th>
-      <td><p><code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code> used to determine the method of parsing
-ingredients, placeholder for future implementations (e.g. with data.frame
-input).</p></td>
     </tr></table></div>
 
     <div id="ref-sections">
@@ -81,26 +76,25 @@ input).</p></td>
 
     <div id="examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/read_ingredients.html">read_ingredients</a></span><span class="op">(</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>
-    <span class="st">"butter;6 eggs;1 bag coriander;1 punnet mixed baby tomatoes"</span>,
-    <span class="st">"1 tsp garam masala;1 bag baby spinach;1 lemon;1 chilli"</span>
-  <span class="op">)</span>,
-  delim <span class="op">=</span> <span class="st">";"</span>
-<span class="op">)</span>
-<span class="co">#&gt; [[1]]</span>
-<span class="co">#&gt; 1 Butter</span>
-<span class="co">#&gt; 6 Eggs</span>
-<span class="co">#&gt; 1 bag Coriander</span>
-<span class="co">#&gt; 1 punnet Mixed Baby Tomatoes</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[2]]</span>
-<span class="co">#&gt; 1 tsp Garam Masala</span>
-<span class="co">#&gt; 1 bag Baby Spinach</span>
-<span class="co">#&gt; 1 Lemon</span>
-<span class="co">#&gt; 1 Chilli</span>
-<span class="co">#&gt; </span>
+    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">read_ingredients</span><span class="op">(</span></span>
+<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span class="r-in">    <span class="st">"butter;6 eggs;1 bag coriander;1 punnet mixed baby tomatoes"</span>,</span>
+<span class="r-in">    <span class="st">"1 tsp garam masala;1 bag baby spinach;1 lemon;1 chilli"</span></span>
+<span class="r-in">  <span class="op">)</span>,</span>
+<span class="r-in">  delim <span class="op">=</span> <span class="st">";"</span></span>
+<span class="r-in"><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Butter</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 Eggs</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 bag Coriander</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 punnet Mixed Baby Tomatoes</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 tsp Garam Masala</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 bag Baby Spinach</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Lemon</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Chilli</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
   </div>
