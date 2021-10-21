@@ -143,15 +143,11 @@ test_ingred <- recipes_example[["ingredients"]]
 test_that("read_ingredients default works correctly", {
   expect_true(identical(
     read_ingredients(test_ingred[1:2]),
-    .read_ingredients_auto(test_ingred[1:2], delim = ";")
+    .parse_ingredients_character(test_ingred[1:2], delim = ";")
   ))
 })
 
 test_that("read_ingredients catches input errors", {
-  expect_error(
-    read_ingredients(test_ingred[1:2], delim = ";", method = "x"),
-    "'arg' should be one of"
-  )
   expect_error(
     read_ingredients(test_ingred[1:2], delim = NULL),
     "Currently, delim must be entered"
@@ -162,7 +158,7 @@ test_that("read_ingredients catches input errors", {
 ##### .read_ingredient_auto #####
 
 test_that(".read_ingredient_auto output looks broadly correctly", {
-  test_read_ingred <- .read_ingredients_auto(test_ingred, delim = ";")
+  test_read_ingred <- .parse_ingredients_character(test_ingred, delim = ";")
 
   expect_true(identical(length(test_read_ingred), length(test_ingred)))
   expect_true(all(
@@ -172,7 +168,7 @@ test_that(".read_ingredient_auto output looks broadly correctly", {
 })
 
 test_that(".read_ingredient_auto output looks correct", {
-  test_read_ingred <- .read_ingredients_auto(
+  test_read_ingred <- .parse_ingredients_character(
     "1 red onion;3 garlic cloves;500g salad potatoes;100ml hot water",
     delim = ";"
   )

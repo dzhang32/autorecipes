@@ -78,14 +78,13 @@ RecipeBook <- function(names, ingredients) { # nolint
 }
 
 #' Read in a list of ingredients from a character vector
+#' 
+#' 
 #'
 #' @param ingredients `character()` containing ingredient info separated by
 #'   `delim`. Each element should denote the ingredients coming from a distinct
 #'   recipe.
 #' @param delim `character()` that separates each ingredient.
-#' @param method `character()` used to determine the method of parsing
-#'   ingredients, placeholder for future implementations (e.g. with data.frame
-#'   input).
 #'
 #' @return `list()` of elements of `Ingredients-class` objects.
 #' @export
@@ -99,28 +98,16 @@ RecipeBook <- function(names, ingredients) { # nolint
 #'   delim = ";"
 #' )
 read_ingredients <- function(ingredients,
-                             delim = ";",
-                             method = "auto") {
-  method <- match.arg(method)
+                             delim = ";") {
 
-  read_ingredient_func <- .dispatch_ingredient_reader(method)
-
-  ingredients_tidy <- read_ingredient_func(ingredients, delim)
+  ingredients_tidy <- .parse_ingredients_character(ingredients, delim)
 
   return(ingredients_tidy)
 }
 
 #' @keywords internal
 #' @noRd
-.dispatch_ingredient_reader <- function(method) {
-  switch(method,
-    "auto" = .read_ingredients_auto
-  )
-}
-
-#' @keywords internal
-#' @noRd
-.read_ingredients_auto <- function(ingredients, delim) {
+.parse_ingredients_character <- function(ingredients, delim) {
   if (!is.null(delim)) {
     ingredients_parsed <- ingredients %>%
       stringr::str_split(delim)

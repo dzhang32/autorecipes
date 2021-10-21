@@ -4,7 +4,7 @@
 \alias{read_ingredients}
 \title{Read in a list of ingredients from a character vector}
 \usage{
-read_ingredients(ingredients, delim = ";", method = "auto")
+read_ingredients(ingredients, delim = ";")
 }
 \arguments{
 \item{ingredients}{\code{character()} containing ingredient info separated by
@@ -12,10 +12,6 @@ read_ingredients(ingredients, delim = ";", method = "auto")
 recipe.}
 
 \item{delim}{\code{character()} that separates each ingredient.}
-
-\item{method}{\code{character()} used to determine the method of parsing
-ingredients, placeholder for future implementations (e.g. with data.frame
-input).}
 }
 \value{
 \code{list()} of elements of \code{Ingredients-class} objects.
