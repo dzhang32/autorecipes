@@ -53,6 +53,8 @@ recipes(recipebook) %>% head()
 
 ## Create a meal plan
 
+`autorecipes` allows you to create meal plan from your `RecipeBook-class` object. For this, you can set the days and meals you would like to order for. And also whether you only want to use favourite recipes. 
+
 ```{r create-meal-plan}
 
 recipebook <- create_meal_plan(
