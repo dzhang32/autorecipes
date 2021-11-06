@@ -50,7 +50,7 @@ create_shopping_list()."><!-- mathjax --><script src="https://cdnjs.cloudflare.c
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>S4 class containing recipes, their ingredients and meal plans</h1>
-    <small class="dont-index">Source: <a href="https://github.com/dzhang32/autorecipes/blob/master/R/RecipeBook-class.R" class="external-link"><code>R/RecipeBook-class.R</code></a>, <a href="https://github.com/dzhang32/autorecipes/blob/master/R/RecipeBook-methods.R" class="external-link"><code>R/RecipeBook-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/dzhang32/autorecipes/blob/HEAD/R/RecipeBook-class.R" class="external-link"><code>R/RecipeBook-class.R</code></a>, <a href="https://github.com/dzhang32/autorecipes/blob/HEAD/R/RecipeBook-methods.R" class="external-link"><code>R/RecipeBook-methods.R</code></a></small>
     <div class="hidden name"><code>RecipeBook-class.Rd</code></div>
     </div>
 
@@ -82,34 +82,39 @@ retrievable using <code>recipes()</code>, 2. a meal plan created using
 
 <span class="fu">recipes</span><span class="op">(</span><span class="va">object</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></code></pre></div>
 
+    <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>names</th>
-      <td><p><code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code> containing the name of of recipes.</p></td>
-    </tr><tr><th>ingredients</th>
-      <td><p><code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code> or <code><a href="https://rdrr.io/r/base/list.html" class="external-link">list()</a></code> of <code>Ingredient-class</code> objects.
-If a <code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code>, will be read in using <code><a href="read_ingredients.html">read_ingredients()</a></code>.</p></td>
-    </tr><tr><th>object</th>
-      <td><p>a <code>RecipeBook-class</code> object.</p></td>
-    </tr><tr><th>x</th>
-      <td><p>a <code>RecipeBook-class</code> object.</p></td>
-    </tr><tr><th>value</th>
-      <td><p><code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble::tibble()</a></code> which will be used to set the <code>recipes</code> slot.</p></td>
-    </tr></table></div>
-
-    <div id="ref-sections">
+    <dl><dt>names</dt>
+<dd><p><code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code> containing the name of of recipes.</p></dd>
+<dt>ingredients</dt>
+<dd><p><code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code> or <code><a href="https://rdrr.io/r/base/list.html" class="external-link">list()</a></code> of <code>Ingredient-class</code> objects.
+If a <code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code>, will be read in using <code><a href="read_ingredients.html">read_ingredients()</a></code>.</p></dd>
+<dt>object</dt>
+<dd><p>a <code>RecipeBook-class</code> object.</p></dd>
+<dt>x</dt>
+<dd><p>a <code>RecipeBook-class</code> object.</p></dd>
+<dt>value</dt>
+<dd><p><code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble::tibble()</a></code> which will be used to set the <code>recipes</code> slot.</p></dd>
+</dl></div>
     <div id="slots">
     <h2>Slots</h2>
     
 
-<dl><dt><code>recipes</code></dt><dd><p><code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble::tibble()</a></code> storing the names, ingredients and
+<dl><dt><code>recipes</code></dt>
+<dd><p><code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble::tibble()</a></code> storing the names, ingredients and
 favourites status of recipes.</p></dd>
 
-<dt><code>meal_plan</code></dt><dd><p><code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble::tibble()</a></code> storing a meal plan, created by
+
+<dt><code>meal_plan</code></dt>
+<dd><p><code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble::tibble()</a></code> storing a meal plan, created by
 <code><a href="create_meal_plan.html">create_meal_plan()</a></code>.</p></dd>
 
-<dt><code>shopping_list</code></dt><dd><p><code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble::tibble()</a></code> storing a shopping list, created by
+
+<dt><code>shopping_list</code></dt>
+<dd><p><code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble::tibble()</a></code> storing a shopping list, created by
 <code><a href="create_shopping_list.html">create_shopping_list()</a></code>.</p></dd>
+
 
 </dl></div>
     <div id="constructor">

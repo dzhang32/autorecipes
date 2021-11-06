@@ -72,7 +72,7 @@
       <h1 data-toc-skip>autorecipes</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/dzhang32/autorecipes/blob/master/vignettes/autorecipes.Rmd" class="external-link"><code>vignettes/autorecipes.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/dzhang32/autorecipes/blob/HEAD/vignettes/autorecipes.Rmd" class="external-link"><code>vignettes/autorecipes.Rmd</code></a></small>
       <div class="hidden name"><code>autorecipes.Rmd</code></div>
 
     </div>
@@ -88,14 +88,23 @@
 <span class="co">#&gt;     units, weekdays</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></code></pre></div>
 <div class="section level1">
+<h1 id="background">Background<a class="anchor" aria-label="anchor" href="#background"></a>
+</h1>
+<p>Do you find yourself manually selecting the dishes you want to eat each week? <code>autorecipes</code> is designed to simplify and automate the laborious task of picking your weekly recipes.</p>
+</div>
+<div class="section level1">
 <h1 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h1>
 <div class="section level2">
-<h2 id="set-of-example-recipes">Set of example recipes<a class="anchor" aria-label="anchor" href="#set-of-example-recipes"></a>
+<h2 id="example-recipes">Example recipes<a class="anchor" aria-label="anchor" href="#example-recipes"></a>
 </h2>
+<p><code>autorecipes</code> recipes includes a set <code>length(recipebook_example)</code> of example recipes stored in <code><a href="../reference/recipebook_example.html">autorecipes::recipebook_example</a></code>. Users are enabled and encouraged to add their own recipes, but the example provides a way to use and convey the benefit of <code>autorecipes</code> even without a user-inputted, recipe database.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">recipebook</span> <span class="op">&lt;-</span> <span class="va">recipebook_example</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"There are "</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">recipebook</span><span class="op">)</span>, <span class="st">" example recipes"</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] "There are 26 example recipes"</span>
 
 <span class="fu"><a href="../reference/RecipeBook-class.html">recipes</a></span><span class="op">(</span><span class="va">recipebook</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 5</span></span>
@@ -111,6 +120,7 @@
 <div class="section level2">
 <h2 id="set-your-favourite-recipes">Set your favourite recipes<a class="anchor" aria-label="anchor" href="#set-your-favourite-recipes"></a>
 </h2>
+<p><code>autorecipes</code> allows you to set your favorite recipes. This information can be used to determine the subset of recipes that will enter your meal plan by setting <code>autorecipes::create_meal_plan(fav_only = TRUE)</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">recipebook</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_favourites.html">add_favourites</a></span><span class="op">(</span><span class="va">recipebook</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>
@@ -129,6 +139,7 @@
 <div class="section level2">
 <h2 id="create-a-meal-plan">Create a meal plan<a class="anchor" aria-label="anchor" href="#create-a-meal-plan"></a>
 </h2>
+<p><code>autorecipes</code> allows you to create meal plan from your <code>RecipeBook-class</code> object. For this, you can set the days and meals you would like to order for. And also whether you only want to use favourite recipes.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">recipebook</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_meal_plan.html">create_meal_plan</a></span><span class="op">(</span>
@@ -141,11 +152,11 @@
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 7</span></span>
 <span class="co">#&gt;   day   meal   recipe_index names                   ingredients fav   last_eaten</span>
 <span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Wed   Dinner            3 Chicken with Rosemary … <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-21</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Thurs Dinner            2 Crispy Duck with Fava … <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-21</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Fri   Dinner            1 Akoori Eggs with Spina… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-21</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Sat   Dinner            2 Crispy Duck with Fava … <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-21</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Sun   Dinner            3 Chicken with Rosemary … <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-10-21</span></code></pre></div>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Wed   Dinner            3 Chicken with Rosemary … <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-11-06</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Thurs Dinner            2 Crispy Duck with Fava … <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-11-06</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Fri   Dinner            1 Akoori Eggs with Spina… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-11-06</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Sat   Dinner            2 Crispy Duck with Fava … <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-11-06</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Sun   Dinner            1 Akoori Eggs with Spina… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  TRUE  2021-11-06</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="create-shopping-list">Create shopping list<a class="anchor" aria-label="anchor" href="#create-shopping-list"></a>

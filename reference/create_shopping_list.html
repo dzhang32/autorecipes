@@ -49,7 +49,7 @@ are required to cook the recipes in the current meal plan."><!-- mathjax --><scr
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Create a shopping list</h1>
-    <small class="dont-index">Source: <a href="https://github.com/dzhang32/autorecipes/blob/master/R/create_shopping_list.R" class="external-link"><code>R/create_shopping_list.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/dzhang32/autorecipes/blob/HEAD/R/create_shopping_list.R" class="external-link"><code>R/create_shopping_list.R</code></a></small>
     <div class="hidden name"><code>create_shopping_list.Rd</code></div>
     </div>
 
@@ -64,16 +64,15 @@ are required to cook the recipes in the current meal plan.</p>
   filter_method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span>, <span class="st">"manual"</span>, <span class="st">"minimal"</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 
+    <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>recipebook</th>
-      <td><p>a <code>RecipeBook-class</code> object.</p></td>
-    </tr><tr><th>filter_method</th>
-      <td><p><code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code> the method to used to filter out store
-cupboard ingredients from your shopping list.</p></td>
-    </tr></table></div>
-
-    <div id="ref-sections">
+    <dl><dt>recipebook</dt>
+<dd><p>a <code>RecipeBook-class</code> object.</p></dd>
+<dt>filter_method</dt>
+<dd><p><code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code> the method to used to filter out store
+cupboard ingredients from your shopping list.</p></dd>
+</dl></div>
     <div id="value">
     <h2>Value</h2>
     <p><code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble::tibble()</a></code> containing a shopping list.</p>
