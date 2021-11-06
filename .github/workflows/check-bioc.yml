@@ -258,7 +258,6 @@ jobs:
           DISPLAY: 99.0
         run: |
           BiocCheck::BiocCheck(
-              dir('check', 'tar.gz$', full.names = TRUE),
               `quit-with-status` = FALSE,
               `no-check-R-ver` = TRUE,
               `no-check-bioc-help` = TRUE
