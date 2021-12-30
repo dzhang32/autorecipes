@@ -27,7 +27,7 @@ Do you find yourself manually selecting the dishes you want to eat each week? `a
 
 ## Example recipes
 
-`autorecipes` recipes includes a set `length(recipebook_example)` of example recipes stored in `autorecipes::recipebook_example`. Users are enabled and encouraged to add their own recipes, but the example provides a way to use and convey the benefit of `autorecipes` even without a user-inputted, recipe database. 
+`autorecipes` recipes includes a set of `length(recipebook_example)` example recipes stored in `autorecipes::recipebook_example`. Users are enabled and encouraged to add their own recipes, but the example provides a way to use and convey the benefit of `autorecipes` even without a user-inputted, recipe database. 
 
 ```{r recipebook-example}
 
@@ -64,6 +64,7 @@ recipebook <- create_meal_plan(
 )
 
 meal_plan(recipebook)
+
 ```
 
 ## Create shopping list

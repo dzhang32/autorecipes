@@ -18,15 +18,15 @@ A \code{tibble::tibble()} with 26 rows and 4 columns:
 }
 }
 \source{
-generated using data-raw/recipes_example.R
+generated using \code{autorecipes/data-raw/recipes_example.R}
 }
 \usage{
 recipes_example
 }
 \description{
-A data set containing 26 example recipes originating from recipe boxes that
-I've ordered from \href{https://www.riverford.co.uk}{Riverford}. Riverford are a
-wonderful UK company producing sustainable, delicious, locally-sourced food -
-check them out!
+A dataset containing 26 example recipes originating from recipe boxes ordered
+from \href{https://www.riverford.co.uk}{Riverford}. Riverford are a wonderful UK
+company producing sustainable, delicious, locally-sourced food - check them
+out!
 }
 \keyword{datasets}

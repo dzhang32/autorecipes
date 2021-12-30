@@ -15,16 +15,17 @@ of \code{Ingredients-class} objects.
 }
 }
 \source{
-generated using data-raw/recipebook_example.R
+generated using \code{autorecipes/data-raw/recipebook_example.R}
 }
 \usage{
 recipebook_example
 }
 \description{
-A data set that has been created using \code{autorecipes::create_recipebook()}
-containing 26 example recipes. The recipes originate from recipe boxes that
-I've ordered from \href{https://www.riverford.co.uk}{Riverford}. Riverford are a
-wonderful UK company producing sustainable, delicious, locally-sourced food -
-check them out!
+A \code{RecipeBook-class} object that has been created using
+\code{autorecipes::create_recipebook()} containing 26 example recipes. The recipes
+originate from recipe boxes ordered from
+\href{https://www.riverford.co.uk}{Riverford}. Riverford are a wonderful UK
+company producing sustainable, delicious, locally-sourced food - check them
+out!
 }
 \keyword{datasets}

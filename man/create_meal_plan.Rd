@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_meal_plan.R
 \name{create_meal_plan}
 \alias{create_meal_plan}
-\title{Create a customizable meal plan}
+\title{Create a customisable meal plan}
 \usage{
 create_meal_plan(
   recipebook,

@@ -1,9 +1,9 @@
-#' Create a customizable meal plan
+#' Create a customisable meal plan
 #'
 #' `create_meal_plan()` expects a `RecipeBook-class` object as input. The
 #' available options for customizing the meal plan include; the days of the week
 #' and the meals ("Lunch" or "Dinner") to plan for, the method to use and
-#' whether to only use favourite recipes. 
+#' whether to only use favourite recipes.
 #'
 #' @param recipebook a `RecipeBook-class` object.
 #' @param which_days `character()` which days of the week to plan for, in the
@@ -16,7 +16,7 @@
 #' @param set_last_eaten `logical()` whether to record the that selected recipes
 #'   were used for a meal plan today. This info is taken into account when
 #'   optimising the meal planning algorithm if `method` is set to "auto".
-#'   
+#'
 #' @return a `RecipeBook-class` object containing the created `meal_plan`.
 #' @export
 #'

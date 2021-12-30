@@ -6,7 +6,7 @@
 #' retrievable using `recipes()`, 2. a meal plan created using
 #' `create_meal_plan()` and 3. a shopping list created using
 #' `create_shopping_list()`.
-#' 
+#'
 #' @slot recipes `tibble::tibble()` storing the names, ingredients and
 #'   favourites status of recipes.
 #' @slot meal_plan `tibble::tibble()` storing a meal plan, created by
@@ -78,8 +78,6 @@ RecipeBook <- function(names, ingredients) { # nolint
 }
 
 #' Read in a list of ingredients from a character vector
-#' 
-#' 
 #'
 #' @param ingredients `character()` containing ingredient info separated by
 #'   `delim`. Each element should denote the ingredients coming from a distinct
