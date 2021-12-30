@@ -61,7 +61,8 @@ and the meals ("Lunch" or "Dinner") to plan for, the method to use and
 whether to only use favourite recipes.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">create_meal_plan</span><span class="op">(</span>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">create_meal_plan</span><span class="op">(</span>
   <span class="va">recipebook</span>,
   which_days <span class="op">=</span> <span class="fu"><a href="weekdays.html">weekdays</a></span><span class="op">(</span><span class="op">)</span>,
   which_meals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Lunch"</span>, <span class="st">"Dinner"</span><span class="op">)</span>,
@@ -69,8 +70,8 @@ whether to only use favourite recipes.</p>
   fav_only <span class="op">=</span> <span class="cn">FALSE</span>,
   set_last_eaten <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span></code></pre></div>
+    </div>
 
-    <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>recipebook</dt>
@@ -95,30 +96,29 @@ optimising the meal planning algorithm if <code>method</code> is set to "auto".<
     <h2>Value</h2>
     <p>a <code>RecipeBook-class</code> object containing the created <code>meal_plan</code>.</p>
     </div>
-    </div>
 
-    <div id="examples">
+    <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">recipebook</span> <span class="op">&lt;-</span> <span class="fu">create_meal_plan</span><span class="op">(</span><span class="va">recipebook_example</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">recipebook</span> <span class="op">&lt;-</span> <span class="fu">create_meal_plan</span><span class="op">(</span><span class="va">recipebook_example</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu"><a href="RecipeBook-class.html">meal_plan</a></span><span class="op">(</span><span class="va">recipebook</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 14 × 7</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    day   meal   recipe_index names                  ingredients fav   last_eaten</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Mon   Lunch            15 Globe Arichoke &amp; Pine… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-11-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Mon   Dinner            3 Chicken with Rosemary… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-11-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Tues  Lunch             2 Crispy Duck with Fava… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-11-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Tues  Dinner           19 Beef &amp; Spinach Lasagne <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-11-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Wed   Lunch             8 Sweetcorn &amp; Spring On… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-11-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Wed   Dinner           25 Korean Beef &amp; Kimchi … <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-11-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Thurs Lunch             6 Chipotle Bean Taco Sa… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-11-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Thurs Dinner           24 Mexican Enchiladas     <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-11-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Fri   Lunch            13 Creamy Chicken &amp; Much… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-11-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Fri   Dinner           21 Chickpea Falafels wit… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-11-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> Sat   Lunch            22 New Potato Tagine      <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-11-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> Sat   Dinner           23 Hoisin Beef Noodles &amp;… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-11-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> Sun   Lunch             9 Squash, Corn &amp; Tomati… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-11-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> Sun   Dinner           11 Pink Grapefruit, Mint… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-11-06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Mon   Lunch            11 Pink Grapefruit, Mint… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-12-30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Mon   Dinner            9 Squash, Corn &amp; Tomati… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-12-30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Tues  Lunch             4 Chickpea &amp; Sweet Pota… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-12-30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Tues  Dinner           26 Afghan Spliced Squash  <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-12-30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Wed   Lunch             5 Gaucho Steaks with Ch… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-12-30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Wed   Dinner           14 Roast Mushroom, Creme… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-12-30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Thurs Lunch            12 Honey &amp; Sesame Buffal… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-12-30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Thurs Dinner           25 Korean Beef &amp; Kimchi … <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-12-30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Fri   Lunch            10 Chipotle, Corn &amp; Chee… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-12-30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Fri   Dinner            8 Sweetcorn &amp; Spring On… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-12-30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> Sat   Lunch            15 Globe Arichoke &amp; Pine… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-12-30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> Sat   Dinner           17 Aubergine Schnitzel w… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-12-30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> Sun   Lunch            16 Creamy Pollock, Samph… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-12-30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> Sun   Dinner           13 Creamy Chicken &amp; Much… <span style="color: #949494;">&lt;Ingrdnts&gt;</span>  FALSE 2021-12-30</span>
 </code></pre></div>
     </div>
   </div>
@@ -133,7 +133,7 @@ optimising the meal planning algorithm if <code>method</code> is set to "auto".<
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>
