@@ -16,16 +16,16 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 coverage](https://codecov.io/gh/dzhang32/autorecipes/branch/master/graph/badge.svg)](https://codecov.io/gh/dzhang32/autorecipes?branch=master)
 <!-- badges: end -->
 
-`autorecipes` automates your recipe planning by taking care of:
+As an unadventurous, by-the-recipe cook, I had accumulated a set of \~25
+go-to meals that were cycled through weekly depending on mood, time and
+what I’d had the week before. Over time, this process became repetitive.
+`autorecipes` was born from this repetition; it takes care of:
 
-1.  Creating and storing a database of recipes.
-2.  Customizing weekly meal plans.
-3.  Generating shopping lists of ingredients.
+1.  Creating and storing a database of recipes
+2.  Customizing weekly meal plans
+3.  Generating shopping lists of ingredients
 
-## Installation instructions
-
-And the development version from
-[GitHub](https://github.com/dzhang32/autorecipes) with:
+## Installation
 
 ``` r
 devtools::install_github("dzhang32/autorecipes")
@@ -39,43 +39,14 @@ sink your teeth into a more detailed overview, please head over to the
 
 ``` r
 library("autorecipes")
-#> 
-#> Attaching package: 'autorecipes'
-#> The following objects are masked from 'package:base':
-#> 
-#>     units, weekdays
+
 # autorecipes contains an example set of recipes in recipebook_example
 # recipes stored in RecipeBook-class objects can be retrieved using recipes()
 head(recipes(recipebook_example))
-#> # A tibble: 6 × 5
-#>   index names                                            ingredients fav   last_eaten
-#>   <int> <chr>                                            <list>      <lgl> <date>    
-#> 1     1 Akoori Eggs with Spinach & Potato                <Ingrdnts>  FALSE NA        
-#> 2     2 Crispy Duck with Fava Beans & Caramelised Onions <Ingrdnts>  FALSE NA        
-#> 3     3 Chicken with Rosemary Plumns                     <Ingrdnts>  FALSE NA        
-#> 4     4 Chickpea & Sweet Potato Masala                   <Ingrdnts>  FALSE NA        
-#> 5     5 Gaucho Steaks with Chimichurri Salad             <Ingrdnts>  FALSE NA        
-#> 6     6 Chipotle Bean Taco Salad                         <Ingrdnts>  FALSE NA
+
 # create a meal plan for your lunch and dinner across all weekdays
 recipebook <- create_meal_plan(recipebook_example)
 meal_plan(recipebook)
-#> # A tibble: 14 × 7
-#>    day   meal   recipe_index names                  ingredients fav   last_eaten
-#>    <fct> <fct>         <int> <chr>                  <list>      <lgl> <date>    
-#>  1 Mon   Lunch             8 Sweetcorn & Spring On… <Ingrdnts>  FALSE 2021-10-16
-#>  2 Mon   Dinner           18 Normandy Pork & Cider… <Ingrdnts>  FALSE 2021-10-16
-#>  3 Tues  Lunch             5 Gaucho Steaks with Ch… <Ingrdnts>  FALSE 2021-10-16
-#>  4 Tues  Dinner           23 Hoisin Beef Noodles &… <Ingrdnts>  FALSE 2021-10-16
-#>  5 Wed   Lunch             3 Chicken with Rosemary… <Ingrdnts>  FALSE 2021-10-16
-#>  6 Wed   Dinner           26 Afghan Spliced Squash  <Ingrdnts>  FALSE 2021-10-16
-#>  7 Thurs Lunch            22 New Potato Tagine      <Ingrdnts>  FALSE 2021-10-16
-#>  8 Thurs Dinner            2 Crispy Duck with Fava… <Ingrdnts>  FALSE 2021-10-16
-#>  9 Fri   Lunch            17 Aubergine Schnitzel w… <Ingrdnts>  FALSE 2021-10-16
-#> 10 Fri   Dinner           11 Pink Grapefruit, Mint… <Ingrdnts>  FALSE 2021-10-16
-#> 11 Sat   Lunch            15 Globe Arichoke & Pine… <Ingrdnts>  FALSE 2021-10-16
-#> 12 Sat   Dinner            1 Akoori Eggs with Spin… <Ingrdnts>  FALSE 2021-10-16
-#> 13 Sun   Lunch            13 Creamy Chicken & Much… <Ingrdnts>  FALSE 2021-10-16
-#> 14 Sun   Dinner            4 Chickpea & Sweet Pota… <Ingrdnts>  FALSE 2021-10-16
 ```
 
 ## Code of Conduct
@@ -92,7 +63,7 @@ contributing to this project, you agree to abide by its terms.
     through *[usethis](https://CRAN.R-project.org/package=usethis)*,
     *[remotes](https://CRAN.R-project.org/package=remotes)*, and
     *[rcmdcheck](https://CRAN.R-project.org/package=rcmdcheck)*
-    customized to use [Bioconductor’s docker
+    customized to use [Bioconductor”s docker
     containers](https://www.bioconductor.org/help/docker/) and
     *[BiocCheck](https://bioconductor.org/packages/3.14/BiocCheck)*.
 -   Code coverage assessment is possible thanks to
