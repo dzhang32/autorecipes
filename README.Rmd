@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/dzhang32/autorecipes/branch/master/graph/badge.svg)](https://codecov.io/gh/dzhang32/autorecipes?branch=master)
 <!-- badges: end -->
 
-As an unadventurous, by-the-recipe cook, I had accumulated a set of ~25 go-to meals that were cycled through weekly depending on mood, time and what I'd had the week before. Over time, this process became repetitive. `autorecipes` was born from this repetition; it takes care of:
+As an unadventurous, by-the-recipe cook, I had accumulated a set of ~25 go-to meals that were cycled through weekly depending on mood, time and what I'd had the week before. Over time, this selection process became repetitive. `autorecipes` was born from this repetition; it takes care of:
 
   1.  Creating and storing a database of recipes
   2.  Customizing weekly meal plans
@@ -37,7 +37,7 @@ devtools::install_github("dzhang32/autorecipes")
 
 ## Usage
 
-The below example gives a taste of `autorecipes`. If you would like to sink your teeth into a more detailed overview, please head over to the
+The below example gives a taste of `autorecipes`. If you would like to sink your teeth into a more detailed overview, head over to the
 [vignette](https://dzhang32.github.io/autorecipes/articles/autorecipes.html).
 
 ```{r example, eval = requireNamespace("autorecipes")}
@@ -64,7 +64,5 @@ Please note that the `autorecipes` project is released with a [Contributor Code 
 * The [documentation website](http://dzhang32.github.io/autorecipes) is automatically updated thanks to `r BiocStyle::CRANpkg("pkgdown")`.
 * The code is styled automatically thanks to `r BiocStyle::CRANpkg("styler")`.
 * The documentation is formatted thanks to `r BiocStyle::CRANpkg("devtools")` and `r BiocStyle::CRANpkg("roxygen2")`.
-
-For more details, check the `dev` directory.
 
 This package was developed using `r BiocStyle::Biocpkg("biocthis")`.

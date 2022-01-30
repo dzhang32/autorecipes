@@ -18,8 +18,9 @@ coverage](https://codecov.io/gh/dzhang32/autorecipes/branch/master/graph/badge.s
 
 As an unadventurous, by-the-recipe cook, I had accumulated a set of \~25
 go-to meals that were cycled through weekly depending on mood, time and
-what I’d had the week before. Over time, this process became repetitive.
-`autorecipes` was born from this repetition; it takes care of:
+what I’d had the week before. Over time, this selection process became
+repetitive. `autorecipes` was born from this repetition; it takes care
+of:
 
 1.  Creating and storing a database of recipes
 2.  Customizing weekly meal plans
@@ -34,7 +35,7 @@ devtools::install_github("dzhang32/autorecipes")
 ## Usage
 
 The below example gives a taste of `autorecipes`. If you would like to
-sink your teeth into a more detailed overview, please head over to the
+sink your teeth into a more detailed overview, head over to the
 [vignette](https://dzhang32.github.io/autorecipes/articles/autorecipes.html).
 
 ``` r
@@ -77,8 +78,6 @@ contributing to this project, you agree to abide by its terms.
 -   The documentation is formatted thanks to
     *[devtools](https://CRAN.R-project.org/package=devtools)* and
     *[roxygen2](https://CRAN.R-project.org/package=roxygen2)*.
-
-For more details, check the `dev` directory.
 
 This package was developed using
 *[biocthis](https://bioconductor.org/packages/3.14/biocthis)*.
