@@ -17,10 +17,10 @@ coverage](https://codecov.io/gh/dzhang32/autorecipes/branch/master/graph/badge.s
 <!-- badges: end -->
 
 As an unadventurous, by-the-recipe cook, I had accumulated a set of \~25
-go-to meals that were cycled through weekly depending on mood, time and
-what I’d had the week before. Over time, this selection process became
-repetitive. `autorecipes` was born from this repetition; it takes care
-of:
+go-to meals that were cycled through depending on mood, time and what
+I’d had the week before. Over time, this weekly, manual selection
+process became repetitive. `autorecipes` was born from this repetition;
+it automates recipe planning by taking care of:
 
 1.  Creating and storing a database of recipes
 2.  Customizing weekly meal plans
@@ -49,13 +49,6 @@ head(recipes(recipebook_example))
 recipebook <- create_meal_plan(recipebook_example)
 meal_plan(recipebook)
 ```
-
-## Code of Conduct
-
-Please note that the `autorecipes` project is released with a
-[Contributor Code of
-Conduct](http://bioconductor.org/about/code-of-conduct/). By
-contributing to this project, you agree to abide by its terms.
 
 ## Development tools
 
