@@ -19,47 +19,56 @@ library(autorecipes)
 library(magrittr)
 ```
 
-# Background
+## Background
 
-Do you find yourself manually selecting the dishes you want to eat each week? `autorecipes` is designed to simplify and automate the laborious task of picking your weekly recipes. 
+As an unadventurous, by-the-recipe cook, I had accumulated a set of ~25 go-to meals that were chosen from each week. Over time, this selection became repetitive. `autorecipes` and [`autogroceries`](https://github.com/dzhang32/autogroceries) are designed to automate this task of creating a weekly meal plan and ordering the required ingredients. 
 
-# Usage
+<br>
 
-## Example recipes
+## Basic usage
 
-`autorecipes` recipes includes a set of `length(recipebook_example)` example recipes stored in `autorecipes::recipebook_example`. Users are enabled and encouraged to add their own recipes, but the example provides a way to use and convey the benefit of `autorecipes` even without a user-inputted, recipe database. 
+### Example recipes
+
+`autorecipes` defines a `RecipeBook-class` that stores the names and ingredients of recipes. `autorecipes` also includes a set of `length(recipebook_example)` example recipes in `autorecipes::recipebook_example`. 
 
 ```{r recipebook-example}
 
 recipebook <- recipebook_example
 
-print(paste0("There are ", length(recipebook), " example recipes"))
+class(recipebook)
 
 recipes(recipebook) %>% head()
 
 ```
 
-## Set your favourite recipes
+<br>
 
-`autorecipes` allows you to set your favorite recipes. This information can be used to determine the subset of recipes that will enter your meal plan by setting `autorecipes::create_meal_plan(fav_only = TRUE)`. 
+### Set your favourite recipes
+
+`autorecipes` allows users to set their favorite recipes using `add_favourites()` and `rm_favourites()`. This information can be used to determine the subset of recipes that will enter your meal plan. 
 
 ```{r set-favourite}
 
+# set the first 3 recipes as favourites
 recipebook <- add_favourites(recipebook, 1:3)
 
 recipes(recipebook) %>% head()
 
 ```
 
-## Create a meal plan
+### Create a meal plan
 
-`autorecipes` allows you to create meal plan from your `RecipeBook-class` object. For this, you can set the days and meals you would like to order for. And also whether you only want to use favourite recipes. 
+`autorecipes` allows you to create meal plan from your `RecipeBook-class` object. For this, you can set the days and meals you would like to plan for and also whether you only want to consider your favourite recipes. 
+
+`create_meal_plan()` can either select recipes randomly (`method = "random"`) or take into account when you have last chosen a recipe for a previous meal plan (`method = "auto"`).
 
 ```{r create-meal-plan}
 
 recipebook <- create_meal_plan(
   recipebook,
-  which_days = c("Wed", "Thurs", "Fri", "Sat", "Sun"), which_meals = "Dinner",
+  which_days = c("Wed", "Thurs", "Fri", "Sat", "Sun"), 
+  which_meals = "Dinner",
+  method = "auto",
   fav_only = TRUE
 )
 
@@ -67,9 +76,31 @@ meal_plan(recipebook)
 
 ```
 
-## Create shopping list
+<br>
+
+### Create shopping list
+
+`create_shopping_list()` aggregates all of the ingredients required to make your meal plan into a shopping list. The `filter_method` determines whether to remove store cupboard ingredients (e.g. salt) that you are unlikely to want to order every week. 
+
+The outputted shopping list is designed to then be inputted into [`autogroceries`](https://github.com/dzhang32/autogroceries).  
 
 ```{r create-shopping-list}
 
-recipebook <- create_shopping_list(recipebook, "minimal")
+recipebook <- create_shopping_list(recipebook, filter_method = "minimal")
+
+shopping_list(recipebook)
+
 ```
+
+<br>
+
+## Session info
+
+<details>
+  <summary>Show/hide</summary>
+```{r session-info, echo = FALSE}
+library("sessioninfo")
+options(width = 120)
+session_info()
+```
+</details> 
