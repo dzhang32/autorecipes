@@ -1,13 +1,16 @@
 Package: autorecipes
 Title: Automate your recipe planning
-Version: 0.1.0
+Version: 1.0.0
 Date: 2021-09-29
 Authors@R: 
     person(given = "David",
            family = "Zhang",
            role = c("aut", "cre"),
            email = "dyzhang32@gmail.com")
-Description: What the package does (one paragraph).
+Description: The goal of autorecipes is to automate my weekly recipe planning. 
+autorecipes achieves this by taking care of: 1. Creating and storing a database 
+of recipes, 2. Customizing weekly meal plans and 3. Generating shopping lists of 
+ingredients.
 License: MIT + file LICENSE
 URL: https://github.com/dzhang32/autorecipes
 BugReports: https://github.com/dzhang32/autorecipes/issues
