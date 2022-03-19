@@ -29,7 +29,7 @@ As an unadventurous, by-the-recipe cook, I had accumulated a set of ~25 go-to me
 
 ### Example recipes
 
-`autorecipes` defines a `RecipeBook-class` that stores the names and ingredients of recipes. `autorecipes` also includes a set of `length(recipebook_example)` example recipes in `autorecipes::recipebook_example`. 
+`autorecipes` defines a `RecipeBook-class` that stores the names and ingredients of recipes. `autorecipes` also includes a set of `r length(recipebook_example)` example recipes in `autorecipes::recipebook_example`. 
 
 ```{r recipebook-example}
 
