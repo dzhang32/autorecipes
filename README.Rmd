@@ -23,7 +23,9 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/dzhang32/autorecipes/branch/master/graph/badge.svg)](https://codecov.io/gh/dzhang32/autorecipes?branch=master)
 <!-- badges: end -->
 
-As an unadventurous, by-the-recipe cook, I had accumulated a set of ~25 go-to meals that were cycled through depending on mood, time and what I'd had the week before. Over time, this weekly, manual selection process became repetitive. `autorecipes` was born from this repetition; it automates recipe planning by taking care of:
+The goal of `autorecipes` is to automate my weekly recipe planning (and practice using OOP in `R`).
+
+`autorecipes` achieves this by taking care of:
 
   1.  Creating and storing a database of recipes
   2.  Customizing weekly meal plans
@@ -31,34 +33,35 @@ As an unadventurous, by-the-recipe cook, I had accumulated a set of ~25 go-to me
 
 ## Installation
 
+`autorecipes` exists purely for personal use and is no longer under active development. If you’d like to install the development version from GitHub you can use the following:
+
 ```{r install-dev, eval = FALSE}
 devtools::install_github("dzhang32/autorecipes")
 ```
 
 ## Usage
 
-The below example gives a taste of `autorecipes`. If you would like to sink your teeth into a more detailed overview, head over to the
+The below example gives a taste of `autorecipes`. If you would like to sink your teeth into a more detailed tutorial, head over to the
 [vignette](https://dzhang32.github.io/autorecipes/articles/autorecipes.html).
 
 ```{r example, eval = requireNamespace("autorecipes")}
 
 library("autorecipes")
 
-# autorecipes contains an example set of recipes in recipebook_example
-# recipes stored in RecipeBook-class objects can be retrieved using recipes()
+# autorecipes contains an example set of recipes
 head(recipes(recipebook_example))
 
-# create a meal plan for your lunch and dinner across all weekdays
+# create a meal plan for lunch and dinner across all weekdays
 recipebook <- create_meal_plan(recipebook_example)
-meal_plan(recipebook)
+
+head(meal_plan(recipebook))
+
+recipebook <- create_shopping_list(recipebook)
+
+head(shopping_list(recipebook))
+
 ```
 
-## Development tools
+## Credits
 
-* Continuous code testing is possible thanks to [GitHub actions](https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/)  through `r BiocStyle::CRANpkg("usethis")`, `r BiocStyle::CRANpkg("remotes")`, and `r BiocStyle::CRANpkg("rcmdcheck")` customized to use [Bioconductor"s docker containers](https://www.bioconductor.org/help/docker/) and `r BiocStyle::Biocpkg("BiocCheck")`.
-* Code coverage assessment is possible thanks to [codecov](https://codecov.io/gh) and `r BiocStyle::CRANpkg("covr")`.
-* The [documentation website](http://dzhang32.github.io/autorecipes) is automatically updated thanks to `r BiocStyle::CRANpkg("pkgdown")`.
-* The code is styled automatically thanks to `r BiocStyle::CRANpkg("styler")`.
-* The documentation is formatted thanks to `r BiocStyle::CRANpkg("devtools")` and `r BiocStyle::CRANpkg("roxygen2")`.
-
-This package was developed using `r BiocStyle::Biocpkg("biocthis")`.
+`autorecipes` was developed using `r BiocStyle::Biocpkg("biocthis")`.
