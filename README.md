@@ -5,10 +5,6 @@
 
 <!-- badges: start -->
 
-[![GitHub
-issues](https://img.shields.io/github/issues/dzhang32/autorecipes)](https://github.com/dzhang32/autorecipes/issues)
-[![GitHub
-pulls](https://img.shields.io/github/issues-pr/dzhang32/autorecipes)](https://github.com/dzhang32/autorecipes/pulls)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/dzhang32/autorecipes/workflows/R-CMD-check/badge.svg)](https://github.com/dzhang32/autorecipes/actions)
@@ -19,7 +15,7 @@ coverage](https://codecov.io/gh/dzhang32/autorecipes/branch/master/graph/badge.s
 The goal of `autorecipes` is to automate my weekly recipe planning (and
 practice using OOP in `R`).
 
-`autorecipes` achieves this by taking care of:
+`autorecipes` takes care of:
 
 1.  Creating and storing a database of recipes
 2.  Customizing weekly meal plans
@@ -68,25 +64,25 @@ head(meal_plan(recipebook))
 #> # A tibble: 6 × 7
 #>   day   meal   recipe_index names                   ingredients fav   last_eaten
 #>   <fct> <fct>         <int> <chr>                   <list>      <lgl> <date>    
-#> 1 Mon   Lunch            11 Pink Grapefruit, Mint,… <Ingrdnts>  FALSE 2022-03-19
-#> 2 Mon   Dinner            6 Chipotle Bean Taco Sal… <Ingrdnts>  FALSE 2022-03-19
-#> 3 Tues  Lunch            23 Hoisin Beef Noodles & … <Ingrdnts>  FALSE 2022-03-19
-#> 4 Tues  Dinner            2 Crispy Duck with Fava … <Ingrdnts>  FALSE 2022-03-19
-#> 5 Wed   Lunch            21 Chickpea Falafels with… <Ingrdnts>  FALSE 2022-03-19
-#> 6 Wed   Dinner            3 Chicken with Rosemary … <Ingrdnts>  FALSE 2022-03-19
+#> 1 Mon   Lunch            15 Globe Arichoke & Pine … <Ingrdnts>  FALSE 2022-03-20
+#> 2 Mon   Dinner            5 Gaucho Steaks with Chi… <Ingrdnts>  FALSE 2022-03-20
+#> 3 Tues  Lunch             8 Sweetcorn & Spring Oni… <Ingrdnts>  FALSE 2022-03-20
+#> 4 Tues  Dinner           19 Beef & Spinach Lasagne  <Ingrdnts>  FALSE 2022-03-20
+#> 5 Wed   Lunch            26 Afghan Spliced Squash   <Ingrdnts>  FALSE 2022-03-20
+#> 6 Wed   Dinner           23 Hoisin Beef Noodles & … <Ingrdnts>  FALSE 2022-03-20
 
 recipebook <- create_shopping_list(recipebook)
 
 head(shopping_list(recipebook))
 #> # A tibble: 6 × 2
-#>   names            n
-#>   <chr>        <int>
-#> 1 garlic clove    11
-#> 2 onion            6
-#> 3 lime             5
-#> 4 ginger           4
-#> 5 red onion        4
-#> 6 sesame seeds     4
+#>   names               n
+#>   <chr>           <int>
+#> 1 garlic clove       15
+#> 2 onion               7
+#> 3 coriander           5
+#> 4 lime                5
+#> 5 bouillon powder     4
+#> 6 cherry tomatoes     4
 ```
 
 ## Credits

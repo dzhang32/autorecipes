@@ -21,7 +21,7 @@ library(magrittr)
 
 ## Background
 
-As an unadventurous, by-the-recipe cook, I had accumulated a set of ~25 go-to meals that were chosen from each week. Over time, this selection became repetitive. `autorecipes` and [`autogroceries`](https://github.com/dzhang32/autogroceries) are designed to automate this task of creating a weekly meal plan and ordering the required ingredients. 
+As an unadventurous, by-the-recipe cook, I had accumulated a set of ~25 go-to meals that were chosen from each week. Over time, this selection became repetitive. `autorecipes` and [`autogroceries`](https://github.com/dzhang32/autogroceries) were developed to automate this task of creating a weekly meal plan and ordering the required ingredients. 
 
 <br>
 

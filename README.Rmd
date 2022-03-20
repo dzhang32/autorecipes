@@ -16,8 +16,6 @@ knitr::opts_chunk$set(
 # autorecipes
 
 <!-- badges: start -->
-[![GitHub issues](https://img.shields.io/github/issues/dzhang32/autorecipes)](https://github.com/dzhang32/autorecipes/issues)
-[![GitHub pulls](https://img.shields.io/github/issues-pr/dzhang32/autorecipes)](https://github.com/dzhang32/autorecipes/pulls)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/dzhang32/autorecipes/workflows/R-CMD-check/badge.svg)](https://github.com/dzhang32/autorecipes/actions)
 [![Codecov test coverage](https://codecov.io/gh/dzhang32/autorecipes/branch/master/graph/badge.svg)](https://codecov.io/gh/dzhang32/autorecipes?branch=master)
@@ -25,7 +23,7 @@ knitr::opts_chunk$set(
 
 The goal of `autorecipes` is to automate my weekly recipe planning (and practice using OOP in `R`).
 
-`autorecipes` achieves this by taking care of:
+`autorecipes` takes care of:
 
   1.  Creating and storing a database of recipes
   2.  Customizing weekly meal plans
