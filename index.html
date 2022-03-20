@@ -76,7 +76,7 @@
 
 <p>The goal of <code>autorecipes</code> is to automate my weekly recipe
 planning (and practice using OOP in <code>R</code>).</p>
-<p><code>autorecipes</code> achieves this by taking care of:</p>
+<p><code>autorecipes</code> takes care of:</p>
 <ol style="list-style-type: decimal">
 <li>Creating and storing a database of recipes</li>
 <li>Customizing weekly meal plans</li>
@@ -124,25 +124,25 @@ to the <a href="https://dzhang32.github.io/autorecipes/articles/autorecipes.html
 <span class="co">#&gt; # A tibble: 6 × 7</span>
 <span class="co">#&gt;   day   meal   recipe_index names                   ingredients fav   last_eaten</span>
 <span class="co">#&gt;   &lt;fct&gt; &lt;fct&gt;         &lt;int&gt; &lt;chr&gt;                   &lt;list&gt;      &lt;lgl&gt; &lt;date&gt;    </span>
-<span class="co">#&gt; 1 Mon   Lunch            11 Pink Grapefruit, Mint,… &lt;Ingrdnts&gt;  FALSE 2022-03-19</span>
-<span class="co">#&gt; 2 Mon   Dinner            6 Chipotle Bean Taco Sal… &lt;Ingrdnts&gt;  FALSE 2022-03-19</span>
-<span class="co">#&gt; 3 Tues  Lunch            23 Hoisin Beef Noodles &amp; … &lt;Ingrdnts&gt;  FALSE 2022-03-19</span>
-<span class="co">#&gt; 4 Tues  Dinner            2 Crispy Duck with Fava … &lt;Ingrdnts&gt;  FALSE 2022-03-19</span>
-<span class="co">#&gt; 5 Wed   Lunch            21 Chickpea Falafels with… &lt;Ingrdnts&gt;  FALSE 2022-03-19</span>
-<span class="co">#&gt; 6 Wed   Dinner            3 Chicken with Rosemary … &lt;Ingrdnts&gt;  FALSE 2022-03-19</span>
+<span class="co">#&gt; 1 Mon   Lunch            15 Globe Arichoke &amp; Pine … &lt;Ingrdnts&gt;  FALSE 2022-03-20</span>
+<span class="co">#&gt; 2 Mon   Dinner            5 Gaucho Steaks with Chi… &lt;Ingrdnts&gt;  FALSE 2022-03-20</span>
+<span class="co">#&gt; 3 Tues  Lunch             8 Sweetcorn &amp; Spring Oni… &lt;Ingrdnts&gt;  FALSE 2022-03-20</span>
+<span class="co">#&gt; 4 Tues  Dinner           19 Beef &amp; Spinach Lasagne  &lt;Ingrdnts&gt;  FALSE 2022-03-20</span>
+<span class="co">#&gt; 5 Wed   Lunch            26 Afghan Spliced Squash   &lt;Ingrdnts&gt;  FALSE 2022-03-20</span>
+<span class="co">#&gt; 6 Wed   Dinner           23 Hoisin Beef Noodles &amp; … &lt;Ingrdnts&gt;  FALSE 2022-03-20</span>
 
 <span class="va">recipebook</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/create_shopping_list.html">create_shopping_list</a></span><span class="op">(</span><span class="va">recipebook</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="reference/RecipeBook-class.html">shopping_list</a></span><span class="op">(</span><span class="va">recipebook</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 × 2</span>
-<span class="co">#&gt;   names            n</span>
-<span class="co">#&gt;   &lt;chr&gt;        &lt;int&gt;</span>
-<span class="co">#&gt; 1 garlic clove    11</span>
-<span class="co">#&gt; 2 onion            6</span>
-<span class="co">#&gt; 3 lime             5</span>
-<span class="co">#&gt; 4 ginger           4</span>
-<span class="co">#&gt; 5 red onion        4</span>
-<span class="co">#&gt; 6 sesame seeds     4</span></code></pre></div>
+<span class="co">#&gt;   names               n</span>
+<span class="co">#&gt;   &lt;chr&gt;           &lt;int&gt;</span>
+<span class="co">#&gt; 1 garlic clove       15</span>
+<span class="co">#&gt; 2 onion               7</span>
+<span class="co">#&gt; 3 coriander           5</span>
+<span class="co">#&gt; 4 lime                5</span>
+<span class="co">#&gt; 5 bouillon powder     4</span>
+<span class="co">#&gt; 6 cherry tomatoes     4</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="credits">Credits<a class="anchor" aria-label="anchor" href="#credits"></a>
@@ -185,8 +185,6 @@ to the <a href="https://dzhang32.github.io/autorecipes/articles/autorecipes.html
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/dzhang32/autorecipes/issues" class="external-link"><img src="https://img.shields.io/github/issues/dzhang32/autorecipes" alt="GitHub issues"></a></li>
-<li><a href="https://github.com/dzhang32/autorecipes/pulls" class="external-link"><img src="https://img.shields.io/github/issues-pr/dzhang32/autorecipes" alt="GitHub pulls"></a></li>
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
 <li><a href="https://github.com/dzhang32/autorecipes/actions" class="external-link"><img src="https://github.com/dzhang32/autorecipes/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://codecov.io/gh/dzhang32/autorecipes?branch=master" class="external-link"><img src="https://codecov.io/gh/dzhang32/autorecipes/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
