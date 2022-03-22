@@ -12,10 +12,8 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 coverage](https://codecov.io/gh/dzhang32/autorecipes/branch/master/graph/badge.svg)](https://codecov.io/gh/dzhang32/autorecipes?branch=master)
 <!-- badges: end -->
 
-The goal of `autorecipes` is to automate my weekly recipe planning (and
-practice using OOP in `R`).
-
-`autorecipes` takes care of:
+The goal of `autorecipes` is to automate your weekly recipe planning, it
+takes care of:
 
 1.  Creating and storing a database of recipes
 2.  Customizing weekly meal plans
@@ -23,9 +21,8 @@ practice using OOP in `R`).
 
 ## Installation
 
-`autorecipes` exists purely for personal use and is no longer under
-active development. If you’d like to install the development version
-from GitHub you can use the following:
+`autorecipes` was developed for personal use and is no longer under
+active development. You can install the development version from GitHub:
 
 ``` r
 devtools::install_github("dzhang32/autorecipes")
@@ -64,12 +61,12 @@ head(meal_plan(recipebook))
 #> # A tibble: 6 × 7
 #>   day   meal   recipe_index names                   ingredients fav   last_eaten
 #>   <fct> <fct>         <int> <chr>                   <list>      <lgl> <date>    
-#> 1 Mon   Lunch            15 Globe Arichoke & Pine … <Ingrdnts>  FALSE 2022-03-20
-#> 2 Mon   Dinner            5 Gaucho Steaks with Chi… <Ingrdnts>  FALSE 2022-03-20
-#> 3 Tues  Lunch             8 Sweetcorn & Spring Oni… <Ingrdnts>  FALSE 2022-03-20
-#> 4 Tues  Dinner           19 Beef & Spinach Lasagne  <Ingrdnts>  FALSE 2022-03-20
-#> 5 Wed   Lunch            26 Afghan Spliced Squash   <Ingrdnts>  FALSE 2022-03-20
-#> 6 Wed   Dinner           23 Hoisin Beef Noodles & … <Ingrdnts>  FALSE 2022-03-20
+#> 1 Mon   Lunch             2 Crispy Duck with Fava … <Ingrdnts>  FALSE 2022-03-22
+#> 2 Mon   Dinner           26 Afghan Spliced Squash   <Ingrdnts>  FALSE 2022-03-22
+#> 3 Tues  Lunch             4 Chickpea & Sweet Potat… <Ingrdnts>  FALSE 2022-03-22
+#> 4 Tues  Dinner           16 Creamy Pollock, Samphi… <Ingrdnts>  FALSE 2022-03-22
+#> 5 Wed   Lunch            15 Globe Arichoke & Pine … <Ingrdnts>  FALSE 2022-03-22
+#> 6 Wed   Dinner           22 New Potato Tagine       <Ingrdnts>  FALSE 2022-03-22
 
 recipebook <- create_shopping_list(recipebook)
 
@@ -77,12 +74,12 @@ head(shopping_list(recipebook))
 #> # A tibble: 6 × 2
 #>   names               n
 #>   <chr>           <int>
-#> 1 garlic clove       15
+#> 1 garlic clove       13
 #> 2 onion               7
-#> 3 coriander           5
-#> 4 lime                5
-#> 5 bouillon powder     4
-#> 6 cherry tomatoes     4
+#> 3 coriander           6
+#> 4 lime                6
+#> 5 cherry tomatoes     5
+#> 6 bouillon powder     4
 ```
 
 ## Credits

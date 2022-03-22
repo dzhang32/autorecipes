@@ -21,9 +21,7 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/dzhang32/autorecipes/branch/master/graph/badge.svg)](https://codecov.io/gh/dzhang32/autorecipes?branch=master)
 <!-- badges: end -->
 
-The goal of `autorecipes` is to automate my weekly recipe planning (and practice using OOP in `R`).
-
-`autorecipes` takes care of:
+The goal of `autorecipes` is to automate your weekly recipe planning, it takes care of:
 
   1.  Creating and storing a database of recipes
   2.  Customizing weekly meal plans
@@ -31,7 +29,7 @@ The goal of `autorecipes` is to automate my weekly recipe planning (and practice
 
 ## Installation
 
-`autorecipes` exists purely for personal use and is no longer under active development. If you’d like to install the development version from GitHub you can use the following:
+`autorecipes` was developed for personal use and is no longer under active development. You can install the development version from GitHub: 
 
 ```{r install-dev, eval = FALSE}
 devtools::install_github("dzhang32/autorecipes")
