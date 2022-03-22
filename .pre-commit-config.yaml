@@ -31,6 +31,7 @@ repos:
         # created by precommit::snippet_generate("additional-deps-roxygenize")
         additional_dependencies:
         -    covr
+        -    cpp11
         -    dplyr
         -    knitr
         -    lubridate
