@@ -1,14 +1,11 @@
-# autorecipes 0.1.0
+# autorecipes 1.0.1
 
 NEW FEATURES
 
-* Added a `NEWS.md` file to track changes to the package.
+* Add template for running `autorecipes` and `autogroceries`. 
 
-SIGNIFICANT USER-VISIBLE CHANGES
+# autorecipes 1.0.0
 
-* Your main changes to a function `foo()` or parameter `param`.
+NEW FEATURES
 
-BUG FIXES
-
-* Your bug fixes. See more details at
-<http://bioconductor.org/developers/package-guidelines/#news>.
+* First release of `autorecipes`!
