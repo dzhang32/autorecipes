@@ -138,8 +138,8 @@ reticulate::py_config()
 shopper <- reticulate::import("autogroceries.shopper")
 
 sb <- shopper$SainsburysShopper(
-  items = shopping_list(recipebook)[["names"]][1:3],
-  n_items = shopping_list(recipebook)[["n"]][1:3]
+  items = shopping_list(recipebook)[["names"]],
+  n_items = shopping_list(recipebook)[["n"]]
 )
 
 # load credentials
