@@ -1,0 +1,156 @@
+---
+title: "autorecipes and autogroceries"
+author: 
+- name: "David Zhang"
+output: 
+  bookdown::html_document2:
+    figure_caption: yes
+    code_folding: hide
+    theme: spacelab
+    highlight: kate
+    df_print: paged
+    toc: true
+    toc_float: true
+    number_sections: true
+---
+
+```{r setup, include = FALSE}
+
+library(knitr)
+library(tidyverse)
+library(autorecipes)
+
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, eval = FALSE)
+```
+
+This .Rmd is designed to be run **interactively** and should not be knitted. 
+
+# Setup 
+
+## Conda environment
+
+To run this .Rmd, you need to have a conda environment with [autogroceries](https://github.com/dzhang32/autogroceries) installed. 
+
+```{r conda-env}
+conda_env_name <- ""
+```
+
+## Credentials
+
+[autogroceries](https://github.com/dzhang32/autogroceries) need your [Sainsbury's]() credentials. For security, it's recommended this is saved in a file rather than directly inputted into this script. 
+
+The first line must correspond to your UN and the second your PW, no white space. 
+
+```{r credentials}
+credentials_path <- ""
+```
+
+## Output directory
+
+Create the paths for outputting the `recipebook` and ordered products.
+
+```{r output-dir}
+output_dir <- ""
+```
+
+# autorecipes
+
+## Initialise recipebook
+
+```{r init-recipebook}
+recipebook_path <- file.path(output_dir, "recipebook.rda")
+
+if (file.exists(recipebook_path)) {
+  load(recipebook_path)
+} else {
+  recipebook <- recipebook_example
+}
+```
+
+## Set favourites
+
+> Skip this step if you don't want to favourite any recipes. 
+
+```{r set-fav}
+# reset fav recipes
+recipes(recipebook)[["fav"]] <- FALSE
+
+# change method to "index" and add arg indexes if you wish to fav by index
+recipebook <- add_favourites(recipebook, method = "manual")
+```
+
+## Create meal plan
+
+```{r create-meal-plan}
+# modify which_days, which_meals, method and fav_only to your liking
+recipebook <- create_meal_plan(
+  recipebook,
+  which_days = weekdays(),
+  which_meals = c("Lunch", "Dinner"),
+  method = "auto",
+  fav_only = TRUE,
+  set_last_eaten = TRUE
+)
+
+meal_plan(recipebook)
+```
+
+## Create shopping list 
+
+```{r create-shopping-list}
+recipebook <- create_shopping_list(
+  recipebook,
+  filter_method = "minimal"
+)
+
+shopping_list(recipebook)
+```
+
+## Save recipebook
+
+```{r save-recipebook}
+save(
+  recipebook,
+  file = file.path(output_dir, "recipebook.rda")
+)
+```
+
+# autogroceries
+
+## Acivate conda env
+
+```{r activate-conda-env}
+conda_env_details <- reticulate::conda_list() %>%
+  dplyr::filter(name == conda_env_name)
+
+# important to set python path prior to library(reticulate)
+# https://stackoverflow.com/questions/50145643/unable-to-change-python-path-in-reticulate
+Sys.setenv(RETICULATE_PYTHON = conda_env_details[["python"]])
+
+library(reticulate)
+
+reticulate::py_config()
+```
+
+## Shop
+
+```{r shop}
+shopper <- reticulate::import("autogroceries.shopper")
+
+sb <- shopper$SainsburysShopper(
+  items = shopping_list(recipebook)[["names"]][1:3],
+  n_items = shopping_list(recipebook)[["n"]][1:3]
+)
+
+# load credentials
+credentials <- readr::read_lines(credentials_path)
+
+# setup output path
+output_path <- file.path(output_dir, paste0(Sys.Date(), "-", "products.csv"))
+
+products <- sb$shop(
+  username = credentials[1],
+  password = credentials[2],
+  file = output_path
+)
+```
